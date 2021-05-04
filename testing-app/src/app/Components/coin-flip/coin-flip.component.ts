@@ -8,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoinFlipComponent implements OnInit {
 
-  intervalNum:number = 0;
+  headsOrTails:number = 0;
   coinFlipped:boolean = false;
-
-  headsOrTails:string = '';
 
   constructor() { }
 
@@ -19,17 +17,25 @@ export class CoinFlipComponent implements OnInit {
   }
 
   coinFlip(){
-    this.intervalNum = Math.floor(Math.random() * (2)) + 1;
+    this.headsOrTails = Math.floor(Math.random() * (2)) + 1;
 
-    if(this.intervalNum == 1){
+    if(this.headsOrTails == 1){
+      if(this.coinFlipped = true){
+        this.coinFlipped = false;
+      }
+      else if(this.coinFlipped = false){
+        this.coinFlipped = true;
+      }
       this.coinFlipped = true;
-
     }
-    else if(this.intervalNum == 2){
-      this.coinFlipped = false;
-
+    else if(this.headsOrTails == 2){
+      if(this.coinFlipped = false){
+        this.coinFlipped = true;
+      }
+      else if(this.coinFlipped = true){
+        this.coinFlipped = false;
+      }
     }
-
   }
 
 }

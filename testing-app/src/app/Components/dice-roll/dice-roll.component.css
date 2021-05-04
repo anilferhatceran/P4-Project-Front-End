@@ -1,9 +1,9 @@
 .container-fluid{
-  background-image: url("https://islam.mansouri.online/wp-content/uploads/2019/05/numbers.jpg");
+  background-image: url("https://www.freevector.com/uploads/vector/preview/4508/FreeVector-Rolling-Dice.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.number-gen-container{
+.dice-roll-container{
   background:rgba(255, 255,255, 0.9);
   border-radius: 7px;
   padding: 2rem;

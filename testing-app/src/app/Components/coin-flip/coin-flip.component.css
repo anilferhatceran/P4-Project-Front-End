@@ -9,8 +9,9 @@
   height: 100%;
 } */
 .coin-flip{
-  width:600px;
-  height: 600px;
+  margin-top: 4rem;
+  width:500px;
+  height: 500px;
   border-radius: 50%;
   font-size: 5rem;
   color: rgba(0, 0, 0, 0.2);
@@ -31,7 +32,4 @@
   background-position: center;
   animation: rotate 1.5s ease-in-out 0s;
 }
-@keyframes rotate {
-  from {transform: rotateY(0deg); }
-  to {transform: rotateY(360deg);}
-}
+
