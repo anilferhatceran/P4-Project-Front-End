@@ -1,0 +1,37 @@
+.container-fluid{
+  margin: 0 !important;
+  padding: 0  !important;
+  height: 100vh;
+  overflow-y: hidden;
+  background-image: url("https://berlingske.bmcdn.dk/media/cache/resolve/gallery_image/image/35/356181/4079048-pix-krone-biz.jpg");
+}
+/* .coin-flip-container{
+  height: 100%;
+} */
+.coin-flip{
+  width:600px;
+  height: 600px;
+  border-radius: 50%;
+  font-size: 5rem;
+  color: rgba(0, 0, 0, 0.2);
+}
+.tails{
+  border-radius: 50%;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  animation: rotate 1.5s ease-in-out 0s;
+}
+.heads{
+  border-radius: 50%;
+  background-size: cover;
+  width: 200%;
+  height: 100%;
+  background-position: center;
+  animation: rotate 1.5s ease-in-out 0s;
+}
+@keyframes rotate {
+  from {transform: rotateY(0deg); }
+  to {transform: rotateY(360deg);}
+}
