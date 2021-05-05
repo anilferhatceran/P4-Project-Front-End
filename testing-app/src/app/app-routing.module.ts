@@ -1,3 +1,4 @@
+import { PasswordGenComponent } from './Components/Password-gen/Password-gen.component';
 import { LandingPageComponent } from './Components/landing-page/landing-page.component';
 import { AppComponent } from './app.component';
 import { NumberGenComponent } from './Components/number-gen/number-gen.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path:  'number-generator', component: NumberGenComponent},
   {path:  'coin-flip', component: CoinFlipComponent},
   {path:  'dice-roll', component: DiceRollComponent},
+  {path: 'password-generator', component: PasswordGenComponent},
 ];
 
 @NgModule({
