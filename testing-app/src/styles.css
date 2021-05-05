@@ -11,7 +11,7 @@
 }
 
 .white-background{
-  background:rgba(255, 255,255, 0.9);
+  background:rgba(255, 255,255, 0.9);    /* Global White background command for use*/
 }
 html{
   scroll-behavior: smooth;
