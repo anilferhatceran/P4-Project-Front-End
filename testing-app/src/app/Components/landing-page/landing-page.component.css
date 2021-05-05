@@ -1,0 +1,18 @@
+.container-fluid{
+  background-image: url("https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.landing-page-message-header-container{
+  margin-top: -135px;
+
+}
+.landing-page-message-header{
+  animation-duration: 1.2s;
+  animation-name: slideFromTop;
+}
+.landing-page-message-text{
+ font-size: 1.7rem;
+ animation-duration: 2.1s;
+ animation-name: slideFromTop;
+}

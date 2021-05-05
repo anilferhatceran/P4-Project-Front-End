@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+.container-fluid{
+  height: 100vh;
+}
+.header-result-box{
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+html{
+  scroll-behavior: smooth;
+}
+@keyframes slideFromTop {
+  from {
+    margin-top:-50%;
+  }
+  /* to {
+    top:0%;
+  } */
+}
+@keyframes rotate {
+  from {transform: rotateY(0deg); }
+  to {transform: rotateY(360deg);}
+}
+@keyframes slideFromLeft{
+  from{margin-left:-50%;}
+  to{margin-left:50%;}
+}
+@keyframes slideFromRight{
+  from{margin-right:-50%;}
+  to{margin-right:50%;}
+}
+@keyframes slideFromBottom{
+  from{margin-bottom:-50%;}
+  to{margin-bottom:50%;}
+}
