@@ -15,6 +15,7 @@ const routes: Routes = [
   {path:  'coin-flip', component: CoinFlipComponent},
   {path:  'dice-roll', component: DiceRollComponent},
   {path: 'password-generator', component: PasswordGenComponent},
+  {path: 'name-generator', component : NameGenComponent},
 ];
 
 @NgModule({
