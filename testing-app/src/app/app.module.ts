@@ -7,14 +7,15 @@ import { PasswordGenComponent } from './Components/Password-gen/Password-gen.com
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HeaderComponent } from './Components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NumberGenComponent,CoinFlipComponent, DiceRollComponent, HeaderComponent,LandingPageComponent, PasswordGenComponent
+    AppComponent,
+    routingComponents,
   ],
   imports: [
     BrowserModule,
