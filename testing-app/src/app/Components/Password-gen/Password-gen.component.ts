@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordGenComponent implements OnInit {
   passGenForm:any;
+  passGeneratorTestForm: any; // <----- Also from PASSWORD GENERATOR TEST
   ranNumbers:number = 0;
   ranWordsLowcase:string = "";
   ranWordsUppercase:string = "";
@@ -17,8 +18,26 @@ export class PasswordGenComponent implements OnInit {
   ngOnInit() {
     this.passGenForm = new FormGroup({
       passWord: new FormControl(''),
-
+    
     });
-  }
 
+
+    // PASSWORD GENERATOR TESTING FROM HERE AND DOWN.
+    this.passGeneratorTestForm = new FormGroup({
+      row_password: new FormControl(),
+    });
+    }
+
+    randomPassword(length:any) {
+    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+    var pass = "";
+    for (var x = 0; x < length; x++) {
+        var i = Math.floor(Math.random() * chars.length);
+        pass += chars.charAt(i);
+    }
+    return pass;
+}
+generate(form:FormGroup) {
+    form.value.row_password = this.randomPassword(form.value.length);
+}
 }
