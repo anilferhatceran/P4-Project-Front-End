@@ -1,9 +1,17 @@
 .container-fluid{
   height: 100vh;
+  
+}
+.container{
+  height: 100vh;
 }
 .header-result-box{
   border: 1px solid gray;
   border-radius: 3px;
+}
+
+.white-background{
+  background:rgba(255, 255,255, 0.9);    /* Global White background command for use*/
 }
 html{
   scroll-behavior: smooth;

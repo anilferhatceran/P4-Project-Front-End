@@ -8,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordGenComponent implements OnInit {
   passGenForm:any;
-  randomPwd:number = 0;
+  ranNumbers:number = 0;
+  ranWordsLowcase:string = "";
+  ranWordsUppercase:string = "";
 
   constructor() { }
 
   ngOnInit() {
     this.passGenForm = new FormGroup({
+      passWord: new FormControl(''),
 
-    })
+    });
   }
 
 }
