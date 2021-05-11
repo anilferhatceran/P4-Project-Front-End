@@ -28,7 +28,7 @@ export class PasswordGenComponent implements OnInit {
     });
     }
 
-    randomPassword(length:number) {
+    randomPassword(length:any) {
     var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
     var pass = "";
     for (var x = 0; x < length; x++) {
@@ -38,6 +38,18 @@ export class PasswordGenComponent implements OnInit {
     return pass;
 }
 generate(form:FormGroup) {
-    form.value.row_password = this.randomPassword(form.value.length);
+    console.log(this.randomPassword(50))  // Den bliver registret i loggen i F12 konsol(husk at trykke på knappen når du er i konsol), men den bliver ikke output i selve tekstboksen og ved ikke hvorfor
+    var value = this.randomPassword(50)
+    this.passGeneratorTestForm.row_password = this.randomPassword(form.value.length);
 }
+
+// generate(form:FormGroup) {
+//   console.log(form.value.row_password);
+//     form.value.row_password = this.randomPassword(form.value.length);
+// }
+// generate(form:FormGroup) {
+//   var value = this.randomPassword(50)
+//    this.passGeneratorTestForm.row_password = value;
+
+// }
 }
