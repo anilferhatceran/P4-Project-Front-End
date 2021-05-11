@@ -1,18 +1,42 @@
 .container-fluid{
   background-image: url("https://wikiwebpedia.com/wp-content/uploads/binary-numbers.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-
-.name-container {
+.name-savebox-container {
   border-radius: 7px;
   padding: 2rem;
-  width: 20.5%;
-  height: 75%;
-  margin-left: -90.32rem;
+  width: 25rem;
   color: #333;
   background:rgba(255, 255,255, 0.9);
 }
 
+.name-gen-savename-container {
+  border-radius: 7px;
+  padding: 2rem;
+  width: 45rem;
+  margin-left: 15rem;
+}
+
+.gender-choice-container {
+  border-radius: 7px;
+  padding: 2rem;
+  width: 45rem;
+  margin-left: 15rem;
+}
+
+
+p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 h6{
   margin-top: 38rem;
+}
+
+button{
+  width: 100%;
+  margin-top: 10rem;
 }
