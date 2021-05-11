@@ -28,7 +28,7 @@ export class PasswordGenComponent implements OnInit {
     });
     }
 
-    randomPassword(length:any) {
+    randomPassword(length:number) {
     var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
     var pass = "";
     for (var x = 0; x < length; x++) {
