@@ -16,6 +16,12 @@
         <a class="nav-item nav-link disabled">WPM Typewriter</a>
         <a class="nav-item nav-link disabled">YouTube to MP3/MP4</a>
       </div>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-light my-2 my-sm-0 mr-sm-2" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+      </form>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#loginModal">Login</button>
+      </form>
     </div>
   </nav>
   <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalTitle" aria-hidden="true">
@@ -28,7 +34,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form [formGroup]="createUserForm" (ngSubmit)="onSubmitCreate()">
             <div class="form-group">
               <label for="createAccEmail" class="col-form-label">Email:</label>
               <input formControlName="userEmail" type="email" class="form-control" id="createAccEmail">
@@ -56,7 +62,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form [formGroup]="loginUserForm" (ngSubmit)="onSubmitLogin()">
             <div class="form-group">
               <label for="loginEmail" class="col-form-label">Email:</label>
               <input formControlName="userEmail" type="email" class="form-control" id="loginEmail">
