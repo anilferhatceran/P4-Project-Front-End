@@ -7,28 +7,26 @@
 .name-savebox-container {
   border-radius: 7px;
   padding: 2rem;
-  width: 25rem;
+  margin-right: 1rem;
   color: #333;
-  background:rgba(255, 255,255, 0.9);
-}
-
-.name-gen-savename-container {
-  border-radius: 7px;
-  padding: 2rem;
-  width: 45rem;
-  margin-left: 15rem;
 }
 
 .gender-choice-container {
   border-radius: 7px;
   padding: 2rem;
   width: 45rem;
-  margin-left: 15rem;
+  margin-right: 1rem;
 }
 
+.name-gen-sname-container {
+  border-radius: 7px;
+  padding: 2rem;
+  width: 45rem;
+}
 
 p {
   font-size: 1.5rem;
+  font-weight: 400;
   text-align: center;
 }
 
@@ -37,6 +35,6 @@ h6{
 }
 
 button{
-  width: 100%;
+  width: 25rem;
   margin-top: 10rem;
 }
