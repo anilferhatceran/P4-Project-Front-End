@@ -1,6 +1,7 @@
+import { CommonResponse } from './../../model/CommonResponse';
 import { HttpService } from 'src/app/service/http.service';
 import { HttpClient } from '@angular/common/http';
-import { Form, FormControl, FormGroup } from '@angular/forms';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Users } from 'src/app/model/Users';
 
@@ -12,6 +13,8 @@ import { Users } from 'src/app/model/Users';
 export class HeaderComponent implements OnInit {
   users: Users[];
   @Input() user: Users;
+
+  public loginError:String;
   constructor(private http:HttpClient, private service:HttpService) { }
 
   createUserForm = new FormGroup(
@@ -22,8 +25,8 @@ export class HeaderComponent implements OnInit {
   );
   loginUserForm = new FormGroup(
     {
-      userEmail: new FormControl(''),
-      passwordHash: new FormControl(''),
+      userEmail: new FormControl('', [Validators.required, Validators.email]),
+      passwordHash: new FormControl('', [Validators.required]),
     }
   );
 
@@ -50,7 +53,6 @@ export class HeaderComponent implements OnInit {
   }
   // tslint:disable-next-line: typedef
   onSubmitLogin(){
-
     // tslint:disable-next-line: deprecation
     this.service.getUser().subscribe(user => console.log(user));
 

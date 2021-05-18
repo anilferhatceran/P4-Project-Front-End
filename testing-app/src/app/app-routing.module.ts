@@ -24,4 +24,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 
-export const routingComponents = [LandingPageComponent,NumberGenComponent,CoinFlipComponent,DiceRollComponent,PasswordGenComponent,HeaderComponent,NameGenComponent,]
+export const routingComponents = [LandingPageComponent, NumberGenComponent, CoinFlipComponent, DiceRollComponent,
+  PasswordGenComponent, HeaderComponent, NameGenComponent,]

@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HeaderComponent } from './Components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
