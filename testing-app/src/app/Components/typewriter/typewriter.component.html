@@ -1,0 +1,37 @@
+<div class="container-fluid d-flex justify-content-center">
+  <div class="typewriter-container">
+    <div class="typewriter-header d-flex align-items-center flex-column">
+      <h2 class="display-3">Typewriter</h2>
+      <p class="lead">Choose time limit
+      </p>
+    </div>
+    <div class="typewriter-input-boxes d-flex justify-content-center align-items-start my-4">
+      <form [formGroup]="typewriterTimeLimit"  class="row form-group d-flex justify-content-center">
+          <div class="col-md-3 col-sm-12">
+            <input formControlName="veryFastTime" type="checkbox" class="form-check-input" id="veryFastTimeID">
+            <label class="form-check-label" for="veryFastTimeID">15 Seconds</label>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <input formControlName="fastTime" type="checkbox" class="form-check-input" id="fastTimeID">
+            <label class="form-check-label" for="fastTimeID">30 Seconds</label>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <input formControlName="neutralTime" type="checkbox" class="form-check-input" id="neutralTimeID">
+            <label class="form-check-label" for="neutralTimeID">45 Seconds</label>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <input formControlName="slowTime" type="checkbox" class="form-check-input" id="slowTimeID">
+            <label class="form-check-label" for="slowTimeID">60 Seconds</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-typewriter" (click)="isCheckedFunction()">Retrieve randomized text</button>
+      </form>
+    </div>
+    <div class="d-flex flex-wrap typewriter-text-container justify-content-center">
+      <div *ngFor="let words of word; let i = index;" class="typewriter-text">
+        <input class="form-control-plaintext" (keyup)="startTypingSession($event)" value={{words.word}}>
+      </div>
+      <!-- <input class="form-control-plaintext" (keyup)="startTypingSession($event)" value=""> -->
+    </div>
+  </div>
+</div>
+

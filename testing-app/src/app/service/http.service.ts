@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angul
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { TextsGenerated } from '../model/Texts';
 
 const httpHeaders = {
   headers: new HttpHeaders(
@@ -20,15 +21,21 @@ const httpHeaders = {
 export class HttpService {
 ROOT_URL = 'http://localhost:46088/api/';
 // loginStatus = new BehaviorSubject<boolean>(this.hasToken());
+
 constructor(private http: HttpClient) { }
 
 postUser(user: Users): Observable<Users>{
   return this.http.post<Users>(`${this.ROOT_URL}User`, user, httpHeaders);
 }
-getUser():Observable<Users[]>{
-  return this.http.get<Users[]>(`${this.ROOT_URL}User`,httpHeaders);
+getUser(): Observable<Users[]>{
+  return this.http.get<Users[]>(`${this.ROOT_URL}User`, httpHeaders);
 }
-
+getWords(): Observable<TextsGenerated[]>{
+  return this.http.get<TextsGenerated[]>(`${this.ROOT_URL}TextGenerator/words`, httpHeaders);
+}
+getWordsAmount(Amount: number): Observable<TextsGenerated[]>{
+  return this.http.get<TextsGenerated[]>(`${this.ROOT_URL}TextGenerator/words/${Amount}`, httpHeaders);
+}
 }
 
 
