@@ -21,6 +21,7 @@ export class TypewriterComponent implements OnInit {
   word:TextsGenerated[];
 
 
+
   constructor(private http:HttpClient, private service:HttpService) { }
 
   ngOnInit() {
