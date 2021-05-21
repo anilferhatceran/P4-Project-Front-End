@@ -1,0 +1,16 @@
+.typewriter-container{
+  margin-top: 8rem;
+  max-width: 50vw;
+}
+.typewriter-text{
+
+  margin-right: 8px;
+  width: auto !important;
+}
+.typewriter-text-container{
+  max-width: 50vw !important;
+}
+.btn-typewriter{
+  width: 35rem;
+  margin-top: 1rem;
+}

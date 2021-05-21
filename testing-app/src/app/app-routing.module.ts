@@ -1,3 +1,4 @@
+import { TypewriterComponent } from './Components/typewriter/typewriter.component';
 import { NameGenComponent } from './Components/name-gen/name-gen.component';
 import { PasswordGenComponent } from './Components/Password-gen/Password-gen.component';
 import { LandingPageComponent } from './Components/landing-page/landing-page.component';
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path:  'dice-roll', component: DiceRollComponent},
   {path: 'password-generator', component: PasswordGenComponent},
   {path: 'name-generator', component : NameGenComponent},
+  {path: 'typewriter', component : TypewriterComponent},
+
 ];
 
 @NgModule({
@@ -25,4 +28,4 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 export const routingComponents = [LandingPageComponent, NumberGenComponent, CoinFlipComponent, DiceRollComponent,
-  PasswordGenComponent, HeaderComponent, NameGenComponent,]
+  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent]

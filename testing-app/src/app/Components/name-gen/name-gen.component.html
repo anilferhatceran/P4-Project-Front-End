@@ -13,6 +13,8 @@
   </div>
 
   <!--Denne boks skal op og ligge på den boks hvor der skal generates-->
+<<<<<<< HEAD
+=======
 <div class="col-md 6 gender-choice-container white-background">
 
   <ul class="fs-6">
@@ -25,18 +27,41 @@
       Male or Female name?
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Female</a>
-      <a class="dropdown-item" href="#">Male</a>
+      <a class="dropdown-item" href="">Female</a>
+      <a class="dropdown-item" href="">Male</a>
     </div>
 </div>
+>>>>>>> c72797f21d7b8636ec8352f4f0756b1707156707
 
     <div class="name-gen-sname-container white-background" >
       <div class="col-md card-info">
-        <div class="name-gen-display-result d-flex flex-column align-items-center">
-          <h4>Random Name Generated is: </h4>
-          <h5 class="p-2 my-4 header-result-box"></h5>
-          <button type="button" class="btn-name-gen btn-success btn-lg fs-4 fw-bold" >Generate Random Names</button>
+        <ul class="fs-6">
+          <p>Choose male or female to get names specified to Gender.
+            <br>
+            You can also choose random genders, if you so desire.
+          </p>
+        </ul>
+
+        <div class="name-gender-display-result d-flex flex-column align-items-center">
+          <button class="btn-gender btn-primary btn-lg dropdown-toggle justify-content-center" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Male or Female name?
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Female</a>
+            <a class="dropdown-item" href="#">Male</a>
+          </div>
         </div>
+
+        <!--FormGroup hvor det generedede navn skal være.-->
+        <form [formGroup]="nameGenForm" class="row form-group">
+          <input formControlName="ranGenName" type="text" class="form-control">
+        <div class="name-gen-display-result d-flex flex-column align-items-center">
+          <!--<h4>Random Name Generated is: </h4>-->
+
+          <button type="submit" class="btn-name-gen btn-primary btn-lg fs-4 fw-bold" >Generate Random Names</button>
+        </div>
+        </form>
+
       </div>
     </div>
 </div>
