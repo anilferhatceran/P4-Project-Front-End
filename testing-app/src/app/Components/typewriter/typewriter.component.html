@@ -28,7 +28,7 @@
     </div>
     <div class="d-flex flex-wrap typewriter-text-container justify-content-center">
       <div *ngFor="let words of word" class="typewriter-text">
-        <input class="form-control-plaintext" (keyup)="startTypingSession($event)" value={{words.word}}>
+        <div class="form-control-plaintext" (keyup)="startTypingSession($event)">{{words.word}}</div>
       </div>
     </div>
   </div>
