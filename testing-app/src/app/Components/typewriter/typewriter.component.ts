@@ -1,6 +1,6 @@
 import { HttpService } from 'src/app/service/http.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TextsGenerated } from 'src/app/model/Texts';
 
@@ -18,7 +18,14 @@ export class TypewriterComponent implements OnInit {
   neutralCheck = true;
   slowCheck = true;
   count:number;
-  word:TextsGenerated[];
+  words:TextsGenerated;
+  index:number;
+  textWord:string = "";
+  typedWords:string ="";
+
+
+
+  text:TextsGenerated;
 
 
 
@@ -48,24 +55,61 @@ export class TypewriterComponent implements OnInit {
 
     if (this.veryFastCheck && this.fastCheck === false && this.neutralCheck === false && this.slowCheck === false){
 
-      this.service.getWordsAmount(30).subscribe(words => {
-        this.word = words;
+      this.service.getWordsAmount(40).subscribe(words => {
+        this.words = words;
+        // // this.typedWords = words.toString();
+        // for(let i = 0; i < this.word.length; i++){
+
+        //   this.typedWords = (" "+ this.text.word[i]);
+        // }
+        // console.log(this.word);
+
 
       });
     }
     else if(this.fastCheck && this.veryFastCheck === false && this.neutralCheck === false && this.slowCheck === false){
-      console.log('Fast Mode');
+      this.service.getWordsAmount(40).subscribe(words => {
+        this.words = words;
+        // // this.typedWords = words.toString();
+        // for(let i = 0; i < this.word.length; i++){
+
+        //   this.typedWords = (" "+ this.text.word[i]);
+        // }
+        // console.log(this.word);
+
+
+      });
     }
     else if(this.neutralCheck && this.veryFastCheck === false && this.fastCheck === false && this.slowCheck === false){
-      console.log('Neutral Mode');
+      this.service.getWordsAmount(40).subscribe(words => {
+        this.words = words;
+        // // this.typedWords = words.toString();
+        // for(let i = 0; i < this.word.length; i++){
+
+        //   this.typedWords = (" "+ this.text.word[i]);
+        // }
+        // console.log(this.word);
+
+
+      });
     }
     else if(this.slowCheck && this.veryFastCheck === false && this.fastCheck === false && this.neutralCheck === false){
-      console.log('Slow Mode');
+      this.service.getWordsAmount(40).subscribe(words => {
+        this.words = words;
+        // // this.typedWords = words.toString();
+        // for(let i = 0; i < this.word.length; i++){
+
+        //   this.typedWords = (" "+ this.text.word[i]);
+        // }
+        // console.log(this.word);
+
+
+      });
     }
   }
 
-  startTypingSession(event:any){
-    console.log("test");
+  startTypingSession(event: string): void{
+    console.log(event);
 
   }
 
