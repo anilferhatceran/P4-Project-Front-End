@@ -23,6 +23,8 @@ export class TypewriterComponent implements OnInit {
   textWord:string = "";
   typedWords:string ="";
 
+
+
   text:TextsGenerated;
 
 
