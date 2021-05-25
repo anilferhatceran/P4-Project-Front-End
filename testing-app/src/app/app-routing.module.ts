@@ -1,3 +1,4 @@
+import { WebReviewCheckComponent } from './Components/WebReviewCheck/WebReviewCheck.component';
 import { TypewriterComponent } from './Components/typewriter/typewriter.component';
 import { NameGenComponent } from './Components/name-gen/name-gen.component';
 import { PasswordGenComponent } from './Components/Password-gen/Password-gen.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'password-generator', component: PasswordGenComponent},
   {path: 'name-generator', component : NameGenComponent},
   {path: 'typewriter', component : TypewriterComponent},
+  {path: 'webreviewcheck', component:WebReviewCheckComponent}
 
 ];
 
@@ -28,4 +30,4 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 export const routingComponents = [LandingPageComponent, NumberGenComponent, CoinFlipComponent, DiceRollComponent,
-  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent]
+  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent, WebReviewCheckComponent]

@@ -4,6 +4,8 @@ import { NumberGenComponent } from './Components/number-gen/number-gen.component
 import { CoinFlipComponent } from './Components/coin-flip/coin-flip.component';
 import { NameGenComponent } from './Components/name-gen/name-gen.component';
 import { PasswordGenComponent } from './Components/Password-gen/Password-gen.component';
+import { WebReviewCheckComponent } from "./Components/WebReviewCheck/WebReviewCheck.component";
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
