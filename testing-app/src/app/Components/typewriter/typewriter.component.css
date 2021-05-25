@@ -3,12 +3,17 @@
   max-width: 50vw;
 }
 .typewriter-text{
-
-  margin-right: 8px;
-  width: auto !important;
+  outline: none;
+  resize: none;
+  border: none;
+  height: 100%;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
+
 .typewriter-text-container{
   max-width: 50vw !important;
+  height: 50%;
 }
 .btn-typewriter{
   width: 35rem;

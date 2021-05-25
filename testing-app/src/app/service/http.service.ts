@@ -33,8 +33,8 @@ getUser(): Observable<Users[]>{
 getWords(): Observable<TextsGenerated[]>{
   return this.http.get<TextsGenerated[]>(`${this.ROOT_URL}TextGenerator/words`, httpHeaders);
 }
-getWordsAmount(Amount: number): Observable<TextsGenerated[]>{
-  return this.http.get<TextsGenerated[]>(`${this.ROOT_URL}TextGenerator/words/${Amount}`, httpHeaders);
+getWordsAmount(Amount: number): Observable<TextsGenerated>{
+  return this.http.get<TextsGenerated>(`${this.ROOT_URL}TextGenerator/words/${Amount}`, httpHeaders);
 }
 }
 
