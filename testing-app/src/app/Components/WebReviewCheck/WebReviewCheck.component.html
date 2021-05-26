@@ -1,10 +1,13 @@
 <div class="container-fluid d-flex align-items-center justify-content-center ">
-  <div class="col-md-2 Web-sitecheck-container white-background">
+  <div class="col-md-3 Web-sitecheck-container white-background">
     <div class="URL-Website-container">
-      <form>
+      <form [formGroup]="websiteForm" class="row form-group">
         <input placeholder="Insert URL" id="myURL" name="myURL" type="url" required>
-        <button>Submit</button>
+        <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold">Submit</button>
       </form>
+    </div>
+    <div class="URL-Check-container col-12">
+
     </div>
   </div>
 </div>
