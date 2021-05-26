@@ -48,8 +48,16 @@ export class HeaderComponent implements OnInit {
 
     // tslint:disable-next-line: deprecation
     // tslint:disable-next-line: deprecation
-    this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
 
+    if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail){
+      alert("User created");
+
+      this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
+    }
+    else {
+      alert("Password needs to be atleast 8 characters long");
+
+    }
   }
   // tslint:disable-next-line: typedef
   onSubmitLogin(){

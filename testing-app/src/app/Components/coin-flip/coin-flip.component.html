@@ -1,13 +1,22 @@
-<div class="container-fluid">
-    <div class="coin-flip-container d-flex align-items-center flex-column my-4">
+<div class="container-fluid d-flex justify-content-center ">
+
+    <div class="coin-flip-container white-background d-flex align-items-center flex-column my-4">
       <div class="coin-flip d-flex justify-content-center">
-        <div class="d-flex justify-content-center" *ngIf="this.coinFlipped; else tails">
+        <div class="d-flex justify-content-center " *ngIf="this.coinFlipped; else tails">
           <img class=" heads" src="https://montkompagniet.dk/media/cache/product_original/product-images/22/6/1000-krone%20revers1559910904.4615.jpg?1559910904">
         </div>
-        <ng-template #tails>
-          <img class="img-fluid tails" src="https://montkompagniet.dk/media/cache/fb_image_thumb/product-images/22/6/1000-krone%20avers1559910904.2968.jpg?1559910904">
-        </ng-template>
+        <div class="d-flex justify-content-center ">
+          <ng-template #tails>
+            <img class="img-fluid tails" src="https://montkompagniet.dk/media/cache/fb_image_thumb/product-images/22/6/1000-krone%20avers1559910904.2968.jpg?1559910904">
+          </ng-template>
+        </div>
     </div>
+  <div class="display-coin-wrapper">
+    <p class="lead" id="display-coin">
+    {{this.displayResult}}
+   </p>
+  </div>
+
     <div class="coin-flip-button d-flex justify-content-center">
       <button class="btn btn-primary btn-coin-flip my-4" (click)="coinFlip()" type="submit">Flip Coin</button>
     </div>

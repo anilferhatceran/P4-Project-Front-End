@@ -10,6 +10,9 @@ export class CoinFlipComponent implements OnInit {
 
   headsOrTails:number = 0;
   coinFlipped:boolean = false;
+  displayResult: string = '';
+  duplicateResult: string = '';
+  headsAgain: boolean = true;
 
   constructor() { }
 
@@ -20,22 +23,14 @@ export class CoinFlipComponent implements OnInit {
     this.headsOrTails = Math.floor(Math.random() * (2)) + 1;
 
     if(this.headsOrTails == 1){
-      if(this.coinFlipped = true){
-        this.coinFlipped = false;
-      }
-      else if(this.coinFlipped = false){
-        this.coinFlipped = true;
-      }
-      this.coinFlipped = true;
+      this.displayResult = 'Tails';
+      this.coinFlipped = true;     
     }
     else if(this.headsOrTails == 2){
-      if(this.coinFlipped = false){
-        this.coinFlipped = true;
-      }
-      else if(this.coinFlipped = true){
-        this.coinFlipped = false;
-      }
+      this.displayResult = 'Heads';
+      this.coinFlipped = false;
     }
+    
   }
 
 }

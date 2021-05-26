@@ -19,6 +19,9 @@ export class NameGenComponent implements OnInit {
 
     })
   }
+  randomGenName = '';
+  genName = '';
+
 
   randomName(){
 

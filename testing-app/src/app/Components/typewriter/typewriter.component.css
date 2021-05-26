@@ -1,6 +1,12 @@
+.form-control:focus{
+  border-color: redl;
+}
 .typewriter-container{
   margin-top: 8rem;
   max-width: 50vw;
+}
+.container-fluid{
+color: white;
 }
 .typewriter-text{
   outline: none;
@@ -9,11 +15,13 @@
   height: 100%;
   font-size: 1.5rem;
   letter-spacing: 1px;
+  padding: 3rem;
+  color: white;
 }
-
 .typewriter-text-container{
   max-width: 50vw !important;
   height: 50%;
+
 }
 .btn-typewriter{
   width: 35rem;
