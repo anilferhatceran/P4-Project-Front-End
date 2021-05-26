@@ -1,3 +1,5 @@
+import { NamesGenerated } from './../../model/Names';
+import { HttpService } from 'src/app/service/http.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,8 +12,9 @@ import { Component, OnInit } from '@angular/core';
 export class NameGenComponent implements OnInit {
   nameGenForm:any;
   ranName:string = "";
+  maleNames: NamesGenerated;
 
-  constructor() { }
+  constructor(private service : HttpService) { }
 
   ngOnInit() {
     this.nameGenForm = new FormGroup({
@@ -22,9 +25,20 @@ export class NameGenComponent implements OnInit {
   randomGenName = '';
   genName = '';
 
+getMaleName(){
 
-  randomName(){
+  this.service.getMaleNamesAmount(5).subscribe(words => {
+    this.maleNames = words;
+    // // this.typedWords = words.toString();
+    // for(let i = 0; i < this.word.length; i++){
 
+    //   this.typedWords = (" "+ this.text.word[i]);
+    // }
+    // console.log(this.word);
+
+
+  });
   }
+
 
 }

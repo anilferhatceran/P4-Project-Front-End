@@ -1,3 +1,4 @@
+import { NamesGenerated } from './../model/Names';
 import { CommonResponse } from './../model/CommonResponse';
 import { Users } from './../model/Users';
 import { Injectable } from '@angular/core';
@@ -35,6 +36,16 @@ getWords(): Observable<TextsGenerated[]>{
 }
 getWordsAmount(Amount: number): Observable<TextsGenerated>{
   return this.http.get<TextsGenerated>(`${this.ROOT_URL}TextGenerator/words/${Amount}`, httpHeaders);
+}
+getMaleNamesAmount(Amount: number): Observable<NamesGenerated>{
+  return this.http.get<NamesGenerated>(`${this.ROOT_URL}NameGenerated/MaleNames/${Amount}`, httpHeaders);
+}
+
+getMaleName(): Observable<string>{
+  return this.http.get<string>(`${this.ROOT_URL}NameGenerated/maleName`);
+}
+getFemaleName(): Observable<string>{
+  return this.http.get<string>(`${this.ROOT_URL}NamesGenerated/femaleNames`)
 }
 }
 
