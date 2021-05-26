@@ -1,13 +1,17 @@
 <div class="container-fluid d-flex align-items-center justify-content-center ">
-  <div class="col-md-3 Web-sitecheck-container white-background">
+  <div class="col-md-5 Web-sitecheck-container white-background d-flex flex-direction row">
+    <h1>
+      Is this site trusted?
+    </h1>
     <div class="URL-Website-container">
+
       <form [formGroup]="websiteForm" class="row form-group">
-        <input placeholder="Insert URL" id="myURL" name="myURL" type="url" required>
+        <input class="form-control mb-3" placeholder="Insert URL" id="myURL" name="myURL" type="url" required>
         <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold">Submit</button>
       </form>
     </div>
-    <div class="URL-Check-container col-12">
-
+    <div class="URL-Check-container">
+      <h5> Example URL - Is not blacklisted and safe to use</h5>
     </div>
   </div>
 </div>

@@ -24,13 +24,13 @@ export class CoinFlipComponent implements OnInit {
 
     if(this.headsOrTails == 1){
       this.displayResult = 'Tails';
-      this.coinFlipped = true;     
+      this.coinFlipped = true;
     }
     else if(this.headsOrTails == 2){
       this.displayResult = 'Heads';
       this.coinFlipped = false;
     }
-    
+
   }
 
 }

@@ -27,14 +27,8 @@ export class NameGenComponent implements OnInit {
 
 getMaleName(){
 
-  this.service.getMaleNamesAmount(5).subscribe(words => {
-    this.maleNames = words;
-    // // this.typedWords = words.toString();
-    // for(let i = 0; i < this.word.length; i++){
-
-    //   this.typedWords = (" "+ this.text.word[i]);
-    // }
-    // console.log(this.word);
+  this.service.getMaleNamesAmount(5).subscribe(names => {
+    this.maleNames = names;
 
 
   });

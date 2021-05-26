@@ -31,7 +31,7 @@ export class PasswordGenComponent implements OnInit {
       alert("Password has to be atleast 8 characters long!");
       this.passGenForm.reset();
     }
-    else if(this.passGenForm.value.passLength > 8 && this.passGenForm.value.passLength <= 275 ){
+    else if(this.passGenForm.value.passLength >= 8 && this.passGenForm.value.passLength <= 275 ){
       this.displayedPass = pass;
     }
     else if(this.passGenForm.value.passLength > 275){
