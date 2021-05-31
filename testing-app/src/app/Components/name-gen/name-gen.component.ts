@@ -11,33 +11,73 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NameGenComponent implements OnInit {
   nameGenForm:any;
-  ranName:string = "";
-  maleNames: NamesGenerated;
+  ranName: string = "";
+  generatedMaleNames: NamesGenerated = {nameGenID:0, maleNames: '',femaleNames:''};
+  generatedFemaleNames: NamesGenerated;
+  maleNameChoice:boolean = true;
+  femaleNameChoice:boolean = true;
+  testName: string = '';
+  splitOne: string[];
+  maleName: any;
+  femaleName: any;
+
+
 
   constructor(private service : HttpService) { }
 
   ngOnInit() {
     this.nameGenForm = new FormGroup({
-      ranGenName: new FormControl(),
+      femaleNameChoice: new FormControl(),
+      maleNameChoice: new FormControl(),
 
     })
   }
-  randomGenName = '';
-  genName = '';
 
-getMaleName(){
+  getNames(){
 
-  this.service.getMaleNamesAmount(5).subscribe(words => {
-    this.maleNames = words;
-    // // this.typedWords = words.toString();
-    // for(let i = 0; i < this.word.length; i++){
+  this.maleName = document.getElementById("maleNameChoiceID") as HTMLInputElement;
+  this.maleNameChoice = this.maleName.checked;
 
-    //   this.typedWords = (" "+ this.text.word[i]);
-    // }
-    // console.log(this.word);
+  this.femaleName = document.getElementById("femaleNameChoiceID") as HTMLInputElement;
+  this.femaleNameChoice = this.femaleName.checked;
+
+  if(this.maleNameChoice && this.femaleNameChoice == false){
+
+    this.service.getMaleNamesAmount(5).subscribe(names => {
+      this.generatedMaleNames = names;
+
+    });
+
+    // this.testName = JSON.stringify(this.generatedMaleNames);
+
+    // // var reOne = /{/;
+    // // var reTwo = /}/;
+
+    // // this.splitOne = this.testName.split('{}":,',5);
+    // // console.log(this.splitOne);
+    // var charFind = this.testName.indexOf('{');
+
+    // console.log(charFind);
 
 
-  });
+    // // var sliced = this.testName.slice(3, -2);
+    // // console.log(sliced);
+    console.log(this.generatedMaleNames);
+
+
+  }
+  else if(this.maleNameChoice == false && this.femaleNameChoice){
+    this.service.getFemaleNamesAmount(5).subscribe(names => {
+      this.generatedFemaleNames = names;
+    });
+    console.log(this.generatedFemaleNames);
+
+  }
+  else{
+    alert("Please choose either female or male");
+  }
+
+
   }
 
 
