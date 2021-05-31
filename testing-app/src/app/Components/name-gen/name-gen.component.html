@@ -30,6 +30,8 @@
             <button type="submit" id="femaleNameChoiceID" class="dropdown-item" >Female</button>
           </div>
         </div> -->
+
+        <h5>Please click twice on the "Generate Random Names" button!</h5>
         <form [formGroup]="nameGenForm"  class="row form-group d-flex justify-content-center">
           <div class="col-md-6 col-sm-12">
             <input formControlName="maleNameChoice" type="checkbox" class="form-check-input" id="maleNameChoiceID">
@@ -40,8 +42,23 @@
             <label class="form-check-label" for="femaleNameChoiceID">Female Name</label>
           </div>
 
-          <div *ngIf="this.maleName.checked; else elseBlock">{{generatedMaleNames}}</div>
-          <ng-template #elseBlock>{{generatedFemaleNames}}</ng-template>
+          <div *ngIf="this.maleName.checked; else elseBlock">
+            <div *ngFor="let maleNames of this.newStr2">
+              {{maleNames}}
+
+            </div>
+
+          </div>
+          <ng-template #elseBlock>
+            <div *ngFor="let femaleNames of this.newStr2">
+              {{femaleNames}}
+            </div>
+          </ng-template>
+
+
+
+
+
           <button type="submit" class="btn-name-gen btn-primary btn-lg fs-4 fw-bold" (click)="getNames()">Generate Random Names</button>
           <!-- <button type="submit" class="btn btn-primary btn-typewriter" >Generate Names</button> -->
       </form>
