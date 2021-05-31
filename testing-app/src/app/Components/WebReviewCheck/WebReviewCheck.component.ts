@@ -15,5 +15,4 @@ export class WebReviewCheckComponent implements OnInit {
       trustsite: new FormControl(),
     })
   }
-
 }

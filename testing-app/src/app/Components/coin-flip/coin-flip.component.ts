@@ -9,28 +9,32 @@ import { Component, OnInit } from '@angular/core';
 export class CoinFlipComponent implements OnInit {
 
   headsOrTails:number = 0;
-  coinFlipped:boolean = false;
+  tailsFlipped:boolean = false;
   displayResult: string = '';
-  duplicateResult: string = '';
-  headsAgain: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  coinFlip(){
     this.headsOrTails = Math.floor(Math.random() * (2)) + 1;
 
     if(this.headsOrTails == 1){
       this.displayResult = 'Tails';
-      this.coinFlipped = true;     
+      this.tailsFlipped = true;
+
+
     }
     else if(this.headsOrTails == 2){
       this.displayResult = 'Heads';
-      this.coinFlipped = false;
+      this.tailsFlipped = false;
+
     }
-    
+
+
+  }
+
+  coinFlip(){
+    window.location.reload();
+
   }
 
 }

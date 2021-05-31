@@ -1,3 +1,4 @@
+import { FooterComponent } from './Components/footer/footer.component';
 import { WebReviewCheckComponent } from './Components/WebReviewCheck/WebReviewCheck.component';
 import { TypewriterComponent } from './Components/typewriter/typewriter.component';
 import { NameGenComponent } from './Components/name-gen/name-gen.component';
@@ -30,4 +31,4 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 export const routingComponents = [LandingPageComponent, NumberGenComponent, CoinFlipComponent, DiceRollComponent,
-  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent, WebReviewCheckComponent]
+  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent, WebReviewCheckComponent, FooterComponent]

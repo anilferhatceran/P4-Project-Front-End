@@ -48,21 +48,7 @@ export class NameGenComponent implements OnInit {
 
     });
 
-    // this.testName = JSON.stringify(this.generatedMaleNames);
 
-    // // var reOne = /{/;
-    // // var reTwo = /}/;
-
-    // // this.splitOne = this.testName.split('{}":,',5);
-    // // console.log(this.splitOne);
-    // var charFind = this.testName.indexOf('{');
-
-    // console.log(charFind);
-
-
-    // // var sliced = this.testName.slice(3, -2);
-    // // console.log(sliced);
-    console.log(this.generatedMaleNames);
 
 
   }
@@ -70,7 +56,7 @@ export class NameGenComponent implements OnInit {
     this.service.getFemaleNamesAmount(5).subscribe(names => {
       this.generatedFemaleNames = names;
     });
-    console.log(this.generatedFemaleNames);
+
 
   }
   else{
