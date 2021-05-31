@@ -1,6 +1,6 @@
 .container-fluid{
   height: 100vh;
-  
+
 }
 .container{
   height: 100vh;
@@ -25,8 +25,16 @@ html{
   } */
 }
 @keyframes rotate {
-  from {transform: rotateY(0deg); }
-  to {transform: rotateY(360deg);}
+  from {transform: rotateY(0deg);
+
+    background-image: url("https://montkompagniet.dk/media/cache/product_original/product-images/22/6/1000-krone%20revers1559910904.4615.jpg?1559910904");
+
+  }
+  to {transform: rotateY(360deg);
+
+    background-image: url("https://montkompagniet.dk/media/cache/fb_image_thumb/product-images/22/6/1000-krone%20avers1559910904.2968.jpg?1559910904");
+
+  }
 }
 @keyframes slideFromLeft{
   from{margin-left:-50%;}
