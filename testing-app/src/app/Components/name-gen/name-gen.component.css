@@ -20,7 +20,7 @@
 
 .name-gen-sname-container {
   border-radius: 7px;
-  padding: 2rem;
+  padding: 4rem;
   width: 35rem;
   margin-left: 2.75rem;
 
@@ -45,4 +45,10 @@ h6{
 .btn-name-gen {
   width: 30rem;
   margin-top: 1rem;
+}
+
+.btn-all{
+  display: flex !important;
+  justify-content: center !important;
+  width: 100%;
 }

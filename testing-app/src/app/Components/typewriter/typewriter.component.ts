@@ -21,11 +21,13 @@ export class TypewriterComponent implements OnInit {
   words:TextsGenerated;
   index:number;
   textWord:string = "";
-  typedWords:string ="";
+  typedWords:string =""
+  text: any;
+  demo: any;
+  demoTest: any;
 
 
 
-  text:TextsGenerated;
 
 
 
@@ -110,6 +112,12 @@ export class TypewriterComponent implements OnInit {
 
   startTypingSession(event: string): void{
     console.log(event);
+
+  }
+  userInputTracking() {
+    this.text = document.getElementById("myInput") as HTMLInputElement;
+    this.demo = document.getElementById("demo") as HTMLInputElement;
+
 
   }
 
