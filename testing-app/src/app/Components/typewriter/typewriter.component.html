@@ -30,11 +30,15 @@
       <!-- <div *ngFor="let words of word" class="typewriter-text">
         <div class="form-control-plaintext" (keyup)="startTypingSession($event)">{{words}}</div>
       </div> -->
-      <textarea class="form-control bg-dark typewriter-text" id="myInput" type="text"  placeholder="{{words.words}}"></textarea>
+      <textarea class="form-control bg-dark typewriter-text" id="myInput" type="text"  placeholder="{{words.words}}" input (keydown)="onKeyDown($event)"></textarea>
       <p [innerHTML]="this.text"></p>
-      <button (click)="userInputTracking()">click</button>
 
     </div>
+    <p>{{this.userInput}}</p>
+
+
+
+
   </div>
 </div>
 
