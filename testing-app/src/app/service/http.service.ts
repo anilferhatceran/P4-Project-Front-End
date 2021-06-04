@@ -55,7 +55,7 @@ postName(name: NamesGenerated): Observable<NamesGenerated>{
   return this.http.post<NamesGenerated>(`${this.ROOT_URL}NamesGenerated`, name, httpHeaders);
 }
 ValidateUser(user: Users): Observable<Users>{
-  return this.http.post<Users>(`${this.ROOT_URL}User/login`,user, httpHeaders);
+  return this.http.post<Users>(`${this.ROOT_URL}User/login`, user, httpHeaders);
 }
 
 }
