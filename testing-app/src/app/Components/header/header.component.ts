@@ -79,12 +79,12 @@ export class HeaderComponent implements OnInit {
       }
 
 
-    if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail != null){
+      if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail != null){
 
       this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
       alert("User created");
 
-    if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail != null){
+      if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail != null){
 
       this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
       alert("User created");
@@ -97,33 +97,36 @@ export class HeaderComponent implements OnInit {
 
   }
   // tslint:disable-next-line: typedef
-  onSubmitLogin(){
-    // tslint:disable-next-line: deprecation
 
 
-    this.userObj.userEmail = this.loginUserForm.value.userEmail;
-    this.userObj.passwordHash = this.loginUserForm.value.passwordHash;
-
-    var user = this.users.filter(u => u.userEmail == this.loginUserForm.value.userEmail && u.passwordHash == this.loginUserForm.value.passwordHash);
-
-    if(user.length == 0){
-      alert("Wrong email or password");
-      this.userChecked = false;
-    }
-    else if(user.length == 1){
-      this.userChecked = true;
-      this.service.ValidateUser(this.userObj).subscribe();
-      this.loginUserForm.reset();
-      localStorage.setItem('User','Logged In');
-      alert("You are now logged in!");
-      this.userChecked = false;
-    }
   }
-  onSubmitLogout(){
-    if(localStorage.getItem('User')){
-      window.localStorage.clear();
-      window.location.reload();
-    }
-  }
+}
+onSubmitLogin(){
+  // tslint:disable-next-line: deprecation
 
+
+  this.userObj.userEmail = this.loginUserForm.value.userEmail;
+  this.userObj.passwordHash = this.loginUserForm.value.passwordHash;
+
+  var user = this.users.filter(u => u.userEmail == this.loginUserForm.value.userEmail && u.passwordHash == this.loginUserForm.value.passwordHash);
+
+  if(user.length == 0){
+    alert("Wrong email or password");
+    this.userChecked = false;
+  }
+  else if(user.length == 1){
+    this.userChecked = true;
+    this.service.ValidateUser(this.userObj).subscribe();
+    this.loginUserForm.reset();
+    localStorage.setItem('User','Logged In');
+    alert("You are now logged in!");
+    this.userChecked = false;
+  }
+}
+onSubmitLogout(){
+  if(localStorage.getItem('User')){
+    window.localStorage.clear();
+    window.location.reload();
+  }
+}
 }
