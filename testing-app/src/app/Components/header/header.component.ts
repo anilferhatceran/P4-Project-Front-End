@@ -80,6 +80,7 @@ export class HeaderComponent implements OnInit {
 
   }
   else{
+    //If the user don't write the same password, program will tell user that it must be the same.
     alert("Password must be the same!");
   }
   // tslint:disable-next-line: typedef
