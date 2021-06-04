@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
     if (this.confirmPass.value == this.createUserForm.value.passwordHash){
       console.log('Test');
 
-<<<<<<< HEAD
+
       if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail){
       alert("User created");
 
@@ -72,12 +72,17 @@ export class HeaderComponent implements OnInit {
         }
       }
 
-=======
+
     if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail != null){
 
       this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
       alert("User created");
->>>>>>> 41308b0225e3bdb66cbb7b74399d118a697adb6a
+
+    if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail != null){
+
+      this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
+      alert("User created");
+
     }
 
     else{
