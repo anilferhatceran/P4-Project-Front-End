@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
       console.log('Test');
 
       // If the email and password is confirmed. The program will tell the user that the account is created.
-      if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail){
+      if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail != null){
       alert("User created");
 
       this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
@@ -78,28 +78,14 @@ export class HeaderComponent implements OnInit {
         }
       }
 
-
-      if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail != null){
-
-      this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
-      alert("User created");
-
-      if (this.createUserForm.value.passwordHash.length > 8 && this.createUserForm.value.userEmail != null){
-
-      this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
-      alert("User created");
-
-    }
-
-    else{
-      alert("Password must be the same!")
-    }
-
+  }
+  else{
+    alert("Password must be the same!");
   }
   // tslint:disable-next-line: typedef
 
 
-  }
+
 }
 onSubmitLogin(){
   // tslint:disable-next-line: deprecation
