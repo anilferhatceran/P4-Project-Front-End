@@ -96,6 +96,11 @@ export class NameGenComponent implements OnInit {
 
   }
 
+  //Function that should save the individual names and then POST them to the database.
+  //However as of now the POST and database part of this program does not work. This code is unfinished.
+
+  //TO-DO: Create a link with the newly updated database and post the names to the new table.
+  //       Work on a new Controller on the Web API.
   postName(){
     this.firstName = document.getElementById("first-name") as HTMLInputElement;
     this.secondName = document.getElementById("second-name") as HTMLInputElement;
