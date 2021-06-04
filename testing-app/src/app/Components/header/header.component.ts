@@ -55,12 +55,12 @@ export class HeaderComponent implements OnInit {
       this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
       }
       else{
-        //If the email is incorrect the program will tell user that the user need the email.
+        //If the email form is empty the program will tell user that the user need the email.
         if(this.createUserForm.value.userEmail.length < 1){
           alert("You need your Email");
         }
         else{
-          //If user inputs a password under 8 characters. The program will tell user that the password needs to be 8 characters.
+          //If user inputs a password under 8 characters. The program will tell user that the password needs to be 8 or longer characters.
           alert("Password needs to be atleast 8 characters long");
         }
       }
@@ -75,18 +75,24 @@ export class HeaderComponent implements OnInit {
 
 
 }
-onSubmitLogin(){
 
 
+  onSubmitLogin(){
+
+  //Saves userinput from login form into the user object dummy created object.
   this.userObj.userEmail = this.loginUserForm.value.userEmail;
   this.userObj.passwordHash = this.loginUserForm.value.passwordHash;
 
+    //goes through database and matches the loginForms with existing user details. returns length 1 if user exist, else length 0.
   var user = this.users.filter(u => u.userEmail == this.loginUserForm.value.userEmail && u.passwordHash == this.loginUserForm.value.passwordHash);
-
+    //Length = true or false, 0 = false,, 1 = true.
   if(user.length == 0){
     alert("Wrong email or password");
     this.userChecked = false;
   }
+
+  //if user exists: validate user from backend, and saves the user in local storage
+  //and gives the user a key (User) which we can use to grant access to session based content (name gen: save names)
   else if(user.length == 1){
     this.userChecked = true;
     this.service.ValidateUser(this.userObj).subscribe();
@@ -96,6 +102,8 @@ onSubmitLogin(){
     this.userChecked = false;
   }
 }
+
+  // if User Key exists in local storage, it will in return clear cache and memory which then logs user out.
 onSubmitLogout(){
   if(localStorage.getItem('User')){
     window.localStorage.clear();
