@@ -48,16 +48,19 @@ export class HeaderComponent implements OnInit {
       console.log('Test');
 
 
-      if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail){
+      // If the email and password is confirmed. The program will tell the user that the account is created.
+      if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail != null){
       alert("User created");
 
       this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
       }
       else{
+        //If the email is incorrect the program will tell user that the user need the email.
         if(this.createUserForm.value.userEmail.length < 1){
           alert("You need your Email");
         }
         else{
+          //If user inputs a password under 8 characters. The program will tell user that the password needs to be 8 characters.
           alert("Password needs to be atleast 8 characters long");
         }
       }
