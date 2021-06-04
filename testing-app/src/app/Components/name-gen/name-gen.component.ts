@@ -60,7 +60,7 @@ export class NameGenComponent implements OnInit {
   if(this.maleNameChoice && this.femaleNameChoice == false){
 
     //gets given amount (our example: 5) names from service.
-    this.service.getMaleNamesAmount(5).subscribe(names => {
+    this.service.getMaleNamesAmount(5).subscribe(names => { //if male or female choice box is ticked off
       this.generatedMaleNames = names;
 
     });
