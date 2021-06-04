@@ -49,7 +49,7 @@ export class NameGenComponent implements OnInit {
   }
 
   getNames(){
-
+  //get names function, chooses between user chosen male or female name
 
   this.maleName = document.getElementById("maleNameChoiceID") as HTMLInputElement;
   this.maleNameChoice = this.maleName.checked;
@@ -59,6 +59,7 @@ export class NameGenComponent implements OnInit {
 
   if(this.maleNameChoice && this.femaleNameChoice == false){
 
+    //gets given amount (our example: 5) names from service.
     this.service.getMaleNamesAmount(5).subscribe(names => {
       this.generatedMaleNames = names;
 
@@ -66,7 +67,7 @@ export class NameGenComponent implements OnInit {
 
     this.testName = JSON.stringify(this.generatedMaleNames);
 
-
+    //split string names into array and remove
     this.namesArray = this.testName.split(',');
     let re = /",/gi;
     let reTwo = /"/gi;
