@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   public loginError:String;
   constructor(private http:HttpClient, private service:HttpService) { }
 
+  //Validators for createUserForm: Email, and Password required.
   createUserForm = new FormGroup(
     {
       userEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -33,62 +34,44 @@ export class HeaderComponent implements OnInit {
     }
   );
 
-  // tslint:disable-next-line: typedef
   ngOnInit() {
-    // tslint:disable-next-line: deprecation
-    this.service.getUser().subscribe(user => {
-      this.users = user;
-    },
-    err => console.error(err),
-    () => console.log(this.users)
-
-    );
   }
 
-  // tslint:disable-next-line: typedef
-
-  //The function where the user is creating the account.
+  //create user function on click.
   onSubmitCreate(){
 
     this.confirmPass = document.getElementById("confirmAccPass") as HTMLInputElement;
 
-    console.log(this.createUserForm.value);
-
-    // tslint:disable-next-line: deprecation
-    // tslint:disable-next-line: deprecation
 
 
     if (this.confirmPass.value == this.createUserForm.value.passwordHash){
       console.log('Test');
 
-      // If the email and password is confirmed. The program will tell the user that the account is created.
-      if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail != null){
+
+      if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail){
       alert("User created");
 
       this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
       }
       else{
-        //If the email is incorrect the program will tell user that the user need the email.
         if(this.createUserForm.value.userEmail.length < 1){
           alert("You need your Email");
         }
         else{
-          //If user inputs a password under 8 characters. The program will tell user that the password needs to be 8 characters.
           alert("Password needs to be atleast 8 characters long");
         }
       }
 
+
+
   }
   else{
-    alert("Password must be the same!");
+    alert("Password must be the same!")
   }
-  // tslint:disable-next-line: typedef
-
 
 
 }
 onSubmitLogin(){
-  // tslint:disable-next-line: deprecation
 
 
   this.userObj.userEmail = this.loginUserForm.value.userEmail;

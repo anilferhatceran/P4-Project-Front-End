@@ -23,6 +23,7 @@ export class PasswordGenComponent implements OnInit {
 
     var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
     var pass = "";
+    //gets a random selection of characters corresponding to user specified length.
     for (var x = 0; x < this.passGenForm.value.passLength; x++) {
         var i = Math.floor(Math.random() * chars.length);
         pass += chars.charAt(i);

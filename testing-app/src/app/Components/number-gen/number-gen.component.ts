@@ -10,7 +10,6 @@ export class NumberGenComponent implements OnInit {
 
   numberGenForm:any;
   intervalNum:number = 0;
-  randomNum:number = 0;
 
   constructor() {
 
@@ -24,7 +23,7 @@ export class NumberGenComponent implements OnInit {
       lastNumber: new FormControl()
     });
   }
-
+  //Generate random number, between 2 user-chosen intervals. Refer to other component for math.floor and math.random
   getIntervalNum(form: FormGroup){
     this.intervalNum = Math.floor(Math.random() * (form.value.lastNumber - form.value.firstNumber + 1)) + form.value.firstNumber;
   }
@@ -32,12 +31,4 @@ export class NumberGenComponent implements OnInit {
     form.reset();
     this.intervalNum = 0;
   }
-  // getRandomNum(min:number,max:number){
-  //   min = Math.ceil(min);
-  //   max = Math.floor(max);
-  //   this.randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-
-  //   console.log(this.randomNum);
-
-  // }
 }

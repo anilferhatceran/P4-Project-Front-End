@@ -65,9 +65,11 @@ export class NameGenComponent implements OnInit {
 
     });
 
-    this.testName = JSON.stringify(this.generatedMaleNames);
 
-    //split string names into array and remove
+    //convert json object to string and clean up string to which we get names only without special chars
+    //and string to array for print.
+
+    this.testName = JSON.stringify(this.generatedMaleNames);
     this.namesArray = this.testName.split(',');
     let re = /",/gi;
     let reTwo = /"/gi;
@@ -79,8 +81,10 @@ export class NameGenComponent implements OnInit {
     this.service.getFemaleNamesAmount(5).subscribe(names => {
       this.generatedFemaleNames = names;
     });
-    this.testName = JSON.stringify(this.generatedFemaleNames);
 
+    //convert json object to string and clean up string to which we get names only without special chars
+    //and string to array for print.
+    this.testName = JSON.stringify(this.generatedFemaleNames);
 
     this.namesArray = this.testName.split(',');
     let re = /",/gi;
