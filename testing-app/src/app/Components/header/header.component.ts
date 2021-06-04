@@ -66,7 +66,8 @@ export class HeaderComponent implements OnInit {
 
   }
   else{
-    alert("Password must be the same!")
+    //If the user don't write the same password, program will tell user that it must be the same.
+    alert("Password must be the same!");
   }
 
 
