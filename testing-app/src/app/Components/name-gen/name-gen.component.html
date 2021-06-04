@@ -49,6 +49,38 @@
                 <button class="btn btn-primary btn-all">Save All Names</button>
               </div>
 
+          <div *ngIf="this.maleName.checked; else elseBlock">
+            <!-- <div *ngFor="let maleNames of this.newStr2">
+              {{maleNames}}
+
+            </div> -->
+            <div>
+              <input id="first-name" value="{{this.newStr2[0]}}">
+              <button class="btn btn-primary mb-3" (click)="postName()">Save Name</button>
+            </div>
+
+            <div>
+              <input id="second-name" value="{{this.newStr2[1]}}">
+              <button class="btn btn-primary mb-3" (click)="postName()">Save Name</button>
+            </div>
+
+            <div>
+              <input id="third-name" value="{{this.newStr2[2]}}">
+              <button class="btn btn-primary mb-3" (click)="postName()">Save Name</button>
+            </div>
+
+            <div>
+              <input id="fourth-name" value="{{this.newStr2[3]}}">
+              <button class="btn btn-primary mb-3" (click)="postName()">Save Name</button>
+            </div>
+
+            <div>
+              <input id="fifth-name" value="{{this.newStr2[4]}}">
+              <button class="btn btn-primary mb-3" (click)="postName()">Save Name</button>
+            </div>
+
+            <button class="btn btn-primary">Save All Names</button>
+          </div>
           <ng-template #elseBlock>
             <div *ngFor="let femaleNames of this.newStr2" class="button-container d-flex flex-row justify-content-between">
               {{femaleNames}}
