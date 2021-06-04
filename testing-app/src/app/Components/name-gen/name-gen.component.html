@@ -12,7 +12,7 @@
   </div>
 
   <!--Denne boks skal op og ligge på den boks hvor der skal generates-->
-  <div class="name-gen-sname-container white-background" >
+  <div class="name-gen-sname-container white-background d-flex" >
     <div class="col-md card-info">
       <ul class="fs-6">
         <p>Choose male or female to get names specified to Gender.
@@ -32,7 +32,7 @@
         </div> -->
 
         <h5>Please click twice on the "Generate Random Names" button!</h5>
-        <form [formGroup]="nameGenForm"  class="row form-group d-flex justify-content-center mb-2">
+        <form [formGroup]="nameGenForm"  class="row form-group d-flex mx-5rem">
           <div class="col-md-6 col-sm-12">
             <input formControlName="maleNameChoice" type="checkbox" class="form-check-input" id="maleNameChoiceID">
             <label class="form-check-label" for="maleNameChoiceID">Male Name</label>
@@ -41,6 +41,13 @@
             <input formControlName="femaleNameChoice" type="checkbox" class="form-check-input" id="femaleNameChoiceID">
             <label class="form-check-label" for="femaleNameChoiceID">Female Name</label>
           </div>
+              <div *ngIf="this.maleName.checked; else elseBlock" >
+                <div *ngFor="let maleNames of this.newStr2" class="button-container d-flex flex-row justify-content-between">
+                  {{maleNames}}
+                  <button class="btn btn-primary mb-3">Save Name</button>
+                </div>
+                <button class="btn btn-primary btn-all">Save All Names</button>
+              </div>
 
           <div *ngIf="this.maleName.checked; else elseBlock">
             <!-- <div *ngFor="let maleNames of this.newStr2">
@@ -75,9 +82,12 @@
             <button class="btn btn-primary">Save All Names</button>
           </div>
           <ng-template #elseBlock>
-            <div *ngFor="let femaleNames of this.newStr2">
+            <div *ngFor="let femaleNames of this.newStr2" class="button-container d-flex flex-row justify-content-between">
               {{femaleNames}}
+              <button class="btn btn-primary mb-3">Save Name</button>
             </div>
+            <button class="btn btn-primary btn-all">Save All Names</button>
+
           </ng-template>
 
 
