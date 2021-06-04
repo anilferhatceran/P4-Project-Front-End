@@ -49,8 +49,15 @@ getMaleName(): Observable<string>{
   return this.http.get<string>(`${this.ROOT_URL}NameGenerated/maleName`);
 }
 getFemaleName(): Observable<string>{
-  return this.http.get<string>(`${this.ROOT_URL}NamesGenerated/femaleNames`)
+  return this.http.get<string>(`${this.ROOT_URL}NamesGenerated/femaleNames`);
 }
+postName(name: NamesGenerated): Observable<NamesGenerated>{
+  return this.http.post<NamesGenerated>(`${this.ROOT_URL}NamesGenerated`, name, httpHeaders);
+}
+ValidateUser(user: Users): Observable<Users>{
+  return this.http.post<Users>(`${this.ROOT_URL}User/login`,user, httpHeaders);
+}
+
 }
 
 

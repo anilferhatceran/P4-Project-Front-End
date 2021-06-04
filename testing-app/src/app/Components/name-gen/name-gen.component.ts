@@ -25,6 +25,11 @@ export class NameGenComponent implements OnInit {
   newStr: any;
   newStr2: any;
   saveNameForm: FormGroup;
+  firstName: any;
+  secondName: any;
+  thirdName: any;
+  fourthName: any;
+  fifthName: any;
 
 
 
@@ -91,5 +96,35 @@ export class NameGenComponent implements OnInit {
 
   }
 
+  postName(){
+    this.firstName = document.getElementById("first-name") as HTMLInputElement;
+    this.secondName = document.getElementById("second-name") as HTMLInputElement;
+    this.thirdName = document.getElementById("third-name") as HTMLInputElement;
+    this.fourthName = document.getElementById("fourth-name") as HTMLInputElement;
+    this.fifthName = document.getElementById("fifth-name") as HTMLInputElement;
+
+    if(localStorage.getItem('User')){
+      if(this.firstName != null)
+      {
+        this.service.postName(this.firstName).subscribe(name => console.log(name));
+      }
+      else if(this.secondName != null){
+        this.service.postName(this.secondName).subscribe(name => console.log(name));
+      }
+      else if(this.thirdName != null){
+        this.service.postName(this.thirdName).subscribe(name => console.log(name));
+      }
+      else if(this.fourthName != null){
+        this.service.postName(this.fourthName).subscribe(name => console.log(name));
+      }
+      else if(this.fifthName != null){
+        this.service.postName(this.fifthName).subscribe(name => console.log(name));
+      }
+    }
+    else{
+      alert("You need to be logged in to use this function!");
+    }
+
+  }
 
 }
