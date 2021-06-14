@@ -21,10 +21,11 @@ export class TypewriterComponent implements OnInit {
   words:TextsGenerated;
   index:number;
   textWord:string = "";
-  typedWords:string =""
+  typedWords:string ="";
   text: any;
   userInput: string ="";
   values = '';
+  word: TextsGenerated;
 
 
 
@@ -73,14 +74,14 @@ export class TypewriterComponent implements OnInit {
       });
     }
     else if(this.fastCheck && this.veryFastCheck === false && this.neutralCheck === false && this.slowCheck === false){
-      this.service.getWordsAmount(40).subscribe(words => {
-        this.words = words;
-        // // this.typedWords = words.toString();
-        // for(let i = 0; i < this.word.length; i++){
+      this.service.getWordsAmount(40).subscribe(word => {
+        this.words = word;
+        this.typedWords = word.toString();
+        for(let i = 0; i < this.typedWords.length; i++){
 
-        //   this.typedWords = (" "+ this.text.word[i]);
-        // }
-        // console.log(this.word);
+          this.typedWords = (" "+ this.text.word[i]);
+        }
+        console.log(this.word);
 
 
       });
