@@ -59,28 +59,24 @@ export class TypewriterComponent implements OnInit {
 
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
-        // console.log(this.words
+
         this.generatedWords = this.words.words.toString();
-        //below code is for future use for letter by letter detection **REFER TO THIS***
-
-        this.textArray = this.generatedWords.split(" ");
 
 
-        this.charsOfText = this.textArray.toString();
 
-        //Kald funktion
-        //Lav count-- ved fejl og lav ny counter til fejl tælling
+        this.charsOfText = this.generatedWords;
+
+        console.log(this.charsOfText);
+
+
+
+
+
       });
     }
     else if(this.fastCheck && this.veryFastCheck === false && this.neutralCheck === false && this.slowCheck === false){
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
-        // // this.generatedWords = words.toString();
-        // for(let i = 0; i < this.word.length; i++){
-
-        //   this.generatedWords = (" "+ this.text.word[i]);
-        // }
-        // console.log(this.word);
 
 
       });
@@ -88,12 +84,7 @@ export class TypewriterComponent implements OnInit {
     else if(this.neutralCheck && this.veryFastCheck === false && this.fastCheck === false && this.slowCheck === false){
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
-        // // this.generatedWords = words.toString();
-        // for(let i = 0; i < this.word.length; i++){
 
-        //   this.generatedWords = (" "+ this.text.word[i]);
-        // }
-        // console.log(this.word);
 
 
       });
@@ -101,12 +92,7 @@ export class TypewriterComponent implements OnInit {
     else if(this.slowCheck && this.veryFastCheck === false && this.fastCheck === false && this.neutralCheck === false){
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
-        // // this.generatedWords = words.toString();
-        // for(let i = 0; i < this.word.length; i++){
 
-        //   this.generatedWords = (" "+ this.text.word[i]);
-        // }
-        // console.log(this.word);
 
 
       });
@@ -114,50 +100,35 @@ export class TypewriterComponent implements OnInit {
   }
 
   onKeyDown(event: any) {
-    // let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    // let alphabetUpper = alphabet.map(function(x){return x.toUpperCase(); })
+
 
     //If "backspace" detected remove last character in given string.
     if (event.key == "Backspace"){
      this.userInput = this.userInput.substring(0,this.userInput.length-1)
-     this.countCorrect--;
     }
     else if(event.key == "a"  || event.key == "b" || event.key == "c" || event.key == "d" || event.key == "e" || event.key == "f" || event.key == "g" || event.key == "h"
     || event.key == "i" || event.key == "j" || event.key == "k" ||event.key == "l" ||event.key == "m" ||event.key == "n" ||event.key == "o" ||event.key == "p"
-    ||event.key == "q" ||event.key == "r" ||event.key == "s" ||event.key == "u" ||event.key == "v" ||event.key == "x" ||event.key == "y" ||event.key == "z"
-    ||event.key == "æ" ||event.key == "ø" ||event.key == "å" ||event.key == "-" ||event.key == "A"  || event.key == "B" || event.key == "C" || event.key == "D"
+    ||event.key == "q" ||event.key == "r" ||event.key == "s" ||event.key == "t" ||event.key == "u" ||event.key == "v" ||event.key == "w" ||event.key == "x" ||event.key == "y" ||event.key == "z"
+    ||event.key == "-" ||event.key == "A"  || event.key == "B" || event.key == "C" || event.key == "D"
     || event.key == "E" || event.key == "F" || event.key == "G" || event.key == "H" || event.key == "I" || event.key == "J" || event.key == "K" ||event.key == "L"
-    ||event.key == "M" ||event.key == "N" ||event.key == "O" ||event.key == "P" ||event.key == "Q" ||event.key == "R" ||event.key == "S" ||event.key == "U"
-    ||event.key == "V" ||event.key == "X" ||event.key == "Y" ||event.key == "Z" ||event.key == "Æ" ||event.key == "Ø" ||event.key == "Å" || event.key == ","
-    || event.key == "." || event.key == " ") {
-
-        //  this.userInput = this.userInput + event.key;
-
-
-        // for(let k = 0; k < this.charsOfText.length; k++){
-        //   console.log(this.charsOfText.charAt(k));
-        // }
-        // console.log("Testing");
+    ||event.key == "M" ||event.key == "N" ||event.key == "O" ||event.key == "P" ||event.key == "Q" ||event.key == "R" ||event.key == "S" ||event.key == "T" ||event.key == "U"
+    ||event.key == "V" ||event.key == "W" ||event.key == "X" ||event.key == "Y" ||event.key == "Z" || event.key == ","
+    || event.key == "." || event.key == " " || event.key == "'") {
 
 
           if(event.key == this.charsOfText[this.countCorrect]){
-            console.log("Correct letter");
             this.countCorrect++;
             console.log("Number of correct letters: "+this.countCorrect);
 
           }
           else{
-            console.log("Wrong letter");
             this.countFail++;
             console.log("Number of incorrect letters: "+this.countFail);
           }
     }
+    else{
 
-
-     // this.wordsTyped.forEach(test => {
-     //   console.log(test)
-     // });
-     //if everything other than space and those given letters is pressed, it wont register a key pressed.
+    }
 
 
 
