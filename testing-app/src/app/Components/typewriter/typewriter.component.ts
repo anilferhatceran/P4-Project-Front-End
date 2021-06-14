@@ -121,7 +121,14 @@ export class TypewriterComponent implements OnInit {
     if (event.key == "Backspace"){
      this.userInput = this.userInput.substring(0,this.userInput.length-1)
     }
-    else if(event.key == "a"  || event.key == "b" || event.key == "c" || event.key == "d" || event.key == "e" || event.key == "f" || event.key == "g" || event.key == "h" || event.key == "i" || event.key == "j" || event.key == "k" ||event.key == "l" ||event.key == "m" ||event.key == "n" ||event.key == "o" ||event.key == "p" ||event.key == "q" ||event.key == "r" ||event.key == "s" ||event.key == "u" ||event.key == "v" ||event.key == "x" ||event.key == "y" ||event.key == "z" ||event.key == "æ" ||event.key == "ø" ||event.key == "å" ||event.key == "-" ||event.key == "A"  || event.key == "B" || event.key == "C" || event.key == "D" || event.key == "E" || event.key == "F" || event.key == "G" || event.key == "H" || event.key == "I" || event.key == "J" || event.key == "K" ||event.key == "L" ||event.key == "M" ||event.key == "N" ||event.key == "O" ||event.key == "P" ||event.key == "Q" ||event.key == "R" ||event.key == "S" ||event.key == "U" ||event.key == "V" ||event.key == "X" ||event.key == "Y" ||event.key == "Z" ||event.key == "Æ" ||event.key == "Ø" ||event.key == "Å" ) {
+    else if(event.key == "a"  || event.key == "b" || event.key == "c" || event.key == "d" || event.key == "e" || event.key == "f" || event.key == "g" || event.key == "h"
+    || event.key == "i" || event.key == "j" || event.key == "k" ||event.key == "l" ||event.key == "m" ||event.key == "n" ||event.key == "o" ||event.key == "p"
+    ||event.key == "q" ||event.key == "r" ||event.key == "s" ||event.key == "u" ||event.key == "v" ||event.key == "x" ||event.key == "y" ||event.key == "z"
+    ||event.key == "æ" ||event.key == "ø" ||event.key == "å" ||event.key == "-" ||event.key == "A"  || event.key == "B" || event.key == "C" || event.key == "D"
+    || event.key == "E" || event.key == "F" || event.key == "G" || event.key == "H" || event.key == "I" || event.key == "J" || event.key == "K" ||event.key == "L"
+    ||event.key == "M" ||event.key == "N" ||event.key == "O" ||event.key == "P" ||event.key == "Q" ||event.key == "R" ||event.key == "S" ||event.key == "U"
+    ||event.key == "V" ||event.key == "X" ||event.key == "Y" ||event.key == "Z" ||event.key == "Æ" ||event.key == "Ø" ||event.key == "Å" || event.key == ","
+    || event.key == "." || event.key == " ") {
 
      this.userInput = this.userInput + event.key;
     } //if everything other than space and those given letters is pressed, it wont register a key pressed.
