@@ -41,13 +41,13 @@
             <input formControlName="femaleNameChoice" type="checkbox" class="form-check-input" id="femaleNameChoiceID">
             <label class="form-check-label" for="femaleNameChoiceID">Female Name</label>
           </div>
-              <div *ngIf="this.maleName.checked; else elseBlock" >
+              <!-- <div *ngIf="this.maleName.checked; else elseBlock" >
                 <div *ngFor="let maleNames of this.newStr2" class="button-container d-flex flex-row justify-content-between">
                   {{maleNames}}
                   <button class="btn btn-primary mb-3">Save Name</button>
                 </div>
                 <button class="btn btn-primary btn-all">Save All Names</button>
-              </div>
+              </div> -->
 
           <div *ngIf="this.maleName.checked; else elseBlock">
             <!-- <div *ngFor="let maleNames of this.newStr2">
