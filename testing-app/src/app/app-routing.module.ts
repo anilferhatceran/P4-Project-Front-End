@@ -1,3 +1,4 @@
+import { TypewriterStatisticsComponent } from './Components/typewriter/typewriter-statistics/typewriter-statistics.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { WebReviewCheckComponent } from './Components/WebReviewCheck/WebReviewCheck.component';
 import { TypewriterComponent } from './Components/typewriter/typewriter.component';
@@ -31,4 +32,4 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 export const routingComponents = [LandingPageComponent, NumberGenComponent, CoinFlipComponent, DiceRollComponent,
-  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent, WebReviewCheckComponent, FooterComponent]
+  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent, WebReviewCheckComponent, FooterComponent, TypewriterStatisticsComponent]

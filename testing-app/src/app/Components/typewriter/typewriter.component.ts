@@ -1,3 +1,4 @@
+import { TypewriterStatisticsComponent } from './typewriter-statistics/typewriter-statistics.component';
 import { HttpService } from 'src/app/service/http.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
