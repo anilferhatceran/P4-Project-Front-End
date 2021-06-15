@@ -2,9 +2,11 @@
 .typewriter-container{
   margin-top: 8rem;
   max-width: 50vw;
+  margin-bottom: 5rem;
 }
 .container-fluid{
 color: white;
+
 }
 .typewriter-text{
   outline: none;
@@ -50,3 +52,10 @@ color: white;
     z-index: 1;
 }
 
+.typewriter-text-shaker{
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: 1s;
+}

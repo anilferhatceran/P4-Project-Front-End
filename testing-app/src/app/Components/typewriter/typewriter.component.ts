@@ -30,7 +30,9 @@ export class TypewriterComponent implements OnInit {
   textArray: string[];
   letterArray: string[];
   charsOfText: string;
-
+  timeLeft: number;
+  interval: any;
+  isEnabled: boolean = false;
 
   constructor(private http:HttpClient, private service:HttpService) { }
 
@@ -60,45 +62,62 @@ export class TypewriterComponent implements OnInit {
 
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
-
         this.generatedWords = this.words.words.toString();
-
-
-
         this.charsOfText = this.generatedWords;
-
         console.log(this.charsOfText);
-
-
-
-
+        this.startTimer(15);
 
       });
     }
+
     else if(this.fastCheck && this.veryFastCheck === false && this.neutralCheck === false && this.slowCheck === false){
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
-
+        this.generatedWords = this.words.words.toString();
+        this.charsOfText = this.generatedWords;
+        console.log(this.charsOfText);
+        this.startTimer(30);
 
       });
+
     }
     else if(this.neutralCheck && this.veryFastCheck === false && this.fastCheck === false && this.slowCheck === false){
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
-
-
-
+        this.generatedWords = this.words.words.toString();
+        this.charsOfText = this.generatedWords;
+        console.log(this.charsOfText);
+        this.startTimer(45);
       });
+
     }
     else if(this.slowCheck && this.veryFastCheck === false && this.fastCheck === false && this.neutralCheck === false){
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
+        this.generatedWords = this.words.words.toString();
+        this.charsOfText = this.generatedWords;
+        console.log(this.charsOfText);
 
-
-
+        this.startTimer(60);
       });
+
     }
   }
+
+
+  startTimer(timeLeft: number) {
+    this.timeLeft = timeLeft;
+    this.interval = setInterval(() => {
+      if(this.timeLeft  > 0) {
+        this.timeLeft--;
+      } else {
+        clearInterval(this.timeLeft)
+        window.location.reload();
+
+      }
+    },1000)
+  }
+
 
   onKeyDown(event: any) {
 
@@ -120,12 +139,15 @@ export class TypewriterComponent implements OnInit {
           if(event.key == this.charsOfText[this.countCorrect]){
             this.countCorrect++;
             console.log("Number of correct letters: "+this.countCorrect);
-
+            this.isEnabled = false;
           }
           else{
             this.countFail++;
             console.log("Number of incorrect letters: "+this.countFail);
+            this.isEnabled = true;
+
           }
+
     }
     else{
 
