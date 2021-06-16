@@ -33,6 +33,8 @@ export class TypewriterComponent implements OnInit {
   timeLeft: number;
   interval: any;
   isEnabled: boolean = false;
+  correctChar: boolean = true;
+  wrongChar = 'color: red !important;';
 
   constructor(private http:HttpClient, private service:HttpService) { }
 
@@ -135,17 +137,19 @@ export class TypewriterComponent implements OnInit {
     ||event.key == "V" ||event.key == "W" ||event.key == "X" ||event.key == "Y" ||event.key == "Z" || event.key == ","
     || event.key == "." || event.key == " " || event.key == "'") {
 
-
+          this.correctChar = true;
           if(event.key == this.charsOfText[this.countCorrect]){
             this.countCorrect++;
-            console.log("Number of correct letters: "+this.countCorrect);
-            this.isEnabled = false;
+            // console.log("Number of correct letters: "+this.countCorrect);
+            console.log(this.correctChar);
+
           }
           else{
             this.countFail++;
-            console.log("Number of incorrect letters: "+this.countFail);
-            this.isEnabled = true;
+            // console.log("Number of incorrect letters: "+this.countFail);
+            this.correctChar = false;
 
+            console.log(this.correctChar);
           }
 
     }

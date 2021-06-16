@@ -1,7 +1,8 @@
 <div class="container-fluid d-flex justify-content-center bg-dark">
   <div class="typewriter-container">
     <div class="typewriter-header d-flex align-items-center flex-column">
-      <h2 class="display-2">Typewriter</h2>
+      <h2 class="display-2">Words From Hell</h2>
+      <h5 class="display-6">Test your typing speed!</h5>
       <p class="lead">Choose time limit
       </p>
     </div>
@@ -27,11 +28,25 @@
       </form>
     </div>
 
+      <div *ngIf="this.correctChar == false; then showError else showCorrect"></div>
+      <ng-template #showError>
+        <div class="d-flex flex-wrap typewriter-text-container justify-content-center">
+          <textarea class="form-control bg-dark typewriter-text" type="text"  placeholder="{{words.words}}"></textarea>
+          <textarea [style]='wrongChar'class="form-control bg-dark typewriter-text-input" id="myInput" (keydown)="onKeyDown($event)"></textarea>
+        </div>
+      </ng-template>
 
-    <div class="d-flex flex-wrap typewriter-text-container justify-content-center">
-      <textarea class="form-control bg-dark typewriter-text" type="text"  placeholder="{{words.words}}"></textarea>
-      <textarea [disabled]="isEnabled"class="form-control bg-dark typewriter-text-input" id="myInput" (keydown)="onKeyDown($event)">{{this.userInput}}</textarea>
-    </div>
+      <ng-template #showCorrect>
+        <div class="d-flex flex-wrap typewriter-text-container justify-content-center">
+          <textarea class="form-control bg-dark typewriter-text" type="text"  placeholder="{{words.words}}"></textarea>
+          <textarea class="form-control bg-dark typewriter-text-input" id="myInput" (keydown)="onKeyDown($event)"></textarea>
+        </div>
+      </ng-template>
+
+
+
+      <!-- [style]='wrongChar' -->
+
     <h1 class="display-2 text-center">{{timeLeft}}</h1>
 </div>
 
