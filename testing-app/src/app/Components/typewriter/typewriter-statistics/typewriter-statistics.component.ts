@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-typewriter-statistics',
@@ -7,12 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypewriterStatisticsComponent implements OnInit {
 
+  @Input() displayAcc: number;
+
   constructor() { }
 
   ngOnInit() {
+    console.log("Hi from child");
 
-    console.log("hi from child");
+
 
   }
 
+
+  displayStatistics(){
+
+  }
 }
