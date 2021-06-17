@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TypewriterComponent } from '../typewriter.component';
 
 @Component({
   selector: 'app-typewriter-statistics',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TypewriterStatisticsComponent implements OnInit {
 
-  @Input() displayAcc: number;
+  @Input() displayAcc = 0;
 
   constructor() { }
 

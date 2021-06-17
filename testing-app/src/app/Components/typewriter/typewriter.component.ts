@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { TypewriterStatisticsComponent } from 'src/app/Components/typewriter/typewriter-statistics/typewriter-statistics.component';
 import { HttpService } from 'src/app/service/http.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Form,FormControl, FormGroup } from '@angular/forms';
 import { TextsGenerated } from 'src/app/model/Texts';
 
@@ -39,7 +39,7 @@ export class TypewriterComponent implements OnInit {
   wrongChar = 'color: red !important;';
   totalTypedChars: number;
   failedCharAccuracy: number;
-  @Input() charAccuracy: number;
+  charAccuracy: number;
   statisticsWindow: string = "/src/app/Components/typewriter/typewriter-statistics/typewriter-statistics.component.html";
   showStats: boolean = false;
 
@@ -125,6 +125,11 @@ export class TypewriterComponent implements OnInit {
       } else {
         clearInterval(this.timeLeft)
         this.showStats = true;
+        this.totalTypedChars = this.countCorrect + this.countFail;
+
+        this.failedCharAccuracy = (this.countFail/this.totalTypedChars) * this.totalTypedChars;
+
+        this.charAccuracy = 100 - this.failedCharAccuracy;
       }
     },1000)
   }
@@ -136,13 +141,9 @@ export class TypewriterComponent implements OnInit {
   calculate(){
 
     //This is 100% of total typed chars, since we cannot guarantee that the user will type/finish the generated text fully.
-    this.totalTypedChars = this.countCorrect + this.countFail;
 
-    this.failedCharAccuracy = (this.countFail/this.totalTypedChars) * this.totalTypedChars;
 
-    this.charAccuracy = 100 - this.failedCharAccuracy;
-
-    alert("Accuray:"+this.charAccuracy+"%");
+    // alert("Accuray:"+this.charAccuracy+"%");
 
   }
 
