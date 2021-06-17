@@ -18,9 +18,15 @@
       <form class="form-inline my-2 my-lg-0">
         <button class="btn btn-outline-light my-2 my-sm-0 mr-sm-2" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
       </form>
+
+      <div *ngIf="this.userChecked == true; then showLogin else dontShowLogin"></div>
+      <ng-template #showLogin>
       <form class="form-inline my-2 my-lg-0">
         <button id="btnLogin"class="btn btn-outline-light my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#loginModal">Login</button>
       </form>
+    </ng-template>
+    <ng-template #dontShowLogin></ng-template>
+
       <div *ngIf="this.userChecked == false; then showLogout else dontShowLogout"></div>
       <ng-template #showLogout>
         <form  class="form-inline my-2 my-lg-0">
