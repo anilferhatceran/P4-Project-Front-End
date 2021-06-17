@@ -1,8 +1,9 @@
-import { TypewriterStatisticsComponent } from './typewriter-statistics/typewriter-statistics.component';
+import { Router } from '@angular/router';
+import { TypewriterStatisticsComponent } from 'src/app/Components/typewriter/typewriter-statistics/typewriter-statistics.component';
 import { HttpService } from 'src/app/service/http.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, HostListener, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Form,FormControl, FormGroup } from '@angular/forms';
 import { TextsGenerated } from 'src/app/model/Texts';
 
 
@@ -20,6 +21,7 @@ export class TypewriterComponent implements OnInit {
   slowCheck = true;
   countCorrect:number = 0;
   countFail: number = 0;
+  currentCount: number = 0;
   words:TextsGenerated;
   index:number;
   textWord:string = "";
@@ -32,9 +34,19 @@ export class TypewriterComponent implements OnInit {
   charsOfText: string;
   timeLeft: number;
   interval: any;
-  isEnabled: boolean = false;
+  isDisabled: boolean = false;
+  correctChar: boolean = true;
+  wrongChar = 'color: red !important;';
+  totalTypedChars: number;
+  failedCharAccuracy: number;
+  charAccuracy: number;
+  statisticsWindow: string = "/src/app/Components/typewriter/typewriter-statistics/typewriter-statistics.component.html";
+  showStats: boolean = false;
 
-  constructor(private http:HttpClient, private service:HttpService) { }
+
+
+
+  constructor(private http:HttpClient, private service:HttpService, private router:Router) { }
 
   ngOnInit() {
     this.typewriterTimeLimit = new FormGroup({
@@ -112,19 +124,35 @@ export class TypewriterComponent implements OnInit {
         this.timeLeft--;
       } else {
         clearInterval(this.timeLeft)
-        window.location.reload();
+        this.showStats = true;
+        this.totalTypedChars = this.countCorrect + this.countFail;
 
+        this.failedCharAccuracy = (this.countFail/this.totalTypedChars) * this.totalTypedChars;
+
+        this.charAccuracy = 100 - this.failedCharAccuracy;
       }
     },1000)
   }
+  loadStatistics(){
+    window.open(this.statisticsWindow);
+  }
 
+
+  calculate(){
+
+    //This is 100% of total typed chars, since we cannot guarantee that the user will type/finish the generated text fully.
+
+
+    // alert("Accuray:"+this.charAccuracy+"%");
+
+  }
 
   onKeyDown(event: any) {
 
-
     //If "backspace" detected remove last character in given string.
     if (event.key == "Backspace"){
-     this.userInput = this.userInput.substring(0,this.userInput.length-1)
+    this.userInput = this.userInput.substring(0,this.userInput.length-1);
+    this.currentCount--;
     }
     else if(event.key == "a"  || event.key == "b" || event.key == "c" || event.key == "d" || event.key == "e" || event.key == "f" || event.key == "g" || event.key == "h"
     || event.key == "i" || event.key == "j" || event.key == "k" ||event.key == "l" ||event.key == "m" ||event.key == "n" ||event.key == "o" ||event.key == "p"
@@ -136,28 +164,26 @@ export class TypewriterComponent implements OnInit {
     || event.key == "." || event.key == " " || event.key == "'") {
 
 
-          if(event.key == this.charsOfText[this.countCorrect]){
+
+          if(event.key == this.charsOfText[this.currentCount]){
             this.countCorrect++;
-            console.log("Number of correct letters: "+this.countCorrect);
-            this.isEnabled = false;
+            // console.log("Number of correct letters: "+this.countCorrect);
+            console.log(this.correctChar);
+            this.correctChar = true;
+
           }
           else{
             this.countFail++;
-            console.log("Number of incorrect letters: "+this.countFail);
-            this.isEnabled = true;
+            // console.log("Number of incorrect letters: "+this.countFail);
+            this.correctChar = false;
 
+            console.log(this.correctChar);
           }
-
+          this.currentCount++;
     }
     else{
-
     }
-
-
-
   }
-
-
 }
 
 

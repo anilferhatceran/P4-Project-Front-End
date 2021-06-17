@@ -1,4 +1,4 @@
-import { TypewriterStatisticsComponent } from './Components/typewriter/typewriter-statistics/typewriter-statistics.component';
+import { TypewriterStatisticsComponent } from 'src/app/Components/typewriter/typewriter-statistics/typewriter-statistics.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { WebReviewCheckComponent } from './Components/WebReviewCheck/WebReviewCheck.component';
 import { TypewriterComponent } from './Components/typewriter/typewriter.component';
@@ -21,7 +21,8 @@ const routes: Routes = [
   {path: 'password-generator', component: PasswordGenComponent},
   {path: 'name-generator', component : NameGenComponent},
   {path: 'typewriter', component : TypewriterComponent},
-  {path: 'webreviewcheck', component:WebReviewCheckComponent}
+  {path: 'webreviewcheck', component:WebReviewCheckComponent},
+  {path: 'typewriter/statistics', component:TypewriterStatisticsComponent}
 
 ];
 

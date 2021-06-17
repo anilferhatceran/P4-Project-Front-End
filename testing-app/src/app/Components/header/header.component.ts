@@ -1,4 +1,3 @@
-import { CommonResponse } from './../../model/CommonResponse';
 import { HttpService } from 'src/app/service/http.service';
 import { HttpClient } from '@angular/common/http';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -35,6 +34,7 @@ export class HeaderComponent implements OnInit {
   );
 
   ngOnInit() {
+    this.service.getUser().subscribe(u => this.users = u);
   }
 
   //create user function on click.
@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
 
 
       // If the email and password is confirmed. The program will tell the user that the account is created.
-      if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail != null){
+      if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail){
       alert("User created");
 
       this.service.postUser(this.createUserForm.value).subscribe(user => console.log(user));
@@ -64,18 +64,13 @@ export class HeaderComponent implements OnInit {
           alert("Password needs to be atleast 8 characters long");
         }
       }
-
-
-
   }
   else{
     //If the user don't write the same password, program will tell user that it must be the same.
     alert("Password must be the same!");
   }
 
-
 }
-
 
   onSubmitLogin(){
 
@@ -85,6 +80,9 @@ export class HeaderComponent implements OnInit {
 
     //goes through database and matches the loginForms with existing user details. returns length 1 if user exist, else length 0.
   var user = this.users.filter(u => u.userEmail == this.loginUserForm.value.userEmail && u.passwordHash == this.loginUserForm.value.passwordHash);
+
+
+
     //Length = true or false, 0 = false,, 1 = true.
   if(user.length == 0){
     alert("Wrong email or password");
@@ -103,7 +101,7 @@ export class HeaderComponent implements OnInit {
   }
 }
 
-  // if User Key exists in local storage, it will in return clear cache and memory which then logs user out.
+  // if User Key exists in local storage, it will clear cache and memory which then logs the user out.
 onSubmitLogout(){
   if(localStorage.getItem('User')){
     window.localStorage.clear();
