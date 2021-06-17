@@ -41,9 +41,11 @@
 
 
   <ng-template #showStatistics>
-    <app-typewriter-statistics [displayAcc]="charAccuracy"></app-typewriter-statistics>
-    Testing
+    <app-typewriter-statistics [displayAcc]="charAccuracy" [displayTime]="selectedTime"[displayCorrectChar]="countCorrect" [displayIncorrectChar]="countFail"></app-typewriter-statistics>
 
+
+
+  <!-- <button class="btn btn-success" (click)="calculate()">Show Statistics</button> -->
   </ng-template>
 
 

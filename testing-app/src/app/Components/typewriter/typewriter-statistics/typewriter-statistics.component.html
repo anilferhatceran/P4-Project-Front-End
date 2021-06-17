@@ -1,5 +1,24 @@
-<h2 class="display-4 mt-4">{{displayAcc}}</h2>
-<h2 class="display-4 mt-4">{{displayAcc}}</h2>
-<h2 class="display-4 mt-4">{{displayAcc}}</h2>
-<h2 class="display-4 mt-4">{{displayAcc}}</h2>
-<h2 class="display-4 mt-4">{{displayAcc}}</h2>
+<div class="statistics-container container-fluid flex-column d-flex align-items-center">
+  <h1 class="display-1">
+    Typewriter Statistics
+  </h1>
+  <div class="statistics-inner-container">
+    <h1 class="statistics-h">
+      <small class="text-muted small">Words Per Minute: </small>
+    </h1>
+    <h3 class="statistics-h">
+      <small class="text-muted">Accuracy: {{displayAcc}}%</small>
+    </h3>
+    <h3 class="statistics-h">
+      <small class="text-muted">Selected time: {{displayTime}} seconds</small>
+    </h3>
+    <h3 class="correct-chars">
+      <small class="text-muted">Correct characters: {{displayCorrectChar}} characters</small>
+    </h3>
+    <h3 class="wrong-chars">
+      <small class="text-muted">Wrong characters: {{displayIncorrectChar}} characters</small>
+    </h3>
+    <button class="btn btn-primary btn-try-again" (click)="tryAgain()">Try again?</button>
+
+  </div>
+</div>
