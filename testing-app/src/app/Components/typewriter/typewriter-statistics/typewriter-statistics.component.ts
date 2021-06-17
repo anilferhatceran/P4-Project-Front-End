@@ -9,6 +9,11 @@ import { TypewriterComponent } from '../typewriter.component';
 export class TypewriterStatisticsComponent implements OnInit {
 
   @Input() displayAcc = 0;
+  @Input() displayTime = 0;
+  @Input() displayCorrectChar = 0;
+  @Input() displayIncorrectChar = 0;
+
+  loadMain: string = "/src/app/Components/typewriter/typewriter.component.html";
 
   constructor() { }
 
@@ -20,7 +25,7 @@ export class TypewriterStatisticsComponent implements OnInit {
   }
 
 
-  displayStatistics(){
-
+  tryAgain(){
+    window.location.reload();
   }
 }

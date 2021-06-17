@@ -43,6 +43,7 @@ export class TypewriterComponent implements OnInit {
   statisticsWindow: string = "/src/app/Components/typewriter/typewriter-statistics/typewriter-statistics.component.html";
   showStats: boolean = false;
 
+  selectedTime: number = 0;
 
 
 
@@ -77,6 +78,8 @@ export class TypewriterComponent implements OnInit {
         this.generatedWords = this.words.words.toString();
         this.charsOfText = this.generatedWords;
         console.log(this.charsOfText);
+
+        this.selectedTime = 15;
         this.startTimer(15);
 
       });
@@ -88,6 +91,7 @@ export class TypewriterComponent implements OnInit {
         this.generatedWords = this.words.words.toString();
         this.charsOfText = this.generatedWords;
         console.log(this.charsOfText);
+        this.selectedTime = 30;
         this.startTimer(30);
 
       });
@@ -99,6 +103,7 @@ export class TypewriterComponent implements OnInit {
         this.generatedWords = this.words.words.toString();
         this.charsOfText = this.generatedWords;
         console.log(this.charsOfText);
+        this.selectedTime = 45;
         this.startTimer(45);
       });
 
@@ -109,7 +114,7 @@ export class TypewriterComponent implements OnInit {
         this.generatedWords = this.words.words.toString();
         this.charsOfText = this.generatedWords;
         console.log(this.charsOfText);
-
+        this.selectedTime = 60;
         this.startTimer(60);
       });
 
@@ -125,9 +130,10 @@ export class TypewriterComponent implements OnInit {
       } else {
         clearInterval(this.timeLeft)
         this.showStats = true;
+
         this.totalTypedChars = this.countCorrect + this.countFail;
 
-        this.failedCharAccuracy = (this.countFail/this.totalTypedChars) * this.totalTypedChars;
+        this.failedCharAccuracy = (this.countFail/this.totalTypedChars) * 100;
 
         this.charAccuracy = 100 - this.failedCharAccuracy;
       }
@@ -148,6 +154,9 @@ export class TypewriterComponent implements OnInit {
   }
 
   onKeyDown(event: any) {
+
+
+
 
     //If "backspace" detected remove last character in given string.
     if (event.key == "Backspace"){
