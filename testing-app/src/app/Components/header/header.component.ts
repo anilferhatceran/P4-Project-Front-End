@@ -48,8 +48,6 @@ export class HeaderComponent implements OnInit {
 
 
     if (this.confirmPass.value == this.createUserForm.value.passwordHash){
-      console.log('Test');
-
 
       // If the email and password is confirmed. The program will tell the user that the account is created.
       if (this.createUserForm.value.passwordHash.length >= 8 && this.createUserForm.value.userEmail){
@@ -105,7 +103,7 @@ export class HeaderComponent implements OnInit {
 }
 
   // if User Key exists in local storage, it will clear cache and memory which then logs the user out.
-onSubmitLogout(){
+  onSubmitLogout(){
   if(localStorage.getItem('User')){
     window.localStorage.clear();
     window.location.reload();
