@@ -44,7 +44,12 @@ export class TypewriterComponent implements OnInit {
   showStats: boolean = false;
 
   selectedTime: number = 0;
-
+  splittedText: string[];
+  wordLengthArray: number[] = [];
+  countWord: number = 0;
+  countTest: number = 40;
+  wordsPerSec: number;
+  wordsPerMin: number;
 
 
   constructor(private http:HttpClient, private service:HttpService, private router:Router) { }
@@ -76,6 +81,17 @@ export class TypewriterComponent implements OnInit {
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
         this.generatedWords = this.words.words.toString();
+
+        this.splittedText = this.generatedWords.split(' ');
+
+        for(let i = 0; i < this.splittedText.length; i++){
+          this.wordLengthArray.push(this.splittedText[i].length);
+        }
+        for(let k = 0; k < this.wordLengthArray.length; k++){
+
+        }
+
+
         this.charsOfText = this.generatedWords;
         console.log(this.charsOfText);
 
@@ -136,6 +152,10 @@ export class TypewriterComponent implements OnInit {
         this.failedCharAccuracy = (this.countFail/this.totalTypedChars) * 100;
 
         this.charAccuracy = 100 - this.failedCharAccuracy;
+
+        this.wordsPerSec = this.countWord/this.selectedTime;
+        this.wordsPerMin = this.wordsPerSec * 60;
+
       }
     },1000)
   }
@@ -155,9 +175,6 @@ export class TypewriterComponent implements OnInit {
 
   onKeyDown(event: any) {
 
-
-
-
     //If "backspace" detected remove last character in given string.
     if (event.key == "Backspace"){
     this.userInput = this.userInput.substring(0,this.userInput.length-1);
@@ -173,12 +190,39 @@ export class TypewriterComponent implements OnInit {
     || event.key == "." || event.key == " " || event.key == "'") {
 
 
+      this.userInput = this.userInput + event.key
+      //this line prints what the user types
+      this.userInput.replace(' ', '');
+
+      if(this.userInput == this.splittedText[this.countWord] || this.userInput == " "+this.splittedText[this.countWord]){
+        this.countWord++;
+        console.log("Word number "+ this.countWord+ " is correct!");
+        let testVar = this.userInput.indexOf(' ');
+        this.userInput = this.userInput.substring(0, testVar);
+      }
 
           if(event.key == this.charsOfText[this.currentCount]){
             this.countCorrect++;
             // console.log("Number of correct letters: "+this.countCorrect);
             console.log(this.correctChar);
             this.correctChar = true;
+
+
+
+
+             //this line gets the length of how many characters the user has typed
+             //this.userInput.length
+
+
+
+
+            // for(let j = 0; j < this.splittedText.length; j++){
+            //   if(this.userInput.length == this.wordLengthArray[j]){
+
+            //   }
+            // }
+
+
 
           }
           else{

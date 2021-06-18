@@ -4,10 +4,10 @@
   </h1>
   <div class="statistics-inner-container">
     <h1 class="statistics-h">
-      <small class="text-muted small">Words Per Minute: </small>
+      <small class="text-muted small">Words Per Minute: {{displayWordsPerMin}} </small>
     </h1>
     <h3 class="statistics-h">
-      <small class="text-muted">Accuracy: {{displayAcc}}%</small>
+      <small class="text-muted">Accuracy: {{displayAcc | number:'1.2-2' }}%</small>
     </h3>
     <h3 class="statistics-h">
       <small class="text-muted">Selected time: {{displayTime}} seconds</small>

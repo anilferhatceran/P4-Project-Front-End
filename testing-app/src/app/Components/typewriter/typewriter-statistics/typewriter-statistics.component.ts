@@ -12,15 +12,13 @@ export class TypewriterStatisticsComponent implements OnInit {
   @Input() displayTime = 0;
   @Input() displayCorrectChar = 0;
   @Input() displayIncorrectChar = 0;
+  @Input() displayWordsPerMin = 0;
 
   loadMain: string = "/src/app/Components/typewriter/typewriter.component.html";
 
   constructor() { }
 
   ngOnInit() {
-    console.log("Hi from child");
-
-
 
   }
 

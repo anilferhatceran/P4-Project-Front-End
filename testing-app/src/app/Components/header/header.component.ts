@@ -4,6 +4,7 @@ import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Users } from 'src/app/model/Users';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -32,6 +33,8 @@ export class HeaderComponent implements OnInit {
       passwordHash: new FormControl('', [Validators.required]),
     }
   );
+
+
 
   ngOnInit() {
     this.service.getUser().subscribe(u => this.users = u);
