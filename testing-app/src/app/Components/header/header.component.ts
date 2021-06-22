@@ -79,24 +79,25 @@ export class HeaderComponent implements OnInit {
   this.userObj.userEmail = this.loginUserForm.value.userEmail;
   this.userObj.passwordHash = this.loginUserForm.value.passwordHash;
 
+
     //goes through database and matches the loginForms with existing user details. returns length 1 if user exist, else length 0.
-  var user = this.users.filter(u => u.userEmail == this.loginUserForm.value.userEmail && u.passwordHash == this.loginUserForm.value.passwordHash);
+  var userFilter = this.users.filter(u => u.userEmail == this.loginUserForm.value.userEmail && u.passwordHash == this.loginUserForm.value.passwordHash);
 
 
 
     //Length = true or false, 0 = false,, 1 = true.
-  if(user.length == 0){
+  if(userFilter.length == 0){
     alert("Wrong email or password");
     this.userChecked = false;
   }
 
   //if user exists: validate user from backend, and saves the user in local storage
   //and gives the user a key (User) which we can use to grant access to session based content (name gen: save names)
-  else if(user.length == 1){
+  else if(userFilter.length == 1){
     this.userChecked = true;
     this.service.ValidateUser(this.userObj).subscribe();
     this.loginUserForm.reset();
-    localStorage.setItem('User','Logged In');
+    localStorage.setItem('User',userFilter[0].userID.toString());
     alert("You are now logged in!");
     this.userChecked = false;
   }

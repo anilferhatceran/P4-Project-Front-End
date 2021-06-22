@@ -1,8 +1,10 @@
+import { NameGenUsers } from './../../model/NameGenUsers';
 import { TestBed } from '@angular/core/testing';
 import { NamesGenerated } from './../../model/Names';
 import { HttpService } from 'src/app/service/http.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Button } from 'protractor';
 
 
 @Component({
@@ -11,27 +13,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./name-gen.component.css']
 })
 export class NameGenComponent implements OnInit {
-  nameGenForm:any;
-  ranName: string = "";
-  generatedMaleNames: NamesGenerated;
-  generatedFemaleNames: NamesGenerated;
-  maleNameChoice:boolean = true;
-  femaleNameChoice:boolean = true;
-  testName: string = '';
-  testNameTest: number;
+  namesAndUsers:NameGenUsers[] = [];
+  generatedMaleNames: string[];
+  generatedFemaleNames: string[];
   namesArray: string[];
+  newStr2: string[] = [];
+
+  newStr: any;
+
+  stringGeneratedMaleNames: string = '';
+
   maleName: any;
   femaleName: any;
-  newStr: any;
-  newStr2: any;
-  saveNameForm: FormGroup;
+
+  maleNameChoice:boolean = true;
+  femaleNameChoice:boolean = true;
+
   firstName: any;
   secondName: any;
   thirdName: any;
   fourthName: any;
   fifthName: any;
 
-
+  nameGenForm: FormGroup;
+  saveNameForm: FormGroup;
 
   constructor(private service : HttpService) { }
 
@@ -46,10 +51,13 @@ export class NameGenComponent implements OnInit {
       maleNameSave: new FormControl(),
 
     })
+    this.service.getNames().subscribe(namesAndUsers =>{
+      this.namesAndUsers = namesAndUsers;
+    })
   }
 
   getNames(){
-  //get names function, chooses between user chosen male or female name
+  //get namesAndUsers function, chooses between user chosen male or female name
 
   this.maleName = document.getElementById("maleNameChoiceID") as HTMLInputElement;
   this.maleNameChoice = this.maleName.checked;
@@ -59,18 +67,19 @@ export class NameGenComponent implements OnInit {
 
   if(this.maleNameChoice && this.femaleNameChoice == false){
 
-    //gets given amount (our example: 5) names from service.
-    this.service.getMaleNamesAmount(5).subscribe(names => { //if male or female choice box is ticked off
-      this.generatedMaleNames = names;
-
+    //gets given amount (our example: 5) namesAndUsers from service.
+    this.service.getMaleNamesAmount(5).subscribe(namesAndUsers => { //if male or female choice box is ticked off
+      this.generatedMaleNames = namesAndUsers;
     });
 
 
-    //convert json object to string and clean up string to which we get names only without special chars
+    //convert json object to string and clean up string to which we get namesAndUsers only without special chars
     //and string to array for print.
 
-    this.testName = JSON.stringify(this.generatedMaleNames);
-    this.namesArray = this.testName.split(',');
+    this.stringGeneratedMaleNames = JSON.stringify(this.generatedMaleNames);
+
+
+    this.namesArray = this.stringGeneratedMaleNames.split(',');
     let re = /",/gi;
     let reTwo = /"/gi;
 
@@ -78,15 +87,15 @@ export class NameGenComponent implements OnInit {
     this.newStr2 = this.newStr.toString().replace(reTwo,"").replace('[',"").replace(']',"").split('\n');
   }
   else if(this.maleNameChoice == false && this.femaleNameChoice){
-    this.service.getFemaleNamesAmount(5).subscribe(names => {
-      this.generatedFemaleNames = names;
+    this.service.getFemaleNamesAmount(5).subscribe(namesAndUsers => {
+      this.generatedFemaleNames = namesAndUsers;
     });
 
-    //convert json object to string and clean up string to which we get names only without special chars
+    //convert json object to string and clean up string to which we get namesAndUsers only without special chars
     //and string to array for print.
-    this.testName = JSON.stringify(this.generatedFemaleNames);
+    this.stringGeneratedMaleNames = JSON.stringify(this.generatedFemaleNames);
 
-    this.namesArray = this.testName.split(',');
+    this.namesArray = this.stringGeneratedMaleNames.split(',');
     let re = /",/gi;
     let reTwo = /"/gi;
 
@@ -101,39 +110,119 @@ export class NameGenComponent implements OnInit {
 
   }
 
-  //Function that should save the individual names and then POST them to the database.
+  //Function that should save the individual namesAndUsers and then POST them to the database.
   //However as of now the POST and database part of this program does not work. This code is unfinished.
 
-  //TO-DO: Create a link with the newly updated database and post the names to the new table.
+  //TO-DO: Create a link with the newly updated database and post the namesAndUsers to the new table.
   //       Work on a new Controller on the Web API.
-  postName(){
-    this.firstName = document.getElementById("first-name") as HTMLInputElement;
-    this.secondName = document.getElementById("second-name") as HTMLInputElement;
-    this.thirdName = document.getElementById("third-name") as HTMLInputElement;
-    this.fourthName = document.getElementById("fourth-name") as HTMLInputElement;
-    this.fifthName = document.getElementById("fifth-name") as HTMLInputElement;
+  postName(button:string){
+    this.firstName = (document.getElementById("first-name") as HTMLInputElement).value;
+    this.secondName = (document.getElementById("second-name") as HTMLInputElement).value;
+    this.thirdName = (document.getElementById("third-name") as HTMLInputElement).value;
+    this.fourthName = (document.getElementById("fourth-name") as HTMLInputElement).value;
+    this.fifthName = (document.getElementById("fifth-name") as HTMLInputElement).value;
 
-    if(localStorage.getItem('User')){
+    var placeholder = localStorage.getItem('User');
+
+    var userId = placeholder == null ? 0 : parseInt(placeholder);
+
+    var nameGenUsers: NameGenUsers = {nameGenUserID: 0, name: {nameGenID: 0, maleNames: '', femaleNames: ''}, user: {userID: userId, userEmail: '', passwordHash: ''}};
+
+
+
+
+
+    //Created a button: string paramter that I can set in each if/else if, so that I can match the value of the button string
+    //with the buttons in HTML. This way I can check which button has been pressed and therefore I can save the corresponding name.
+
+    //TO-DO:
+    //Create an else if(button == 'all') which will save all the namesAndUsers. Find out if possible/how much trouble it is. If not worth the time,
+    //then remove "Save All Names" function
+    // :: Make a FOR loop that POSTs 5 times? ::
+
+    if(this.generatedMaleNames != null){
+
+      if (button == 'first'){
+        nameGenUsers.name.maleNames = this.firstName;
+      }
+      else if(button == 'second'){
+        nameGenUsers.name.maleNames = this.secondName;
+
+      }
+      else if(button == 'third'){
+        nameGenUsers.name.maleNames = this.thirdName;
+
+      }
+      else if(button == 'fourth'){
+        nameGenUsers.name.maleNames = this.fourthName;
+
+      }
+      else if(button == 'fifth'){
+        nameGenUsers.name.maleNames = this.fifthName;
+
+      }
+    }
+    else{
+      if (button == 'first'){
+        console.log("First button is clicked");
+
+        nameGenUsers.name.femaleNames = this.firstName;
+      }
+      else if(button == 'second'){
+        console.log("Second button is clicked");
+        nameGenUsers.name.femaleNames = this.secondName;
+
+      }
+      else if(button == 'third'){
+        nameGenUsers.name.femaleNames = this.thirdName;
+
+      }
+      else if(button == 'fourth'){
+        nameGenUsers.name.femaleNames = this.fourthName;
+
+      }
+      else if(button == 'fifth'){
+        nameGenUsers.name.femaleNames = this.fifthName;
+
+      }
+    }
+
+
+    if(userId){
       if(this.firstName != null)
       {
-        this.service.postName(this.firstName).subscribe(name => console.log(name));
+        this.service.postName(nameGenUsers).subscribe(name => console.log(name));
       }
       else if(this.secondName != null){
-        this.service.postName(this.secondName).subscribe(name => console.log(name));
+        this.service.postName(nameGenUsers).subscribe(name => console.log(name));
       }
       else if(this.thirdName != null){
-        this.service.postName(this.thirdName).subscribe(name => console.log(name));
+        this.service.postName(nameGenUsers).subscribe(name => console.log(name));
       }
       else if(this.fourthName != null){
-        this.service.postName(this.fourthName).subscribe(name => console.log(name));
+        this.service.postName(nameGenUsers).subscribe(name => console.log(name));
       }
       else if(this.fifthName != null){
-        this.service.postName(this.fifthName).subscribe(name => console.log(name));
+        this.service.postName(nameGenUsers).subscribe(name => console.log(name));
       }
     }
     else{
       alert("You need to be logged in to use this function!");
     }
+
+  }
+  getSavedNames(){
+
+    var placeholder = localStorage.getItem('User');
+
+    var userId = placeholder == null ? 0 : parseInt(placeholder);
+
+    var nameGenUsers: NameGenUsers = {nameGenUserID: 0, name: {nameGenID: 0, maleNames: '', femaleNames: ''}, user: {userID: userId, userEmail: '', passwordHash: ''}};
+
+    if(userId == nameGenUsers.user.userID){
+      this.service.getLastTenNames(userId).subscribe(user => console.log(user));
+    }
+
 
   }
 

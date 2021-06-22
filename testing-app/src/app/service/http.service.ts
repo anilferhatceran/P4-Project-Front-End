@@ -1,3 +1,4 @@
+import { NameGenUsers } from './../model/NameGenUsers';
 import { NamesGenerated } from './../model/Names';
 import { CommonResponse } from './../model/CommonResponse';
 import { Users } from './../model/Users';
@@ -7,6 +8,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { TextsGenerated } from '../model/Texts';
+
 
 const httpHeaders = {
   headers: new HttpHeaders(
@@ -39,20 +41,26 @@ getWords(): Observable<TextsGenerated[]>{
 getWordsAmount(Amount: number): Observable<TextsGenerated>{
   return this.http.get<TextsGenerated>(`${this.ROOT_URL}TextGenerator/words/${Amount}`, httpHeaders);
 }
-getMaleNamesAmount(Amount: number): Observable<NamesGenerated>{
-  return this.http.get<NamesGenerated>(`${this.ROOT_URL}NameGenerated/malenames/${Amount}`, httpHeaders);
+getMaleNamesAmount(Amount: number): Observable<string[]>{
+  return this.http.get<string[]>(`${this.ROOT_URL}NameGenerated/malenames/${Amount}`, httpHeaders);
 }
-getFemaleNamesAmount(Amount: number): Observable<NamesGenerated>{
-  return this.http.get<NamesGenerated>(`${this.ROOT_URL}NameGenerated/femalenames/${Amount}`, httpHeaders);
+getFemaleNamesAmount(Amount: number): Observable<string[]>{
+  return this.http.get<string[]>(`${this.ROOT_URL}NameGenerated/femalenames/${Amount}`, httpHeaders);
 }
 getMaleName(): Observable<string>{
   return this.http.get<string>(`${this.ROOT_URL}NameGenerated/maleName`);
 }
 getFemaleName(): Observable<string>{
-  return this.http.get<string>(`${this.ROOT_URL}NamesGenerated/femaleNames`);
+  return this.http.get<string>(`${this.ROOT_URL}NameGenerated/femaleNames`);
 }
-postName(name: NamesGenerated): Observable<NamesGenerated>{
-  return this.http.post<NamesGenerated>(`${this.ROOT_URL}NamesGenerated`, name, httpHeaders);
+getNames(): Observable<NameGenUsers[]>{
+  return this.http.get<NameGenUsers[]>(`${this.ROOT_URL}NameGenUser`, httpHeaders);
+}
+getLastTenNames(userID: number): Observable<NameGenUsers[]>{
+  return this.http.get<NameGenUsers[]>(`${this.ROOT_URL}NameGenUser/savednames/${userID}`, httpHeaders);
+}
+postName(name: NameGenUsers): Observable<NameGenUsers>{
+  return this.http.post<NameGenUsers>(`${this.ROOT_URL}NameGenUser`, name, httpHeaders);
 }
 ValidateUser(user: Users): Observable<Users>{
   return this.http.post<Users>(`${this.ROOT_URL}User/login`, user, httpHeaders);
