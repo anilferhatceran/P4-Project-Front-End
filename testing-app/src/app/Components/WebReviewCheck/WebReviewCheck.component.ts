@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WebReviewCheckComponent implements OnInit {
   websiteForm:any;
+  showPostReviewForm: boolean = false;
   constructor() { }
 
   ngOnInit() {

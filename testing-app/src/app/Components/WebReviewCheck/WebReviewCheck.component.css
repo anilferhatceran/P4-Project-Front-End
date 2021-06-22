@@ -19,4 +19,19 @@
 .h5{
   height: 5rem;
 }
+.password-gen-info-box-container{
+  /* background:rgba(255, 255, 255, 0.9); */
+  color: black;
+  border-radius: 7px;
+  padding: 2rem;
+  width: 25vw;
+  margin-top:3.5rem;
+  /* overflow:scroll; */
+}
+.review-input-fields{
+  max-width: 50%;
+}
+.review-input-fields > * {
+  margin-top: 2rem;
+}
 
