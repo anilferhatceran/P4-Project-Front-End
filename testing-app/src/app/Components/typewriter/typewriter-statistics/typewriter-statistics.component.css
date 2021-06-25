@@ -1,15 +1,15 @@
 
-.correct-chars{
+.color1{
   color: limegreen;
 }
-.wrong-chars{
+.color2{
   color: crimson;
 }
 .statistics-container{
   background-color: #343a40!important;
 }
 .btn-try-again{
-  width: 10rem;
+  width: 20rem;
 }
 .statistics-inner-container * {
   margin-top: 2rem;
