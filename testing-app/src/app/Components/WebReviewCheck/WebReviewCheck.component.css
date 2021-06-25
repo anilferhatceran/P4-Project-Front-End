@@ -4,12 +4,7 @@
     background-size: cover;
 }
 
-.URL-Check-container{
-  border: 2px rgb(65, 65, 65) solid;
-  width: 50rem!important;
 
-  height: 15rem;
-}
 .Web-sitecheck-container > * {
   margin: 30px 0;
 }
@@ -21,8 +16,7 @@
 }
 .password-gen-info-box-container{
   /* background:rgba(255, 255, 255, 0.9); */
-  color: black;
-  border-radius: 7px;
+
   padding: 2rem;
   width: 25vw;
   margin-top:3.5rem;
@@ -33,5 +27,13 @@
 }
 .review-input-fields > * {
   margin-top: 2rem;
+}
+.review-container-structure{
+  max-width: 50rem;
+}
+.review-containers{
+  border: 2px rgb(65, 65, 65) solid;
+  padding: 2rem;
+  margin-top: 1rem;
 }
 

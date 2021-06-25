@@ -1,3 +1,4 @@
+import { ReviewDetails } from './../model/ReviewDetails';
 import { NameGenUsers } from './../model/NameGenUsers';
 import { NamesGenerated } from './../model/Names';
 import { CommonResponse } from './../model/CommonResponse';
@@ -65,7 +66,18 @@ postName(name: NameGenUsers): Observable<NameGenUsers>{
 ValidateUser(user: Users): Observable<Users>{
   return this.http.post<Users>(`${this.ROOT_URL}User/login`, user, httpHeaders);
 }
-
+getReview(): Observable<ReviewDetails[]>{
+  return this.http.get<ReviewDetails[]>(`${this.ROOT_URL}ReviewDetail`, httpHeaders);
+}
+getReviewByUrl(url: string): Observable<ReviewDetails[]>{      //FIND UD AF HVAD COMPANY? ER.
+  return this.http.get<ReviewDetails[]>(`${this.ROOT_URL}ReviewDetail/company?url=${url}`, httpHeaders);
+}
+getAvrgRating(url: string): Observable<number>{      //FIND UD AF HVAD COMPANY? ER x2
+  return this.http.get<number>(`${this.ROOT_URL}ReviewDetail/rating?url=${url}`, httpHeaders);
+}
+getTotalRatings(url: string): Observable<number>{      //FIND UD AF HVAD COMPANY? ER x2
+  return this.http.get<number>(`${this.ROOT_URL}ReviewDetail/totalratings?url=${url}`, httpHeaders);
+}
 }
 
 

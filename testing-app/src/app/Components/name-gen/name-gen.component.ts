@@ -51,8 +51,8 @@ export class NameGenComponent implements OnInit {
       maleNameSave: new FormControl(),
 
     })
-    this.service.getNames().subscribe(namesAndUsers =>{
-      this.namesAndUsers = namesAndUsers;
+    this.service.getNames().subscribe(names =>{
+      this.namesAndUsers = names;
     })
   }
 

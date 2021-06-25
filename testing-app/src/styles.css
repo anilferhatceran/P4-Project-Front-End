@@ -1,9 +1,12 @@
 .container-fluid{
   height: 100vh;
+  overflow: auto;
+
 
 }
 .container{
   height: 100vh;
+  overflow: auto;
 }
 .header-result-box{
   border: 1px solid gray;
