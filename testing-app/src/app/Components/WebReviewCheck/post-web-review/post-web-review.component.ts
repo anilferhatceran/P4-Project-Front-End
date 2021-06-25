@@ -35,5 +35,8 @@ export class PostWebReviewComponent implements OnInit {
     this.service.postReview(this.postReviewForm.value).subscribe(review => console.log(review));
 
   }
+  tryAgain(){
+    window.location.reload();
+  }
 
 }

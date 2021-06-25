@@ -1,7 +1,8 @@
-.container-fluid{
+.webreview-main-container{
     background-image: url("https://mobile-cuisine.com/wp-content/uploads/2012/05/website-name-e1456929129165.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
 }
 
 
