@@ -3,9 +3,9 @@
 <div *ngIf="this.showPostReviewForm == false; then showReviews else showPostReview"></div>
 <ng-template #showReviews>
 
-  <div class="container-fluid d-flex align-items-center justify-content-center ">
+  <div class="webreview-main-container d-flex align-items-center justify-content-center align-items-center">
 
-    <div class="col-md-5 Web-sitecheck-container white-background d-flex flex-direction row">
+    <div class="col-md-5 Web-sitecheck-container white-background d-flex align-items-center flex-direction row">
       <h1>
         Is this site trusted?
       </h1>
@@ -46,7 +46,7 @@
           </ng-template>
         <ng-template #showCreateNewReview>
           <h3 class="display-5">There is currently not a review of chosen Company, would you like to be the first one to create a new review?</h3>
-          <button class="btn" (click)="loadPostForms()">hello</button>
+          <button class="btn btn-primary" (click)="loadPostForms()">Yes please</button>
         </ng-template>
       </div>
     </div>
