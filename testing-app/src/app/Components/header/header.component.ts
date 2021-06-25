@@ -106,8 +106,10 @@ export class HeaderComponent implements OnInit {
   // if User Key exists in local storage, it will clear cache and memory which then logs the user out.
   onSubmitLogout(){
   if(localStorage.getItem('User')){
+    console.log("Logging out");
     window.localStorage.clear();
     window.location.reload();
+    console.log("Logged out");
   }
 }
 }

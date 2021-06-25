@@ -93,7 +93,7 @@ export class TypewriterComponent implements OnInit {
 
 
         this.charsOfText = this.generatedWords;
-        console.log(this.charsOfText);
+
 
         this.selectedTime = 15;
         this.startTimer(15);
@@ -105,8 +105,19 @@ export class TypewriterComponent implements OnInit {
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
         this.generatedWords = this.words.words.toString();
+
+        this.splittedText = this.generatedWords.split(' ');
+
+        for(let i = 0; i < this.splittedText.length; i++){
+          this.wordLengthArray.push(this.splittedText[i].length);
+        }
+        for(let k = 0; k < this.wordLengthArray.length; k++){
+
+        }
+
+
         this.charsOfText = this.generatedWords;
-        console.log(this.charsOfText);
+
         this.selectedTime = 30;
         this.startTimer(30);
 
@@ -117,8 +128,19 @@ export class TypewriterComponent implements OnInit {
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
         this.generatedWords = this.words.words.toString();
+
+        this.splittedText = this.generatedWords.split(' ');
+
+        for(let i = 0; i < this.splittedText.length; i++){
+          this.wordLengthArray.push(this.splittedText[i].length);
+        }
+        for(let k = 0; k < this.wordLengthArray.length; k++){
+
+        }
+
+
         this.charsOfText = this.generatedWords;
-        console.log(this.charsOfText);
+
         this.selectedTime = 45;
         this.startTimer(45);
       });
@@ -128,8 +150,19 @@ export class TypewriterComponent implements OnInit {
       this.service.getWordsAmount(40).subscribe(word => {
         this.words = word;
         this.generatedWords = this.words.words.toString();
+
+        this.splittedText = this.generatedWords.split(' ');
+
+        for(let i = 0; i < this.splittedText.length; i++){
+          this.wordLengthArray.push(this.splittedText[i].length);
+        }
+        for(let k = 0; k < this.wordLengthArray.length; k++){
+
+        }
+
+
         this.charsOfText = this.generatedWords;
-        console.log(this.charsOfText);
+
         this.selectedTime = 60;
         this.startTimer(60);
       });
@@ -203,7 +236,7 @@ export class TypewriterComponent implements OnInit {
 
           if(event.key == this.charsOfText[this.currentCount]){
             this.countCorrect++;
-            // console.log("Number of correct letters: "+this.countCorrect);
+
             console.log(this.correctChar);
             this.correctChar = true;
 
@@ -227,7 +260,7 @@ export class TypewriterComponent implements OnInit {
           }
           else{
             this.countFail++;
-            // console.log("Number of incorrect letters: "+this.countFail);
+
             this.correctChar = false;
 
             console.log(this.correctChar);

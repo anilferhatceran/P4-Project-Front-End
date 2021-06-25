@@ -1,10 +1,10 @@
 <div class="statistics-container container-fluid flex-column d-flex align-items-center">
-  <h1 class="display-1">
+  <h1 class="display-1 pt-5">
     Typewriter Statistics
   </h1>
   <div class="statistics-inner-container">
     <h1 class="statistics-h">
-      <small class="text-white small">Words Per Minute: {{displayWordsPerMin}} </small>
+      <small class="text-white small">Words Per Minute: {{displayWordsPerMin | number:'1.2-2' }} </small>
     </h1>
     <h3 class="statistics-h">
       <small class="text-white">Accuracy: {{displayAcc | number:'1.2-2' }}%</small>
@@ -13,12 +13,11 @@
       <small class="text-white">Selected time: {{displayTime}} seconds</small>
     </h3>
     <h3 class="correct-chars">
-      <small class="text-success font-weight-bold">Correct characters: {{displayCorrectChar}} characters</small>
+      <small class="font-weight-bold">Correct characters: <span class="color1">{{displayCorrectChar}} characters</span></small>
     </h3>
     <h3 class="wrong-chars">
-      <small class="text-danger font-weight-bold">Wrong characters: {{displayIncorrectChar}} characters</small>
+      <small class="font-weight-bold">Wrong characters: <span class="color2">{{displayIncorrectChar}} characters</span></small>
     </h3>
     <button class="btn btn-primary btn-try-again" (click)="tryAgain()">Try again?</button>
-
   </div>
 </div>
