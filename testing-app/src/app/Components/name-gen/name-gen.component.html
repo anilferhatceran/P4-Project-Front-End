@@ -2,11 +2,30 @@
   <div class="col-md-2 name-savebox-container white-background">
     <div class="name-box-container">
       <h5>
-        Names saved by the user.
+        Names saved by you.
       </h5>
+
       <button (click)="getSavedNames()">Get Last 10 Names</button>
+      <div *ngIf="this.maleName?.checked; else showFemaleNames">
+        <h4>10 Latest Male Names Saved:</h4>
+        <div *ngFor="let savedNames of displaySavedNames">
+          <li>
+            {{savedNames.name.maleNames}}
+
+          </li>
+        </div>
+      </div>
+      <ng-template #showFemaleNames>
+        <h4>10 Latest Female Names Saved:</h4>
+      <div *ngFor="let savedNames of displaySavedNames">
+        <li>
+          {{savedNames.name.femaleNames}}
+
+        </li>
+      </div>
+      </ng-template>
       <h6>
-        Max 10 names can be saved at the same time.
+        The 10 lastest saved names are displayed above.
       </h6>
     </div>
   </div>
@@ -25,19 +44,10 @@
             <input formControlName="femaleNameChoice" type="checkbox" class="form-check-input" id="femaleNameChoiceID">
             <label class="form-check-label" for="femaleNameChoiceID">Female Name</label>
           </div>
-              <!-- <div *ngIf="this.maleName.checked; else elseBlock" >
-                <div *ngFor="let maleNames of this.newStr2" class="button-container d-flex flex-row justify-content-between">
-                  {{maleNames}}
-                  <button class="btn btn-primary mb-3">Save Name</button>
-                </div>
-                <button class="btn btn-primary btn-all">Save All Names</button>
-              </div> -->
+
 
           <div *ngIf="this.maleName?.checked; else elseBlock">
-            <!-- <div *ngFor="let maleNames of this.newStr2">
-              {{maleNames}}
 
-            </div> -->
             <div>
               <input id="first-name" value="{{this.newStr2[0]}}">
               <button class="btn btn-primary mb-3" (click)="postName('first')">Save Name</button>
@@ -101,15 +111,9 @@
 
 
           <button type="submit" class="btn-name-gen btn-primary btn-lg fs-4 fw-bold" (click)="getNames()">Generate Random Names</button>
-          <!-- <button type="submit" class="btn btn-primary btn-typewriter" >Generate Names</button> -->
-      </form>
-        <!--FormGroup hvor det generedede navn skal være.-->
-        <!-- <form [formGroup]="nameGenForm" class="row form-group">
-          <input formControlName="ranGenName" type="text" class="form-control">
-        <div class="name-gen-display-result d-flex flex-column align-items-center">
 
-        </div>
-        </form> -->
+      </form>
+
 
       </div>
     </div>

@@ -17,23 +17,24 @@ export class NameGenComponent implements OnInit {
   generatedMaleNames: string[];
   generatedFemaleNames: string[];
   namesArray: string[];
+  displaySavedNames: NameGenUsers[];
   newStr2: string[] = [];
 
-  newStr: any;
+  newStr: string;
 
   stringGeneratedMaleNames: string = '';
 
-  maleName: any;
-  femaleName: any;
+  maleName: HTMLInputElement;
+  femaleName: HTMLInputElement;
 
   maleNameChoice:boolean = true;
   femaleNameChoice:boolean = true;
 
-  firstName: any;
-  secondName: any;
-  thirdName: any;
-  fourthName: any;
-  fifthName: any;
+  firstName: string;
+  secondName: string;
+  thirdName: string;
+  fourthName: string;
+  fifthName: string;
 
   nameGenForm: FormGroup;
   saveNameForm: FormGroup;
@@ -70,10 +71,8 @@ export class NameGenComponent implements OnInit {
     //gets given amount (our example: 5) namesAndUsers from service.
     this.service.getMaleNamesAmount(5).subscribe(namesAndUsers => { //if male or female choice box is ticked off
       this.generatedMaleNames = namesAndUsers;
-    });
 
-
-    //convert json object to string and clean up string to which we get namesAndUsers only without special chars
+      //convert json object to string and clean up string to which we get namesAndUsers only without special chars
     //and string to array for print.
 
     this.stringGeneratedMaleNames = JSON.stringify(this.generatedMaleNames);
@@ -85,14 +84,20 @@ export class NameGenComponent implements OnInit {
 
     this.newStr = this.namesArray.toString().replace(re,"\n");
     this.newStr2 = this.newStr.toString().replace(reTwo,"").replace('[',"").replace(']',"").split('\n');
+
+
+    });
+
+
+
   }
   else if(this.maleNameChoice == false && this.femaleNameChoice){
     this.service.getFemaleNamesAmount(5).subscribe(namesAndUsers => {
       this.generatedFemaleNames = namesAndUsers;
-    });
 
     //convert json object to string and clean up string to which we get namesAndUsers only without special chars
     //and string to array for print.
+
     this.stringGeneratedMaleNames = JSON.stringify(this.generatedFemaleNames);
 
     this.namesArray = this.stringGeneratedMaleNames.split(',');
@@ -101,6 +106,10 @@ export class NameGenComponent implements OnInit {
 
     this.newStr = this.namesArray.toString().replace(re,"\n");
     this.newStr2 = this.newStr.toString().replace(reTwo,"").replace('[',"").replace(']',"").split('\n');
+    });
+
+
+
 
   }
   else{
@@ -164,12 +173,12 @@ export class NameGenComponent implements OnInit {
     }
     else{
       if (button == 'first'){
-        console.log("First button is clicked");
+
 
         nameGenUsers.name.femaleNames = this.firstName;
       }
       else if(button == 'second'){
-        console.log("Second button is clicked");
+
         nameGenUsers.name.femaleNames = this.secondName;
 
       }
@@ -219,8 +228,11 @@ export class NameGenComponent implements OnInit {
 
     var nameGenUsers: NameGenUsers = {nameGenUserID: 0, name: {nameGenID: 0, maleNames: '', femaleNames: ''}, user: {userID: userId, userEmail: '', passwordHash: ''}};
 
+
     if(userId == nameGenUsers.user.userID){
-      this.service.getLastTenNames(userId).subscribe(user => console.log(user));
+      this.service.getLastTenNames(userId).subscribe(user => {
+        this.displaySavedNames = user});
+
     }
 
 
