@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { NamesGenerated } from './../../model/Names';
 import { HttpService } from 'src/app/service/http.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Button } from 'protractor';
 
 
@@ -12,10 +12,10 @@ import { Button } from 'protractor';
   templateUrl: './name-gen.component.html',
   styleUrls: ['./name-gen.component.css']
 })
-export class NameGenComponent implements OnInit {
+export class NameGenComponent implements OnInit{
   namesAndUsers:NameGenUsers[] = [];
-  generatedMaleNames: string[];
-  generatedFemaleNames: string[];
+  generatedMaleNames: string[] = [];
+  generatedFemaleNames: string[] = [];
   namesArray: string[];
   displaySavedNames: NameGenUsers[];
   newStr2: string[] = [];
@@ -23,6 +23,7 @@ export class NameGenComponent implements OnInit {
   newStr: string;
 
   stringGeneratedMaleNames: string = '';
+  stringGeneratedFemaleNames: string;
 
   maleName: HTMLInputElement;
   femaleName: HTMLInputElement;
@@ -38,6 +39,7 @@ export class NameGenComponent implements OnInit {
 
   nameGenForm: FormGroup;
   saveNameForm: FormGroup;
+
 
   constructor(private service : HttpService) { }
 
@@ -55,6 +57,8 @@ export class NameGenComponent implements OnInit {
     this.service.getNames().subscribe(names =>{
       this.namesAndUsers = names;
     })
+
+    this.getSavedNames();
   }
 
   getNames(){
@@ -71,7 +75,7 @@ export class NameGenComponent implements OnInit {
     //gets given amount (our example: 5) namesAndUsers from service.
     this.service.getMaleNamesAmount(5).subscribe(namesAndUsers => { //if male or female choice box is ticked off
       this.generatedMaleNames = namesAndUsers;
-
+      this.generatedFemaleNames = [];
       //convert json object to string and clean up string to which we get namesAndUsers only without special chars
     //and string to array for print.
 
@@ -94,13 +98,14 @@ export class NameGenComponent implements OnInit {
   else if(this.maleNameChoice == false && this.femaleNameChoice){
     this.service.getFemaleNamesAmount(5).subscribe(namesAndUsers => {
       this.generatedFemaleNames = namesAndUsers;
+      this.generatedMaleNames = [];
 
     //convert json object to string and clean up string to which we get namesAndUsers only without special chars
     //and string to array for print.
 
-    this.stringGeneratedMaleNames = JSON.stringify(this.generatedFemaleNames);
+    this.stringGeneratedFemaleNames = JSON.stringify(this.generatedFemaleNames);
 
-    this.namesArray = this.stringGeneratedMaleNames.split(',');
+    this.namesArray = this.stringGeneratedFemaleNames.split(',');
     let re = /",/gi;
     let reTwo = /"/gi;
 
@@ -149,7 +154,7 @@ export class NameGenComponent implements OnInit {
     //then remove "Save All Names" function
     // :: Make a FOR loop that POSTs 5 times? ::
 
-    if(this.generatedMaleNames != null){
+    if(this.generatedMaleNames.length != 0){
 
       if (button == 'first'){
         nameGenUsers.name.maleNames = this.firstName;
@@ -173,8 +178,6 @@ export class NameGenComponent implements OnInit {
     }
     else{
       if (button == 'first'){
-
-
         nameGenUsers.name.femaleNames = this.firstName;
       }
       else if(button == 'second'){
@@ -221,21 +224,24 @@ export class NameGenComponent implements OnInit {
 
   }
   getSavedNames(){
-
     var placeholder = localStorage.getItem('User');
 
     var userId = placeholder == null ? 0 : parseInt(placeholder);
 
     var nameGenUsers: NameGenUsers = {nameGenUserID: 0, name: {nameGenID: 0, maleNames: '', femaleNames: ''}, user: {userID: userId, userEmail: '', passwordHash: ''}};
 
+    console.log("Jeg er her");
 
     if(userId == nameGenUsers.user.userID){
       this.service.getLastTenNames(userId).subscribe(user => {
-        this.displaySavedNames = user});
+        this.displaySavedNames = user
+        console.log(this.displaySavedNames[0].name.maleNames);
+
+      });
 
     }
 
-
   }
+
 
 }

@@ -5,9 +5,9 @@
         Names saved by you.
       </h5>
 
-      <button (click)="getSavedNames()">Get Last 10 Names</button>
-      <div *ngIf="this.maleName?.checked; else showFemaleNames">
-        <h4>10 Latest Male Names Saved:</h4>
+      <!-- <button (click)="getSavedNames()">Get Last 10 Names</button> -->
+      <!-- <div *ngIf="this.maleName?.checked; else showFemaleNames">
+        <h4>10 Latest Names Saved:</h4>
         <div *ngFor="let savedNames of displaySavedNames">
           <li>
             {{savedNames.name.maleNames}}
@@ -15,15 +15,21 @@
           </li>
         </div>
       </div>
-      <ng-template #showFemaleNames>
-        <h4>10 Latest Female Names Saved:</h4>
-      <div *ngFor="let savedNames of displaySavedNames">
+      <ng-template #showFemaleNames> -->
+        <h4>10 Latest Names Saved:</h4>
+        <div *ngFor="let savedNames of displaySavedNames">
+          <li>
+            {{savedNames.name?.maleNames}}
+            {{savedNames.name?.femaleNames}}
+          </li>
+        </div>
+      <!-- <div *ngFor="let savedNames of displaySavedNames">
         <li>
           {{savedNames.name.femaleNames}}
 
         </li>
       </div>
-      </ng-template>
+      </ng-template> -->
       <h6>
         The 10 lastest saved names are displayed above.
       </h6>
@@ -34,7 +40,7 @@
   <div class="name-gen-sname-container white-background d-flex justify-content-center" >
     <div class="col-md card-info d-flex flex-column">
 
-        <h5>Please click twice on the "Generate Random Names" button!</h5>
+        <h5>Choose male or female!</h5>
         <form [formGroup]="nameGenForm"  class="row form-group d-flex mx-5rem m:5rem">
           <div class="col-md-6 col-sm-12">
             <input formControlName="maleNameChoice" type="checkbox" class="form-check-input" id="maleNameChoiceID">
@@ -73,7 +79,7 @@
               <button class="btn btn-primary mb-3" (click)="postName('fifth')">Save Name</button>
             </div>
 
-            <button class="btn btn-primary">Save All Names</button>
+            <button id="save-all-name-btn" class="btn btn-primary btn-all">Save All Names</button>
           </div>
           <ng-template #elseBlock>
 
@@ -84,7 +90,7 @@
 
             <div>
               <input id="second-name" value="{{this.newStr2[1]}}">
-              <button id="second-name-btn" class="btn btn-primary mb-3" (click)="postName('second')">'Save Name</button>
+              <button id="second-name-btn" class="btn btn-primary mb-3" (click)="postName('second')">Save Name</button>
             </div>
 
             <div>
