@@ -11,6 +11,9 @@ import { WebReviewCheckComponent } from '../WebReviewCheck.component';
 
 export class PostWebReviewComponent implements OnInit {
 
+  loadMain: string = "/testing-app/src/app/Components/WebReviewCheck/WebReviewCheck.component.html";
+
+
   @Input() reviewTitle = '';
   @Input() reviewUser = 0;
   @Input() reviewText = '';
@@ -20,6 +23,9 @@ export class PostWebReviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+  tryAgain(){
+    window.location.reload();
   }
 
 }
