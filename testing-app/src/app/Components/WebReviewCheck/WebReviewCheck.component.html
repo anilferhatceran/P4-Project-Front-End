@@ -13,7 +13,7 @@
 
         <form [formGroup]="websiteForm" class="row form-group">
           <input class="form-control mb-3" placeholder="Insert URL" id="userURL" name="myURL" type="url" required>
-          <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold" (click)="getReviewsByUrl()" (click)="getTotalRating()" (click)="getAverageRating()">Submit</button>
+          <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold" (click)="getReviewsByUrl()" (click)="getTotalRating()" (click)="getAverageRating()" (click)="ratingScale()">Submit</button>
 
         </form>
       </div>
@@ -25,23 +25,28 @@
 
           <ng-template #showFoundReviews>
             <div class="review-containers">
-              <h1>{{this.displayURLData[0].company.companyName}}</h1>
-              <h4>{{this.avrgRatings}}</h4>
-              <h4>{{this.totalRating}}</h4>
+              <div>
+                <h1>{{this.displayURLData[0].company.companyName}} <small style="font-size: 20px;">{{this.displayURLData[0].company.companyURL}}</small></h1>
 
+              </div>
+
+              <h4>Anmeldelser: {{this.totalRating}} </h4>
+              <div id="ratings">
+                <h4>Total rating: {{this.avrgRatings}} <small class="muted">{{this.ratingScore}}</small></h4>
+              </div>
             </div>
-            <div class="review-containers" *ngFor="let companyReview of displayURLData">
 
+            <div class="review-containers" *ngFor="let companyReview of displayURLData">
               <h4 class="review-container-structure d-flex justify-content-between">{{companyReview.reviewTitle}} <small>{{companyReview.reviewDate}}</small></h4>
               <p class="review-container-structure">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quidem pariatur facilis nostrum harum dignissimos laborum sunt corporis blanditiis suscipit ipsam, unde expedita beatae similique non ut, minus possimus quam.</p>
               <p class="review-container-structure">{{companyReview.reviewRating}} ud af 10</p>
               <p class="review-container-structure">User: {{companyReview.user.userID}}</p>
-
               </div>
+
           </ng-template>
 
         <ng-template #showCreateNewReview>
-          <h1>would you like to create a new one??</h1>
+          <h3 class="display-5">There is currently not a review of chosen Company, would you like to be the first one to create a new review?</h3>
         </ng-template>
 
 

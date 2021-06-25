@@ -23,6 +23,10 @@ export class WebReviewCheckComponent implements OnInit {
   avrgRatings: number;
   totalRating: number;
 
+  ratingScore: string;
+
+
+
   constructor(private service : HttpService) { }
 
   ngOnInit() {
@@ -57,9 +61,6 @@ export class WebReviewCheckComponent implements OnInit {
     this.service.getAvrgRating(this.websiteURL).subscribe(ratings => {
       this.avrgRatings = ratings;
       console.log("Avr rating");
-
-      console.log(this.avrgRatings);
-
     })
 
   }
@@ -68,12 +69,35 @@ export class WebReviewCheckComponent implements OnInit {
     this.websiteURL = (document.getElementById("userURL") as HTMLInputElement).value;
     this.service.getTotalRatings(this.websiteURL).subscribe(ratings => {
       this.totalRating = ratings;
-      console.log("total rating");
-
-      console.log(this.totalRating);
-
     })
 
+  }
+
+
+  ratingScale(){
+    if(this.avrgRatings = 1){
+      this.ratingScore = "very bad";
+    }
+
+    else if(this.avrgRatings = 2){
+      this.ratingScore = "bad";
+
+    }
+
+    else if(this.avrgRatings = 3){
+      this.ratingScore = "average";
+
+    }
+
+    else if(this.avrgRatings = 4){
+      this.ratingScore = "good";
+
+    }
+
+    else if(this.avrgRatings = 5){
+      this.ratingScore = "very good";
+
+    }
   }
 
 }
