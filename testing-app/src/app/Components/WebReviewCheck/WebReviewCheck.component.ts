@@ -56,15 +56,21 @@ export class WebReviewCheckComponent implements OnInit {
     this.websiteURL = (document.getElementById("userURL") as HTMLInputElement).value;
     this.service.getAvrgRating(this.websiteURL).subscribe(ratings => {
       this.avrgRatings = ratings;
-})
+      console.log("Avr rating");
+
+      console.log(this.avrgRatings);
+
+    })
 
   }
 
   getTotalRating(){
     this.websiteURL = (document.getElementById("userURL") as HTMLInputElement).value;
-    this.service.getAvrgRating(this.websiteURL).subscribe(ratings => {
+    this.service.getTotalRatings(this.websiteURL).subscribe(ratings => {
       this.totalRating = ratings;
-    console.log(this.totalRating);
+      console.log("total rating");
+
+      console.log(this.totalRating);
 
     })
 
