@@ -10,7 +10,9 @@
   margin-right: 1rem;
   color: #333;
 }
-
+.list-group-item{
+  background: rgba(255, 255,255, 0.9) !important;
+}
 .gender-choice-container {
   border-radius: 7px;
   padding: 2rem;
@@ -32,9 +34,7 @@ p {
   text-align: center;
 }
 
-h6{
-  margin-top: 38rem;
-}
+
 
 .btn-gender {
   width: 30rem;

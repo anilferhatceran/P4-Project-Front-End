@@ -1,27 +1,26 @@
 <div class="container">
   <div class="col password-gen-info-box-container align-items-center  white-background" >
     <div class="card-info">
-      <form>
+      <form [formGroup]="postReviewForm">
         <div class="form-group">
-          <label for="exampleInputEmail1">URL for review</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="reviewURL">
+          <label for="companyUrl">URL for review</label>
+          <input name="companyUrl" type="text" class="form-control" id="companyUrlID"  placeholder="Company Url">
         </div>
 
         <div class="form-group">
-          <label for="exampleInputEmail1">Company name</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="reviewURL">
+          <label for="companyName">Company name</label>
+          <input name="companyName" type="text" class="form-control" id="companyNameID" placeholder="Company Name">
         </div>
 
         <div class="form-group">
-          <label for="exampleInputPassword1">Title for review</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="reviewTitle">
+          <label for="companyTitle">Title for review</label>
+          <input name="companyTitle" type="text" class="form-control" id="companyTitle" placeholder="Company Title">
         </div>
 
         <div class="form-group">
-          <label for="exampleInputPassword1">Review text</label>
-          <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="reviewText"></textarea>
+          <label for="companyDesc">Review Description</label>
+          <textarea name="companyDesc" class="form-control" id="companyDescID" placeholder="Description"></textarea>
         </div>
-
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 

@@ -78,6 +78,9 @@ getAvrgRating(url: string): Observable<number>{      //FIND UD AF HVAD COMPANY? 
 getTotalRatings(url: string): Observable<number>{      //FIND UD AF HVAD COMPANY? ER x2
   return this.http.get<number>(`${this.ROOT_URL}ReviewDetail/totalratings?url=${url}`, httpHeaders);
 }
+postReview(review: ReviewDetails): Observable<ReviewDetails>{
+  return this.http.post<ReviewDetails>(`${this.ROOT_URL}ReviewDetail`, review, httpHeaders);
+}
 }
 
 
