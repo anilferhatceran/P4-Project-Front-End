@@ -1,3 +1,4 @@
+import { CompanyProfiles } from './../model/CompanyProfiles';
 import { ReviewDetails } from './../model/ReviewDetails';
 import { NameGenUsers } from './../model/NameGenUsers';
 import { NamesGenerated } from './../model/Names';
@@ -80,6 +81,9 @@ getTotalRatings(url: string): Observable<number>{      //FIND UD AF HVAD COMPANY
 }
 postReview(review: ReviewDetails): Observable<ReviewDetails>{
   return this.http.post<ReviewDetails>(`${this.ROOT_URL}ReviewDetail`, review, httpHeaders);
+}
+postCompany(company: CompanyProfiles): Observable<CompanyProfiles>{
+  return this.http.post<CompanyProfiles>(`${this.ROOT_URL}CompanyProfile`, company, httpHeaders);
 }
 }
 

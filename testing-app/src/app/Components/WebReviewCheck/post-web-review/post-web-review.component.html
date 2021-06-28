@@ -1,28 +1,24 @@
 <div class="container">
   <div class="col password-gen-info-box-container align-items-center  white-background" >
     <div class="card-info">
-      <form [formGroup]="postReviewForm">
-        <div class="form-group">
-          <label for="companyUrl">URL for review</label>
-          <input name="companyUrl" type="text" class="form-control" id="companyUrlID"  placeholder="Company Url">
-        </div>
+      <form [formGroup]="postCompanyForm">
+        <label for="companyUrl">Test</label>
+        <label for="companyUrl">Test</label>
+        <label for="companyUrl">Test Url</label>
+        <label for="companyUrl">Test Url</label>
 
         <div class="form-group">
           <label for="companyName">Company name</label>
-          <input name="companyName" type="text" class="form-control" id="companyNameID" placeholder="Company Name">
+          <input formControlName="companyName" type="text" class="form-control" id="companyNameID" placeholder="Company Name">
         </div>
 
         <div class="form-group">
-          <label for="companyTitle">Title for review</label>
-          <input name="companyTitle" type="text" class="form-control" id="companyTitle" placeholder="Company Title">
+          <label for="companyUrl">Company Url</label>
+          <input formControlName="companyURL" type="text" class="form-control" id="companyUrlID"  placeholder="Company Url">
         </div>
 
-        <div class="form-group">
-          <label for="companyDesc">Review Description</label>
-          <textarea name="companyDesc" class="form-control" id="companyDescID" placeholder="Description"></textarea>
-        </div>
 
-        <button type="submit" class="btn btn-primary" (click)="tryAgain()">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="postCompany()">Submit</button>
       </form>
 
     </div>
