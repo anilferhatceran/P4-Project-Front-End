@@ -1,38 +1,13 @@
 <div class="container-fluid d-flex align-items-center justify-content-center ">
-  <div class="col-md-2 name-savebox-container white-background">
+  <div class="col-2 name-savebox-container white-background">
     <div class="name-box-container">
-      <h5>
-        Names saved by you.
-      </h5>
-
-      <!-- <button (click)="getSavedNames()">Get Last 10 Names</button> -->
-      <!-- <div *ngIf="this.maleName?.checked; else showFemaleNames">
-        <h4>10 Latest Names Saved:</h4>
-        <div *ngFor="let savedNames of displaySavedNames">
-          <li>
-            {{savedNames.name.maleNames}}
-
-          </li>
-        </div>
+      <div class="name-box-header">
+          <h3 class="display-6">10 Latest Names Saved:</h3>
       </div>
-      <ng-template #showFemaleNames> -->
-        <h4>10 Latest Names Saved:</h4>
-        <div *ngFor="let savedNames of displaySavedNames">
-          <li>
-            {{savedNames.name?.maleNames}}
-            {{savedNames.name?.femaleNames}}
-          </li>
-        </div>
-      <!-- <div *ngFor="let savedNames of displaySavedNames">
-        <li>
-          {{savedNames.name.femaleNames}}
-
-        </li>
-      </div>
-      </ng-template> -->
-      <h6>
-        The 10 lastest saved names are displayed above.
-      </h6>
+      <ul *ngFor="let savedNames of displaySavedNames" class="list-group list-group-flush ">
+        <li class="list-group-item">{{savedNames.name?.maleNames}}</li>
+        <li class="list-group-item">{{savedNames.name?.femaleNames}}</li>
+      </ul>
     </div>
   </div>
 

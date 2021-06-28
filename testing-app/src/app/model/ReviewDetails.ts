@@ -9,8 +9,4 @@ export interface ReviewDetails {
   reviewText:string;
   reviewDate:string;
   reviewRating:number;
-
-
-
-
 }

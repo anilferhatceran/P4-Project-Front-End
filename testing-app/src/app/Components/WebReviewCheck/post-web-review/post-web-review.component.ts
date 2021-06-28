@@ -1,3 +1,5 @@
+import { HttpService } from 'src/app/service/http.service';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { WebReviewCheckComponent } from '../WebReviewCheck.component';
 
@@ -11,18 +13,27 @@ import { WebReviewCheckComponent } from '../WebReviewCheck.component';
 
 export class PostWebReviewComponent implements OnInit {
 
-  loadMain: string = "/testing-app/src/app/Components/WebReviewCheck/WebReviewCheck.component.html";
+  postReviewForm: FormGroup;
+  // @Input() reviewTitle = '';
+  // @Input() reviewUser = 0;
+  // @Input() reviewText = '';
+  // @Input() reviewRating = '';
+  // @Input() reviewDate = '';
 
-
-  @Input() reviewTitle = '';
-  @Input() reviewUser = 0;
-  @Input() reviewText = '';
-  @Input() reviewRating = '';
-  @Input() reviewDate = '';
-
-  constructor() { }
+  constructor(private service: HttpService) { }
 
   ngOnInit() {
+    this.postReviewForm = new FormGroup({
+      companyUrl: new FormControl(),
+      companyName: new FormControl(),
+      companyTitle: new FormControl(),
+      companyDesc: new FormControl(),
+    })
+  }
+
+  postReview(){
+    this.service.postReview(this.postReviewForm.value).subscribe(review => console.log(review));
+
   }
   tryAgain(){
     window.location.reload();
