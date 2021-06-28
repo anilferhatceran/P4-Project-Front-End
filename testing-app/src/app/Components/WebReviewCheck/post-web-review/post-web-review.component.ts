@@ -1,3 +1,4 @@
+import { ReviewDetails } from './../../../model/ReviewDetails';
 import { HttpService } from 'src/app/service/http.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
@@ -13,7 +14,7 @@ import { WebReviewCheckComponent } from '../WebReviewCheck.component';
 
 export class PostWebReviewComponent implements OnInit {
 
-  postCompanyForm: FormGroup;
+  // postCompanyForm: FormGroup;
   postReviewForm: FormGroup;
   // @Input() reviewTitle = '';
   // @Input() reviewUser = 0;
@@ -24,11 +25,13 @@ export class PostWebReviewComponent implements OnInit {
   constructor(private service: HttpService) { }
 
   ngOnInit() {
-    this.postCompanyForm = new FormGroup({
+    // this.postCompanyForm = new FormGroup({
+    //   companyName: new FormControl(''),
+    //   companyURL: new FormControl(''),
+    // })
+    this.postReviewForm = new FormGroup({
       companyName: new FormControl(''),
       companyURL: new FormControl(''),
-    })
-    this.postReviewForm = new FormGroup({
       reviewTitle: new FormControl(''),
       reviewText: new FormControl(''),
       reviewDate: new FormControl(''),
@@ -44,10 +47,24 @@ export class PostWebReviewComponent implements OnInit {
   tryAgain(){
     window.location.reload();
   }
-  postCompany(){
-    console.log(this.postCompanyForm.value.companyName);
+  // postCompany(){
 
-    this.service.postCompany(this.postCompanyForm.value).subscribe(company => console.log(company));
+
+  //   this.service.postCompany(this.postCompanyForm.value).subscribe(company => console.log(company));
+  // }
+  postReview(){
+    var placeholder = localStorage.getItem('User');
+
+    var userId = placeholder == null ? 0 : parseInt(placeholder);
+
+    let review: ReviewDetails = {reviewID: 0, company: {companyID: 0,companyName: this.postReviewForm.value.companyName, companyURL: this.postReviewForm.value.companyURL},
+    user: {userID: userId, userEmail: '', passwordHash: ''},
+    reviewTitle: this.postReviewForm.value.reviewTitle, reviewText: this.postReviewForm.value.reviewText,
+    reviewDate: this.postReviewForm.value.reviewDate, reviewRating: this.postReviewForm.value.reviewRating};
+
+    this.service.postReview(review).subscribe(review => console.log(review));
+
+
   }
 
 }
