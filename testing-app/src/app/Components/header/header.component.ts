@@ -34,8 +34,6 @@ export class HeaderComponent implements OnInit {
     }
   );
 
-
-
   ngOnInit() {
     this.service.getUser().subscribe(u => this.users = u);
   }
@@ -82,8 +80,6 @@ export class HeaderComponent implements OnInit {
 
     //goes through database and matches the loginForms with existing user details. returns length 1 if user exist, else length 0.
   var userFilter = this.users.filter(u => u.userEmail == this.loginUserForm.value.userEmail && u.passwordHash == this.loginUserForm.value.passwordHash);
-
-
 
     //Length = true or false, 0 = false,, 1 = true.
   if(userFilter.length == 0){

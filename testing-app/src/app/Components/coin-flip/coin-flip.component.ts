@@ -28,9 +28,7 @@ export class CoinFlipComponent implements OnInit {
     else if(this.headsOrTails == 2){
       this.displayResult = 'Heads';
       this.tailsFlipped = false;
-
     }
-
 
   }
 

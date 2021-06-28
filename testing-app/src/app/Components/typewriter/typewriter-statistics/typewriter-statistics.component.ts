@@ -7,7 +7,6 @@ import { TypewriterComponent } from '../typewriter.component';
   styleUrls: ['./typewriter-statistics.component.css']
 })
 export class TypewriterStatisticsComponent implements OnInit {
-
   @Input() displayAcc = 0;
   @Input() displayTime = 0;
   @Input() displayCorrectChar = 0;
@@ -15,14 +14,9 @@ export class TypewriterStatisticsComponent implements OnInit {
   @Input() displayWordsPerMin = 0;
 
   loadMain: string = "/src/app/Components/typewriter/typewriter.component.html";
-
   constructor() { }
-
   ngOnInit() {
-
   }
-
-
   tryAgain(){
     window.location.reload();
   }

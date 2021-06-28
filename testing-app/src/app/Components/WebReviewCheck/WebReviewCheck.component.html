@@ -2,32 +2,23 @@
 <div class="container-fluid">
   <div *ngIf="this.showPostReviewForm == false; then showReviews else showPostReview"></div>
   <ng-template #showReviews>
-
     <div class="d-flex justify-content-center align-content-center">
-
       <div class="col-md-5 Web-sitecheck-container white-background d-flex align-items-center flex-direction row">
         <h1>
           Is this site trusted?
         </h1>
         <div class="URL-Website-container">
-
           <form [formGroup]="websiteForm" class="row form-group">
             <input class="form-control mb-3" placeholder="Insert URL" id="userURL" name="myURL" type="url" required>
             <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold" (click)="getReviewsByUrl()" (click)="getTotalRating()" (click)="getAverageRating()" (click)="ratingScale()">Submit</button>
-
           </form>
         </div>
         <div class="URL-check-container">
-          <!-- <p>{{displayURLData[0].reviewTitle}}</p> -->
-
           <div *ngIf="this.reviewFound == true; then showFoundReviews else showCreateNewReview"></div>
-
-
             <ng-template #showFoundReviews>
               <div class="review-containers">
                 <div>
                   <h1>{{this.displayURLData[0].company.companyName}} <small style="font-size: 20px;">{{this.displayURLData[0].company.companyURL}}</small></h1>
-
                 </div>
 
                 <h4>Anmeldelser: {{this.totalRating}} </h4>
@@ -41,7 +32,7 @@
                 <p class="review-container-structure">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quidem pariatur facilis nostrum harum dignissimos laborum sunt corporis blanditiis suscipit ipsam, unde expedita beatae similique non ut, minus possimus quam.</p>
                 <p class="review-container-structure">{{companyReview.reviewRating}} ud af 10</p>
                 <p class="review-container-structure">Written by user: {{companyReview.user.userID}}</p>
-                </div>
+              </div>
 
             </ng-template>
           <ng-template #showCreateNewReview>
@@ -56,12 +47,4 @@
   <ng-template #showPostReview>
   <app-post-web-review></app-post-web-review>
   </ng-template>
-
-
-    <!--
-      <form [formGroup]="websiteForm" class="row form-group" placeholder="Link/URL">
-        <input formControlName ="trustsite" type="text" class="form-control">
-      </form>
-    -->
-
 </div>

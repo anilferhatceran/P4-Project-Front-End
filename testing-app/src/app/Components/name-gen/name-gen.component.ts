@@ -47,20 +47,16 @@ export class NameGenComponent implements OnInit{
     this.nameGenForm = new FormGroup({
       femaleNameChoice: new FormControl(),
       maleNameChoice: new FormControl(),
-
     }),
     this.saveNameForm = new FormGroup({
       femaleNameSave: new FormControl(),
       maleNameSave: new FormControl(),
-
     })
     this.service.getNames().subscribe(names =>{
       this.namesAndUsers = names;
     })
-
     this.getSavedNames();
   }
-
   getNames(){
   //get namesAndUsers function, chooses between user chosen male or female name
 
@@ -81,19 +77,13 @@ export class NameGenComponent implements OnInit{
 
     this.stringGeneratedMaleNames = JSON.stringify(this.generatedMaleNames);
 
-
     this.namesArray = this.stringGeneratedMaleNames.split(',');
     let re = /",/gi;
     let reTwo = /"/gi;
 
     this.newStr = this.namesArray.toString().replace(re,"\n");
     this.newStr2 = this.newStr.toString().replace(reTwo,"").replace('[',"").replace(']',"").split('\n');
-
-
     });
-
-
-
   }
   else if(this.maleNameChoice == false && this.femaleNameChoice){
     this.service.getFemaleNamesAmount(5).subscribe(namesAndUsers => {
@@ -112,16 +102,10 @@ export class NameGenComponent implements OnInit{
     this.newStr = this.namesArray.toString().replace(re,"\n");
     this.newStr2 = this.newStr.toString().replace(reTwo,"").replace('[',"").replace(']',"").split('\n');
     });
-
-
-
-
   }
   else{
     alert("Please choose either female or male");
   }
-
-
   }
 
   //Function that should save the individual namesAndUsers and then POST them to the database.
@@ -141,10 +125,6 @@ export class NameGenComponent implements OnInit{
     var userId = placeholder == null ? 0 : parseInt(placeholder);
 
     var nameGenUsers: NameGenUsers = {nameGenUserID: 0, name: {nameGenID: 0, maleNames: '', femaleNames: ''}, user: {userID: userId, userEmail: '', passwordHash: ''}};
-
-
-
-
 
     //Created a button: string paramter that I can set in each if/else if, so that I can match the value of the button string
     //with the buttons in HTML. This way I can check which button has been pressed and therefore I can save the corresponding name.
@@ -173,33 +153,26 @@ export class NameGenComponent implements OnInit{
       }
       else if(button == 'fifth'){
         nameGenUsers.name.maleNames = this.fifthName;
-
       }
     }
+
     else{
       if (button == 'first'){
         nameGenUsers.name.femaleNames = this.firstName;
       }
       else if(button == 'second'){
-
         nameGenUsers.name.femaleNames = this.secondName;
-
       }
       else if(button == 'third'){
         nameGenUsers.name.femaleNames = this.thirdName;
-
       }
       else if(button == 'fourth'){
         nameGenUsers.name.femaleNames = this.fourthName;
-
       }
       else if(button == 'fifth'){
         nameGenUsers.name.femaleNames = this.fifthName;
-
       }
     }
-
-
     if(userId){
       if(this.firstName != null)
       {
@@ -221,27 +194,17 @@ export class NameGenComponent implements OnInit{
     else{
       alert("You need to be logged in to use this function!");
     }
-
   }
   getSavedNames(){
     var placeholder = localStorage.getItem('User');
-
     var userId = placeholder == null ? 0 : parseInt(placeholder);
-
     var nameGenUsers: NameGenUsers = {nameGenUserID: 0, name: {nameGenID: 0, maleNames: '', femaleNames: ''}, user: {userID: userId, userEmail: '', passwordHash: ''}};
-
-    console.log("Jeg er her");
 
     if(userId == nameGenUsers.user.userID){
       this.service.getLastTenNames(userId).subscribe(user => {
         this.displaySavedNames = user
-        console.log(this.displaySavedNames[0].name.maleNames);
-
       });
-
     }
-
   }
-
 
 }

@@ -27,9 +27,6 @@ export class WebReviewCheckComponent implements OnInit {
   ratingScore: string;
   postFormsWindow: string = "/testing-app/src/app/Components/WebReviewCheck/post-web-review/post-web-review.component.html";
 
-
-
-
   constructor(private service : HttpService) { }
 
   ngOnInit() {
@@ -52,11 +49,7 @@ export class WebReviewCheckComponent implements OnInit {
         else{
           this.reviewFound = true;
         }
-
-      //  console.log(this.displayURLData[0].company.companyName);
       })
-
-
   }
   getAverageRating(){ //a service which we GET the average ratings of all the combined ratings from chosen URL.
     this.websiteURL = (document.getElementById("userURL") as HTMLInputElement).value;
@@ -74,7 +67,6 @@ export class WebReviewCheckComponent implements OnInit {
 
   }
 
-
   ratingScale(){ //Rating scale, rates based on good of a rating a company has.
     if(this.avrgRatings = 1){
       this.ratingScore = "very bad";
@@ -82,25 +74,20 @@ export class WebReviewCheckComponent implements OnInit {
 
     else if(this.avrgRatings = 2){
       this.ratingScore = "bad";
-
     }
 
     else if(this.avrgRatings = 3){
       this.ratingScore = "average";
-
     }
 
     else if(this.avrgRatings = 4){
       this.ratingScore = "good";
-
     }
 
     else if(this.avrgRatings = 5){
       this.ratingScore = "very good";
-
     }
   }
-
   loadPostForms(){
     this.showPostReviewForm = true;
   }
