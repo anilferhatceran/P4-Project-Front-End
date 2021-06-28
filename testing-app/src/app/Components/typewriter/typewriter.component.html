@@ -8,6 +8,7 @@
         <p class="lead">Choose time limit
         </p>
       </div>
+
       <div class="typewriter-input-boxes d-flex justify-content-center align-items-start my-4">
         <form [formGroup]="typewriterTimeLimit"  class="row form-group d-flex justify-content-center">
             <div class="col-md-3 col-sm-12">
@@ -39,18 +40,9 @@
     </div>
   </ng-template>
 
-
   <ng-template #showStatistics>
     <app-typewriter-statistics [displayAcc]="charAccuracy" [displayTime]="selectedTime"[displayCorrectChar]="countCorrect"
     [displayIncorrectChar]="countFail" [displayWordsPerMin]="wordsPerMin"></app-typewriter-statistics>
-
-
-
-  <!-- <button class="btn btn-success" (click)="calculate()">Show Statistics</button> -->
   </ng-template>
-
-
-  <!-- <button class="btn btn-primary" (click)="loadStatistics()">Load Statistics</button> -->
-
 </div>
 

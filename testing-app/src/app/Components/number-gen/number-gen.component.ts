@@ -14,9 +14,6 @@ export class NumberGenComponent implements OnInit {
   constructor() {
 
   }
-
-
-
   ngOnInit() {
     this.numberGenForm = new FormGroup({
       firstNumber: new FormControl(),

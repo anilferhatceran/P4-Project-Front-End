@@ -26,9 +26,7 @@
             <label class="form-check-label" for="femaleNameChoiceID">Female Name</label>
           </div>
 
-
           <div *ngIf="this.maleName?.checked; else elseBlock">
-
             <div>
               <input id="first-name" value="{{this.newStr2[0]}}">
               <button class="btn btn-primary mb-3" (click)="postName('first')">Save Name</button>
@@ -82,19 +80,11 @@
               <input id="fifth-name" value="{{this.newStr2[4]}}">
               <button id="fifth-name-btn" class="btn btn-primary mb-3" (click)="postName('fifth')">Save Name</button>
             </div>
-
             <button id="save-all-name-btn" class="btn btn-primary btn-all">Save All Names</button>
 
           </ng-template>
-
-
-
-
-
           <button type="submit" class="btn-name-gen btn-primary btn-lg fs-4 fw-bold" (click)="getNames()">Generate Random Names</button>
-
       </form>
-
 
       </div>
     </div>
