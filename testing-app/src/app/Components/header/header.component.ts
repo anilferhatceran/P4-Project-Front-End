@@ -1,7 +1,7 @@
 import { HttpService } from 'src/app/service/http.service';
 import { HttpClient } from '@angular/common/http';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { Users } from 'src/app/model/Users';
 
 
@@ -10,14 +10,13 @@ import { Users } from 'src/app/model/Users';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit {
   users: Users[];
   confirmPass: any;
-  @Input() user: Users;
   userObj: Users = {userID: 0,userEmail: "", passwordHash: ""}
   userChecked: boolean = true;
 
-  public loginError:String;
   constructor(private http:HttpClient, private service:HttpService) { }
 
   //Validators for createUserForm: Email, and Password required.
@@ -36,6 +35,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.service.getUser().subscribe(u => this.users = u);
+
+
   }
 
   //create user function on click.
@@ -65,7 +66,7 @@ export class HeaderComponent implements OnInit {
       }
   }
   else{
-    //If the user don't write the same password, program will tell user that it must be the same.
+    //If the user doesn't write the same password, program will tell user that it must be the same.
     alert("Password must be the same!");
   }
 
@@ -106,4 +107,5 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
   }
 }
+
 }

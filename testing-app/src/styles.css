@@ -1,12 +1,8 @@
 .container-fluid{
   height: 100vh;
-  overflow: auto;
-
-
 }
 .container{
   height: 100vh;
-  overflow: auto;
 }
 .header-result-box{
   border: 1px solid gray;
@@ -19,8 +15,12 @@
 html{
   scroll-behavior: smooth;
 }
+.sticky{
+  position: fixed;
+  top: 0;
+  width: 100%;
 
-
+}
 
 @keyframes slideFromTop {
   from {

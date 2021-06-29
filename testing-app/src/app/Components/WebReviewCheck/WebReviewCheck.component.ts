@@ -91,5 +91,17 @@ export class WebReviewCheckComponent implements OnInit {
   loadPostForms(){
     this.showPostReviewForm = true;
   }
+  changeImgSize(){
+    let navbar = document.getElementById("website-check");
+    if(this.showPostReviewForm == false){
+      navbar?.classList.remove("container-fluid");
+      navbar?.classList.add("website-check-img-resize");
+      console.log("IN here");
 
+    }
+      navbar?.classList.remove("website-check-img-resize");
+      console.log("Test");
+
+
+  }
 }

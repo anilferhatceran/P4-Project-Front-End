@@ -180,9 +180,16 @@ export class TypewriterComponent implements OnInit {
     ||event.key == "M" ||event.key == "N" ||event.key == "O" ||event.key == "P" ||event.key == "Q" ||event.key == "R" ||event.key == "S" ||event.key == "T" ||event.key == "U"
     ||event.key == "V" ||event.key == "W" ||event.key == "X" ||event.key == "Y" ||event.key == "Z" || event.key == ","
     || event.key == "." || event.key == " " || event.key == "'") {
+
+
       this.userInput = this.userInput + event.key
-      //this line prints what the user types
+
+
+      //this.splittedText is an array of the 40 generated words.
+
       this.userInput.replace(' ', '');
+      //check if the user's input matches the corresponding words in the array || checks if the user's input with space matches the words in the array.
+      //this.countWord is a counter that goes up everytime the user enters a correct word.
       if(this.userInput == this.splittedText[this.countWord] || this.userInput == " "+this.splittedText[this.countWord]){
         this.countWord++;
         console.log("Word number "+ this.countWord+ " is correct!");

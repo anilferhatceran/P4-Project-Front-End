@@ -196,10 +196,15 @@ export class NameGenComponent implements OnInit{
     }
   }
   getSavedNames(){
+    //Get the localStorage Key which has the users ID as a value. Then convert the key to a number (int),
+    //so we can use it as the column name "userID".
     var placeholder = localStorage.getItem('User');
     var userId = placeholder == null ? 0 : parseInt(placeholder);
+    //empty table with all the corresponding column names. This is created in order to POST to the different tables.
     var nameGenUsers: NameGenUsers = {nameGenUserID: 0, name: {nameGenID: 0, maleNames: '', femaleNames: ''}, user: {userID: userId, userEmail: '', passwordHash: ''}};
 
+    //if the userId variable which has the user's ID as a value, matches a userID in the database,
+    //then ... condition.
     if(userId == nameGenUsers.user.userID){
       this.service.getLastTenNames(userId).subscribe(user => {
         this.displaySavedNames = user

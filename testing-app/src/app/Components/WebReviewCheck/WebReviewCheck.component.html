@@ -1,16 +1,15 @@
-
-<div class="container-fluid">
+<div id="website-check" class="container-fluid">
   <div *ngIf="this.showPostReviewForm == false; then showReviews else showPostReview"></div>
   <ng-template #showReviews>
     <div class="d-flex justify-content-center align-content-center">
-      <div class="col-md-5 Web-sitecheck-container white-background d-flex align-items-center flex-direction row">
+      <div class="col-md-5 Web-sitecheck-container white-background d-flex align-items-center flex-direction row mt-4">
         <h1>
           Is this site trusted?
         </h1>
         <div class="URL-Website-container">
           <form [formGroup]="websiteForm" class="row form-group">
             <input class="form-control mb-3" placeholder="Insert URL" id="userURL" name="myURL" type="url" required>
-            <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold" (click)="getReviewsByUrl()" (click)="getTotalRating()" (click)="getAverageRating()" (click)="ratingScale()">Submit</button>
+            <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold" (click)="changeImgSize()"(click)="getReviewsByUrl()" (click)="getTotalRating()" (click)="getAverageRating()" (click)="ratingScale()">Submit</button>
           </form>
         </div>
         <div class="URL-check-container">

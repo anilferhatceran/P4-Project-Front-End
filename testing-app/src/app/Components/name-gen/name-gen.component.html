@@ -15,75 +15,73 @@
   <div class="name-gen-sname-container white-background d-flex justify-content-center" >
     <div class="col-md card-info d-flex flex-column">
 
-        <h5>Choose male or female!</h5>
-        <form [formGroup]="nameGenForm"  class="row form-group d-flex mx-5rem m:5rem">
-          <div class="col-md-6 col-sm-12">
+        <h2 class="display-6">Choose male or female!</h2>
+        <form [formGroup]="nameGenForm"  class="row form-group d-flex">
+          <div class="col-md-6 col-sm-12 mb-4 mt-3">
             <input formControlName="maleNameChoice" type="checkbox" class="form-check-input" id="maleNameChoiceID">
             <label class="form-check-label" for="maleNameChoiceID">Male Name</label>
           </div>
-          <div class="col-md-6 col-sm-12">
+          <div class="col-md-6 col-sm-12 mb-4 mt-3">
             <input formControlName="femaleNameChoice" type="checkbox" class="form-check-input" id="femaleNameChoiceID">
             <label class="form-check-label" for="femaleNameChoiceID">Female Name</label>
           </div>
 
           <div *ngIf="this.maleName?.checked; else elseBlock">
-            <div>
-              <input id="first-name" value="{{this.newStr2[0]}}">
+            <div class="d-flex justify-content-between">
+              <label id="first-name" for="">{{this.newStr2[0]}}</label>
               <button class="btn btn-primary mb-3" (click)="postName('first')">Save Name</button>
             </div>
 
-            <div>
-              <input id="second-name" value="{{this.newStr2[1]}}">
+            <div class="d-flex justify-content-between">
+              <label id="second-name">{{this.newStr2[1]}}</label>
               <button class="btn btn-primary mb-3" (click)="postName('second')">Save Name</button>
             </div>
 
-            <div>
-              <input id="third-name" value="{{this.newStr2[2]}}">
+            <div class="d-flex justify-content-between">
+              <label id="third-name">{{this.newStr2[2]}}</label>
               <button class="btn btn-primary mb-3" (click)="postName('third')">Save Name</button>
             </div>
 
-            <div>
-              <input id="fourth-name" value="{{this.newStr2[3]}}">
+            <div class="d-flex justify-content-between">
+              <label id="fourth-name">{{this.newStr2[3]}}</label>
               <button class="btn btn-primary mb-3" (click)="postName('fourth')">Save Name</button>
             </div>
 
-            <div>
-              <input id="fifth-name" value="{{this.newStr2[4]}}">
+            <div class="d-flex justify-content-between">
+              <label id="fifth-name">{{this.newStr2[4]}}</label>
               <button class="btn btn-primary mb-3" (click)="postName('fifth')">Save Name</button>
             </div>
 
-            <button id="save-all-name-btn" class="btn btn-primary btn-all">Save All Names</button>
           </div>
           <ng-template #elseBlock>
 
-            <div>
-              <input id="first-name" value="{{this.newStr2[0]}}">
+            <div class="d-flex justify-content-between">
+              <label id="first-name">{{this.newStr2[0]}}</label>
               <button id="first-name-btn" class="btn btn-primary mb-3" (click)="postName('first')">Save Name</button>
             </div>
 
-            <div>
-              <input id="second-name" value="{{this.newStr2[1]}}">
+            <div class="d-flex justify-content-between">
+              <label id="second-name">{{this.newStr2[1]}}</label>
               <button id="second-name-btn" class="btn btn-primary mb-3" (click)="postName('second')">Save Name</button>
             </div>
 
-            <div>
-              <input id="third-name" value="{{this.newStr2[2]}}">
+            <div class="d-flex justify-content-between">
+              <label id="third-name">{{this.newStr2[2]}}</label>
               <button id="third-name-btn" class="btn btn-primary mb-3" (click)="postName('third')">Save Name</button>
             </div>
 
-            <div>
-              <input id="fourth-name" value="{{this.newStr2[3]}}">
+            <div class="d-flex justify-content-between">
+              <label id="fourth-name">{{this.newStr2[3]}}</label>
               <button id="fourth-name-btn" class="btn btn-primary mb-3" (click)="postName('fourth')">Save Name</button>
             </div>
 
-            <div>
-              <input id="fifth-name" value="{{this.newStr2[4]}}">
+            <div class="d-flex justify-content-between">
+              <label id="fifth-name">{{this.newStr2[4]}}</label>
               <button id="fifth-name-btn" class="btn btn-primary mb-3" (click)="postName('fifth')">Save Name</button>
             </div>
-            <button id="save-all-name-btn" class="btn btn-primary btn-all">Save All Names</button>
 
           </ng-template>
-          <button type="submit" class="btn-name-gen btn-primary btn-lg fs-4 fw-bold" (click)="getNames()">Generate Random Names</button>
+          <button type="submit" class=" btn btn-name-gen btn-primary btn-lg" (click)="getNames()">Generate Random Names</button>
       </form>
 
       </div>
