@@ -61,7 +61,7 @@ export class TypewriterComponent implements OnInit {
       slowTime: new FormControl()
     });
   }
-  isCheckedFunction(){
+  isCheckedFunction(){ //check box function, decides which time to to use ie. if varyfastcheck is checked then the user will only have 15 seconds before the timer runs out
     let veryFast = document.getElementById('veryFastTimeID') as HTMLInputElement;
     this.veryFastCheck = veryFast.checked;
 
@@ -146,7 +146,7 @@ export class TypewriterComponent implements OnInit {
     }
   }
 
-  startTimer(timeLeft: number) {
+  startTimer(timeLeft: number) { //our timer function.
     this.timeLeft = timeLeft;
     this.interval = setInterval(() => {
       if(this.timeLeft  > 0) {
@@ -154,6 +154,9 @@ export class TypewriterComponent implements OnInit {
       } else {
         clearInterval(this.timeLeft)
         this.showStats = true;
+
+        //below is the variables for our statistics calculations
+
         this.failedCharAccuracy = (this.countFail/this.totalTypedChars) * 100;
         this.charAccuracy = 100 - this.failedCharAccuracy;
         this.wordsPerSec = this.countWord/this.selectedTime;
@@ -171,7 +174,7 @@ export class TypewriterComponent implements OnInit {
     if (event.key == "Backspace"){
     this.userInput = this.userInput.substring(0,this.userInput.length-1);
     this.currentCount--;
-    }
+    } //these are the accepted keystrokes that will be read upon key pressed events.
     else if(event.key == "a"  || event.key == "b" || event.key == "c" || event.key == "d" || event.key == "e" || event.key == "f" || event.key == "g" || event.key == "h"
     || event.key == "i" || event.key == "j" || event.key == "k" ||event.key == "l" ||event.key == "m" ||event.key == "n" ||event.key == "o" ||event.key == "p"
     ||event.key == "q" ||event.key == "r" ||event.key == "s" ||event.key == "t" ||event.key == "u" ||event.key == "v" ||event.key == "w" ||event.key == "x" ||event.key == "y" ||event.key == "z"
@@ -190,13 +193,13 @@ export class TypewriterComponent implements OnInit {
         this.userInput = this.userInput.substring(0, testVar);
       }
 
-          if(event.key == this.charsOfText[this.currentCount]){
+          if(event.key == this.charsOfText[this.currentCount]){ //counter for correct keystrokes
             this.countCorrect++;
 
             console.log(this.correctChar);
             this.correctChar = true;
           }
-          else{
+          else{ //counter for incorrect keystrokes
             this.countFail++;
             this.correctChar = false;
             console.log(this.correctChar);

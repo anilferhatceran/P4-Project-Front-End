@@ -53,11 +53,11 @@ export class PostWebReviewComponent implements OnInit {
   //   this.service.postCompany(this.postCompanyForm.value).subscribe(company => console.log(company));
   // }
   postReview(){
-    var placeholder = localStorage.getItem('User');
+    var placeholder = localStorage.getItem('User'); //post review function
 
     var userId = placeholder == null ? 0 : parseInt(placeholder);
 
-    let review: ReviewDetails = {reviewID: 0, company: {companyID: 0,companyName: this.postReviewForm.value.companyName, companyURL: this.postReviewForm.value.companyURL},
+    let review: ReviewDetails = {reviewID: 0, company: {companyID: 0,companyName: this.postReviewForm.value.companyName, companyURL: this.postReviewForm.value.companyURL}, //review interface
     user: {userID: userId, userEmail: '', passwordHash: ''},
     reviewTitle: this.postReviewForm.value.reviewTitle, reviewText: this.postReviewForm.value.reviewText,
     reviewDate: this.postReviewForm.value.reviewDate, reviewRating: this.postReviewForm.value.reviewRating};
