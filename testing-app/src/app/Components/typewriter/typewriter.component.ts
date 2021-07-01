@@ -3,7 +3,7 @@ import { TypewriterStatisticsComponent } from 'src/app/Components/typewriter/typ
 import { HttpService } from 'src/app/service/http.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, Input, OnInit, SimpleChanges } from '@angular/core';
-import { Form,FormControl, FormGroup } from '@angular/forms';
+import { Form,FormControl, FormGroup, PatternValidator } from '@angular/forms';
 import { TextsGenerated } from 'src/app/model/Texts';
 
 
@@ -170,12 +170,24 @@ export class TypewriterComponent implements OnInit {
 
   onKeyDown(event: any) {
 
+
+
+    let pattern: string | RegExp;
+    pattern="[a-zA-Z]"
+
+    let charArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
+    "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","-","."," ","'",","];
+    for(let i in charArray){
+      console.log(charArray[i]);
+
+    }
     //If "backspace" detected remove last character in given string.
     if (event.key == "Backspace"){
     this.userInput = this.userInput.substring(0,this.userInput.length-1);
     this.currentCount--;
     } //these are the accepted keystrokes that will be read upon key pressed events.
-    else if(event.key == "a"  || event.key == "b" || event.key == "c" || event.key == "d" || event.key == "e" || event.key == "f" || event.key == "g" || event.key == "h"
+
+    else if(event.key == "a"  || event.key == "b" ||  event.key == "c" || event.key == "d" || event.key == "e" || event.key == "f" || event.key == "g" || event.key == "h"
     || event.key == "i" || event.key == "j" || event.key == "k" ||event.key == "l" ||event.key == "m" ||event.key == "n" ||event.key == "o" ||event.key == "p"
     ||event.key == "q" ||event.key == "r" ||event.key == "s" ||event.key == "t" ||event.key == "u" ||event.key == "v" ||event.key == "w" ||event.key == "x" ||event.key == "y" ||event.key == "z"
     ||event.key == "-" ||event.key == "A"  || event.key == "B" || event.key == "C" || event.key == "D"
@@ -184,6 +196,7 @@ export class TypewriterComponent implements OnInit {
     ||event.key == "V" ||event.key == "W" ||event.key == "X" ||event.key == "Y" ||event.key == "Z" || event.key == ","
     || event.key == "." || event.key == " " || event.key == "'") {
 
+      console.log("we are in");
 
       this.userInput = this.userInput + event.key
 

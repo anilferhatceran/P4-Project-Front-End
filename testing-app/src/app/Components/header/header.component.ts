@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   confirmPass: any;
   userObj: Users = {userID: 0,userEmail: "", passwordHash: ""}
   userChecked: boolean = true;
+  userId: number;
 
   constructor(private http:HttpClient, private service:HttpService) { }
 
@@ -36,6 +37,17 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.service.getUser().subscribe(u => this.users = u);
 
+    var placeholder = localStorage.getItem('User');
+
+    this.userId = placeholder == null ? 0 : parseInt(placeholder);
+
+    if(this.userId){
+
+    }
+    else{
+      console.log("Nope");
+
+    }
 
   }
 
@@ -94,7 +106,8 @@ export class HeaderComponent implements OnInit {
     this.userChecked = true;
     this.service.ValidateUser(this.userObj).subscribe();
     this.loginUserForm.reset();
-    localStorage.setItem('User',userFilter[0].userID.toString());
+    window.localStorage.setItem('User',userFilter[0].userID.toString());
+    window.location.reload();
     alert("You are now logged in!");
     this.userChecked = false;
   }
@@ -107,5 +120,8 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
   }
 }
+  userLoginCheck(){
+
+  }
 
 }

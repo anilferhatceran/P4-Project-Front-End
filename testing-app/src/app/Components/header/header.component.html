@@ -1,4 +1,4 @@
-<header>
+<header ng-include="partialViewUrl" ng-init="userLoginCheck()">
   <div  class="navbar navbar-expand-lg navbar-dark bg-dark header-container" id="navbar">
     <a class="navbar-brand" routerLink="/">Website Services</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
         <button class="btn btn-outline-light my-2 my-sm-0 mr-sm-2" type="button" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
       </form>
 
-      <div *ngIf="this.userChecked == true; then showLogin else dontShowLogin"></div>
+      <div *ngIf="!this.userId; then showLogin else dontShowLogin"></div>
       <ng-template #showLogin>
       <form class="form-inline my-2 my-lg-0">
         <button id="btnLogin"class="btn btn-outline-light my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#loginModal">Login</button>
@@ -27,7 +27,7 @@
     </ng-template>
     <ng-template #dontShowLogin></ng-template>
 
-      <div *ngIf="this.userChecked == false; then showLogout else dontShowLogout"></div>
+      <div *ngIf="this.userId; then showLogout else dontShowLogout"></div>
       <ng-template #showLogout>
         <form  class="form-inline my-2 my-lg-0">
         <button id="btnLogout" class="btn btn-outline-light my-2 my-sm-0 btn-danger"type="submit" (click)="onSubmitLogout()">Logout</button>
