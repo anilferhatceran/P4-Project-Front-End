@@ -133,11 +133,14 @@ export class NameGenComponent implements OnInit{
     //Create an else if(button == 'all') which will save all the namesAndUsers. Find out if possible/how much trouble it is. If not worth the time,
     //then remove "Save All Names" function
     // :: Make a FOR loop that POSTs 5 times? ::
+    console.log(this.firstName);
 
     if(this.generatedMaleNames.length != 0){
 
       if (button == 'first'){
         nameGenUsers.name.maleNames = this.firstName;
+        
+        
       }
       else if(button == 'second'){
         nameGenUsers.name.maleNames = this.secondName;
