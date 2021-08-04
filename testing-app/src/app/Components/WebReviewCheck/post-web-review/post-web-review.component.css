@@ -1,11 +1,18 @@
+html{
+  overflow-x: hidden;
+}
 .container-fluid{
     background-image: url("https://mobile-cuisine.com/wp-content/uploads/2012/05/website-name-e1456929129165.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100vw;
     margin: 0 !important;
 }
-.password-gen-info-box-container{
-  max-width: 50%;
-  height: auto;
+.post-review-container{
+  max-width: 30%;
+  margin-bottom: 10rem;
+  border-radius: 7px;
+}
+.form-group{
+  width: 80% !important;
+
 }

@@ -25,13 +25,13 @@
                   <h4>Total rating: {{this.avrgRatings}} <small class="muted">{{this.ratingScore}}</small></h4>
                 </div>
               </div>
-
               <div class="review-containers" *ngFor="let companyReview of displayURLData">
                 <h4 class="review-container-structure d-flex justify-content-between">{{companyReview.reviewTitle}} <small>{{companyReview.reviewDate}}</small></h4>
-                <p class="review-container-structure">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quidem pariatur facilis nostrum harum dignissimos laborum sunt corporis blanditiis suscipit ipsam, unde expedita beatae similique non ut, minus possimus quam.</p>
+                <p class="review-container-structure">{{companyReview.reviewText}}</p>
                 <p class="review-container-structure">{{companyReview.reviewRating}} ud af 10</p>
                 <p class="review-container-structure">Written by user: {{companyReview.user.userID}}</p>
               </div>
+              
 
             </ng-template>
           <ng-template #showCreateNewReview>
