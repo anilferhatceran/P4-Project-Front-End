@@ -162,9 +162,9 @@ export class TypewriterComponent implements OnInit {
         this.charAccuracy = 100 - this.failedCharAccuracy;
         this.wordsPerSec = this.countWord/this.selectedTime;
         this.wordsPerMin = this.wordsPerSec * 60;
-        
+
         console.log(this.totalTypedChars);
-        
+
       }
     },1000)
   }
@@ -174,12 +174,13 @@ export class TypewriterComponent implements OnInit {
 
   onKeyDown(event: any) {
 
-    let charArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-    "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","-","."," ","'",","];
-    for(let i in charArray){
-      console.log(charArray[i]);
 
-    }
+
+    // pattern.test(event.key) || event.key == " " || event.key == "Shift" || event.key == " Shift"
+
+    let pattern = new RegExp("[a-zA-Z,.'-]");
+
+
     //If "backspace" detected remove last character in given string.
     if (event.key == "Backspace"){
     this.userInput = this.userInput.substring(0,this.userInput.length-1);
@@ -195,7 +196,9 @@ export class TypewriterComponent implements OnInit {
     ||event.key == "V" ||event.key == "W" ||event.key == "X" ||event.key == "Y" ||event.key == "Z" || event.key == ","
     || event.key == "." || event.key == " " || event.key == "'") {
 
-      console.log("we are in");
+      console.log(event.key);
+
+      console.log(this.userInput);
 
       this.userInput = this.userInput + event.key
 
