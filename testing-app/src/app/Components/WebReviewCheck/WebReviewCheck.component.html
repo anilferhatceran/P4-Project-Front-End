@@ -15,6 +15,9 @@
         <div class="URL-check-container">
           <div *ngIf="this.reviewFound == true; then showFoundReviews else showCreateNewReview"></div>
             <ng-template #showFoundReviews>
+              <div>
+                <button type="submit" class="btn-post-review btn-primary btn-lg" (click)="loadAddReview()">Create a review</button>
+              </div>
               <div class="review-containers">
                 <div>
                   <h1>{{this.displayURLData[0].company.companyName}} <small style="font-size: 20px;">{{this.displayURLData[0].company.companyURL}}</small></h1>
@@ -29,7 +32,7 @@
                 <h4 class="review-container-structure d-flex justify-content-between">{{companyReview.reviewTitle}} <small>{{companyReview.reviewDate}}</small></h4>
                 <p class="review-container-structure">{{companyReview.reviewText}}</p>
                 <p class="review-container-structure">{{companyReview.reviewRating}} out of 10</p>
-                <p class="review-container-structure">Written by user: {{companyReview.user.userID}}</p>
+                <p class="review-container-structure">Written by user: {{companyReview.user.userEmail}}</p>
               </div>
               
 

@@ -14,6 +14,7 @@ import { PostWebReviewComponent } from './post-web-review/post-web-review.compon
 export class WebReviewCheckComponent implements OnInit {
   websiteForm:any;
   showPostReviewForm: boolean = false;
+  showAddReviewForm: boolean = false;
   showReviews: ReviewDetails[] = [];
   @Input() reviews:ReviewDetails;
   websiteURL: string;
@@ -94,6 +95,18 @@ export class WebReviewCheckComponent implements OnInit {
     var userId = placeholder == null ? 0 : parseInt(placeholder);
     if(userId){
       this.showPostReviewForm = true;
+    }
+    else{
+      alert("You need to be logged in to use this function!");
+    }
+  }
+  loadAddReview(){
+    var placeholder = localStorage.getItem('User');
+
+    var userId = placeholder == null ? 0 : parseInt(placeholder);
+
+    if(userId){
+      this.showAddReviewForm = true;
     }
     else{
       alert("You need to be logged in to use this function!");
