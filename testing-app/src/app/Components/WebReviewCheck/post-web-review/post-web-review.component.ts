@@ -16,6 +16,7 @@ export class PostWebReviewComponent implements OnInit {
 
   // postCompanyForm: FormGroup;
   postReviewForm: FormGroup;
+
   // @Input() reviewTitle = '';
   // @Input() reviewUser = 0;
   // @Input() reviewText = '';
@@ -50,9 +51,13 @@ export class PostWebReviewComponent implements OnInit {
   // postCompany(){
 
 
+
   //   this.service.postCompany(this.postCompanyForm.value).subscribe(company => console.log(company));
   // }
   postReview(){
+
+
+
     var placeholder = localStorage.getItem('User'); //post review function
 
     var userId = placeholder == null ? 0 : parseInt(placeholder);
@@ -62,7 +67,14 @@ export class PostWebReviewComponent implements OnInit {
     reviewTitle: this.postReviewForm.value.reviewTitle, reviewText: this.postReviewForm.value.reviewText,
     reviewDate: this.postReviewForm.value.reviewDate, reviewRating: this.postReviewForm.value.reviewRating};
 
-    this.service.postReview(review).subscribe(review => console.log(review));
+    if (this.postReviewForm.value.reviewRating > 10){
+      alert("Rating cannot be higher than 10");
+    }
+
+    else{
+      this.service.postReview(review).subscribe(review => console.log(review));
+      window.location.reload();
+    }
 
 
   }

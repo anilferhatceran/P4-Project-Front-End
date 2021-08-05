@@ -1,4 +1,4 @@
-import { AddWebReviewComponent } from './Components/WebReviewCheck/add-web-review/add-web-review.component';
+
 import { PostWebReviewComponent } from './Components/WebReviewCheck/post-web-review/post-web-review.component';
 import { TypewriterStatisticsComponent } from 'src/app/Components/typewriter/typewriter-statistics/typewriter-statistics.component';
 import { FooterComponent } from './Components/footer/footer.component';
@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'typewriter', component : TypewriterComponent},
   {path: 'webreviewcheck', component:WebReviewCheckComponent},
   {path: 'typewriter/statistics', component:TypewriterStatisticsComponent},
-  {path: 'webreviewcheck/add-review', component:AddWebReviewComponent},
+
 
 ];
 
@@ -36,4 +36,4 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 export const routingComponents = [LandingPageComponent, NumberGenComponent, CoinFlipComponent, DiceRollComponent,
-  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent, WebReviewCheckComponent, FooterComponent, TypewriterStatisticsComponent, PostWebReviewComponent, AddWebReviewComponent]
+  PasswordGenComponent, HeaderComponent, NameGenComponent,TypewriterComponent, WebReviewCheckComponent, FooterComponent, TypewriterStatisticsComponent, PostWebReviewComponent,]

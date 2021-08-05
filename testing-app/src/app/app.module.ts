@@ -14,14 +14,12 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HeaderComponent } from './Components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AddWebReviewComponent } from './Components/WebReviewCheck/add-web-review/add-web-review.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    AddWebReviewComponent,
   ],
   imports: [
     BrowserModule,

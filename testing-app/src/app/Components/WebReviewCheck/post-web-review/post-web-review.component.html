@@ -11,27 +11,27 @@
             <label for="companyName">Company name</label>
             <input formControlName="companyName" type="text" class="form-control" id="companyNameID" placeholder="Company Name">
           </div>
-  
+
           <div class="form-group">
             <label for="companyUrl">Company Url</label>
             <input formControlName="companyURL" type="text" class="form-control" id="companyUrlID"  placeholder="Company Url">
           </div>
-  
+
           <div class="form-group">
             <label for="reviewTitle">Review Title</label>
             <input formControlName="reviewTitle" type="text" class="form-control" id="reviewTitleID" placeholder="Review Title">
           </div>
-  
+
           <div class="form-group">
             <label for="reviewText">Review Text</label>
             <textarea formControlName="reviewText" type="text" class="form-control" id="reviewTextID" placeholder="Review Text"></textarea>
           </div>
-  
+
           <div class="form-group">
             <label for="reviewDate">Review Date</label>
-            <input formControlName="reviewDate" type="text" class="form-control" id="reviewdateID" placeholder="Review Date">
+            <input formControlName="reviewDate" type="date" class="form-control" id="reviewdateID" placeholder="Review Date">
           </div>
-  
+
           <div class="form-group">
             <label for="reviewRating">Review Rating</label>
             <input formControlName="reviewRating" type="number" class="form-control" id="reviewRatingID" placeholder="Review Rating">
@@ -39,7 +39,7 @@
           <button type="submit" class="btn btn-primary" (click)="postReview()">Submit</button>
 
         </div>
-       
+
       </form>
     </div>
   </div>

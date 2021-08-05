@@ -19,8 +19,8 @@
 
             <ng-template #showFoundReviews>
               <div>
-                <button class="btn btn-primary" (click)="loadAddReview()">Create a review</button>
-                <app-add-web-review *ngIf="showAddReviewForm"></app-add-web-review>
+                <button class="btn btn-primary" (click)="loadPostForms()"  (click)="hideReviewForms()">Create a review</button>
+                <app-post-web-review *ngIf="showPostReviewForm"></app-post-web-review>
               </div>
               <div class="review-containers">
                 <div>
