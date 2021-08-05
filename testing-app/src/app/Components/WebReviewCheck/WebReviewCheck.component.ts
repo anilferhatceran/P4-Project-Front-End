@@ -89,19 +89,14 @@ export class WebReviewCheckComponent implements OnInit {
     }
   }
   loadPostForms(){
-    this.showPostReviewForm = true;
-  }
-  changeImgSize(){
-    let navbar = document.getElementById("website-check");
-    if(this.showPostReviewForm == false){
-      navbar?.classList.remove("container-fluid");
-      navbar?.classList.add("website-check-img-resize");
-      console.log("IN here");
+    var placeholder = localStorage.getItem('User');
 
+    var userId = placeholder == null ? 0 : parseInt(placeholder);
+    if(userId){
+      this.showPostReviewForm = true;
     }
-      navbar?.classList.remove("website-check-img-resize");
-      console.log("Test");
-
-
+    else{
+      alert("You need to be logged in to use this function!");
+    }
   }
 }

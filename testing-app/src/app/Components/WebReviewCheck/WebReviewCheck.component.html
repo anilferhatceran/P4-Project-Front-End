@@ -9,7 +9,7 @@
         <div class="URL-Website-container">
           <form [formGroup]="websiteForm" class="row form-group">
             <input class="form-control mb-3" placeholder="Insert URL" id="userURL" name="myURL" type="url" required>
-            <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold" (click)="changeImgSize()"(click)="getReviewsByUrl()" (click)="getTotalRating()" (click)="getAverageRating()" (click)="ratingScale()">Submit</button>
+            <button type="submit" class="btn-webcheck btn-primary btn-lg fs-4 fw-bold" (click)="getReviewsByUrl()" (click)="getTotalRating()" (click)="getAverageRating()" (click)="ratingScale()">Submit</button>
           </form>
         </div>
         <div class="URL-check-container">
@@ -28,7 +28,7 @@
               <div class="review-containers" *ngFor="let companyReview of displayURLData">
                 <h4 class="review-container-structure d-flex justify-content-between">{{companyReview.reviewTitle}} <small>{{companyReview.reviewDate}}</small></h4>
                 <p class="review-container-structure">{{companyReview.reviewText}}</p>
-                <p class="review-container-structure">{{companyReview.reviewRating}} ud af 10</p>
+                <p class="review-container-structure">{{companyReview.reviewRating}} out of 10</p>
                 <p class="review-container-structure">Written by user: {{companyReview.user.userID}}</p>
               </div>
               

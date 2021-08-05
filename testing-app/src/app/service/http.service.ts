@@ -49,12 +49,12 @@ getMaleNamesAmount(Amount: number): Observable<string[]>{
 getFemaleNamesAmount(Amount: number): Observable<string[]>{
   return this.http.get<string[]>(`${this.ROOT_URL}NameGenerated/femalenames/${Amount}`, httpHeaders);
 }
-getMaleName(): Observable<string>{
-  return this.http.get<string>(`${this.ROOT_URL}NameGenerated/maleName`);
-}
-getFemaleName(): Observable<string>{
-  return this.http.get<string>(`${this.ROOT_URL}NameGenerated/femaleNames`);
-}
+// getMaleName(): Observable<string>{
+//   return this.http.get<string>(`${this.ROOT_URL}NameGenerated/maleName`);
+// }
+// getFemaleName(): Observable<string>{
+//   return this.http.get<string>(`${this.ROOT_URL}NameGenerated/femaleName`);
+// }
 getNames(): Observable<NameGenUsers[]>{
   return this.http.get<NameGenUsers[]>(`${this.ROOT_URL}NameGenUser`, httpHeaders);
 }

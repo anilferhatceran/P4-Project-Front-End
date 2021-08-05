@@ -155,12 +155,16 @@ export class TypewriterComponent implements OnInit {
         clearInterval(this.timeLeft)
         this.showStats = true;
 
-        //below is the variables for our statistics calculations
+        //below are the variables for our statistics calculations
+        this.totalTypedChars = this.countCorrect + this.countFail;
 
         this.failedCharAccuracy = (this.countFail/this.totalTypedChars) * 100;
         this.charAccuracy = 100 - this.failedCharAccuracy;
         this.wordsPerSec = this.countWord/this.selectedTime;
         this.wordsPerMin = this.wordsPerSec * 60;
+        
+        console.log(this.totalTypedChars);
+        
       }
     },1000)
   }
