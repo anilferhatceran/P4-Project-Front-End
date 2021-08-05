@@ -1,5 +1,7 @@
 <div id="website-check" class="container-fluid">
   <div *ngIf="this.showPostReviewForm == false; then showReviews else showPostReview"></div>
+
+
   <ng-template #showReviews>
     <div class="d-flex justify-content-center align-content-center">
       <div class="col-md-5 Web-sitecheck-container white-background d-flex align-items-center flex-direction row mt-4">
@@ -14,9 +16,11 @@
         </div>
         <div class="URL-check-container">
           <div *ngIf="this.reviewFound == true; then showFoundReviews else showCreateNewReview"></div>
+
             <ng-template #showFoundReviews>
               <div>
-                <button type="submit" class="btn-post-review btn-primary btn-lg" (click)="loadAddReview()">Create a review</button>
+                <button class="btn btn-primary" (click)="loadAddReview()">Create a review</button>
+                <app-add-web-review *ngIf="showAddReviewForm"></app-add-web-review>
               </div>
               <div class="review-containers">
                 <div>
@@ -34,7 +38,8 @@
                 <p class="review-container-structure">{{companyReview.reviewRating}} out of 10</p>
                 <p class="review-container-structure">Written by user: {{companyReview.user.userEmail}}</p>
               </div>
-              
+
+
 
             </ng-template>
           <ng-template #showCreateNewReview>

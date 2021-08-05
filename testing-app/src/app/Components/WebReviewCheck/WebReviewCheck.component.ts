@@ -104,9 +104,9 @@ export class WebReviewCheckComponent implements OnInit {
     var placeholder = localStorage.getItem('User');
 
     var userId = placeholder == null ? 0 : parseInt(placeholder);
-
     if(userId){
       this.showAddReviewForm = true;
+      window.open("http://localhost:4200/webreviewcheck/add-review");
     }
     else{
       alert("You need to be logged in to use this function!");
